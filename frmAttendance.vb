@@ -240,7 +240,7 @@ Public Class frmAttendance
             conn.Open()
             Dim currentDate As String = DateTime.Now.Date.ToString("yyyy-MM-dd")
             Dim command As New MySqlCommand($"SELECT dcourse FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance 
-            WHERE ttimein BETWEEN '{currentDate} 00:00:00' AND '{currentDate} 23:59:59')
+            WHERE ttimein BETWEEN '{currentDate} 00:00:00' AND '{currentDate} 23:59:59' AND ttimeout IS NULL)
             ;", conn)
             Dim reader As MySqlDataReader
             reader = command.ExecuteReader()
@@ -274,7 +274,7 @@ Public Class frmAttendance
             lblIIEE.Text = iiee
             lblLPIES.Text = lpies
             lblLYCO.Text = lyco
-            lblTotal.Text = $"Total Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
+            lblTotal.Text = $"Total Current Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
         Catch ex As Exception
             Timer1.Stop()
             MsgBox(ex.Message)
@@ -324,32 +324,40 @@ Public Class frmAttendance
     End Function
 
     Private Sub picCE_Click(sender As Object, e As EventArgs) Handles picCE.Click
-        openOrgForm("CE")
+        openOrgForm("CE", "BSCE")
     End Sub
 
     Private Sub picCPS_Click(sender As Object, e As EventArgs) Handles picCPS.Click
-        openOrgForm("CPS")
+        openOrgForm("CPS", "BSCS", "BSIT")
     End Sub
 
     Private Sub picIECEP_Click(sender As Object, e As EventArgs) Handles picIECEP.Click
-        openOrgForm("IECEP")
+        openOrgForm("IECEP", "BSECE")
     End Sub
 
     Private Sub picIIEE_Click(sender As Object, e As EventArgs) Handles picIIEE.Click
-        openOrgForm("IIEE")
+        openOrgForm("IIEE", "BSEE")
     End Sub
 
     Private Sub picLPIES_Click(sender As Object, e As EventArgs) Handles picLPIES.Click
-        openOrgForm("LPIES")
+        openOrgForm("LPIES", "BSIE")
     End Sub
 
     Private Sub picLYCO_Click(sender As Object, e As EventArgs) Handles picLYCO.Click
-        openOrgForm("LYCO")
+        openOrgForm("LYCO", "BSCpE")
     End Sub
-
-    Private Sub openOrgForm(org As String)
+    'Overload function
+    Private Sub openOrgForm(org As String, course1 As String)
         frmOrganization.stOrg = org
-
+        frmOrganization.stCourse1 = course1
+        frmOrganization.Show()
+        Me.Hide()
+    End Sub
+    'Overload function
+    Private Sub openOrgForm(org As String, course1 As String, course2 As String)
+        frmOrganization.stOrg = org
+        frmOrganization.stCourse1 = course1
+        frmOrganization.stCourse2 = course2
         frmOrganization.Show()
         Me.Hide()
     End Sub

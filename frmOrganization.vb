@@ -3,6 +3,8 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmOrganization
     Public stOrg As String
+    Public stCourse1 As String = ""
+    Public stCourse2 As String = ""
 
     Private organizations As New Dictionary(Of String, Organization)
 
@@ -64,7 +66,7 @@ Public Class frmOrganization
 
             Dim stDate As String = Date.Now.ToString("yyyy-MM-dd")
             Dim command As New MySqlCommand($"SELECT dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
-            FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59');", conn)
+            FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59' AND ttimeout IS NULL) AND dcourse IN ('{stCourse1}','{stCourse2}');", conn)
             Dim dataset As New DataSet
             Dim adapter As New MySqlDataAdapter With {
                 .SelectCommand = command
@@ -72,6 +74,7 @@ Public Class frmOrganization
             adapter.Fill(dataset, "Attendees")
 
             grdAttendance.DataSource = dataset.Tables("Attendees")
+
         Catch ex As Exception
             MsgBox(ex.Message)
             Me.Close()
