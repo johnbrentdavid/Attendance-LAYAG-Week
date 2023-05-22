@@ -258,6 +258,7 @@ Partial Class frmAdmin
         ' 
         grdAttendance.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         grdAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        grdAttendance.BackgroundColor = Color.White
         grdAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         grdAttendance.Location = New Point(27, 26)
         grdAttendance.Name = "grdAttendance"

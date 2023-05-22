@@ -31,8 +31,9 @@ Public Class frmOrganization
 
         ' Re allign Title
         Dim x, y As Double
+        x = (frmAttendance.Size.Width / 2) - (panOrg.Size.Width / 2)
         y = (frmAttendance.Size.Height * 0.2) - (panOrg.Size.Height / 2)
-        panOrg.Location = New Point(panOrg.Location.X, y)
+        panOrg.Location = New Point(x, y)
 
         y = (panOrg.Size.Height / 2) - (lblOrg.Size.Height / 2)
         lblOrg.Location = New Point(lblOrg.Location.X, y)

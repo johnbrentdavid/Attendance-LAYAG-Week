@@ -28,8 +28,8 @@ Partial Class frmOrganization
         lblOrg = New Label()
         picOrg = New PictureBox()
         panAttendees = New Panel()
-        grdAttendance = New DataGridView()
         btnRefresh = New Button()
+        grdAttendance = New DataGridView()
         panOrg.SuspendLayout()
         CType(picOrg, ComponentModel.ISupportInitialize).BeginInit()
         panAttendees.SuspendLayout()
@@ -92,19 +92,6 @@ Partial Class frmOrganization
         panAttendees.Size = New Size(1114, 600)
         panAttendees.TabIndex = 4
         ' 
-        ' grdAttendance
-        ' 
-        grdAttendance.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        grdAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        grdAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        grdAttendance.Location = New Point(20, 22)
-        grdAttendance.Name = "grdAttendance"
-        grdAttendance.ReadOnly = True
-        grdAttendance.RowTemplate.Height = 25
-        grdAttendance.Size = New Size(1072, 558)
-        grdAttendance.TabIndex = 1
-        grdAttendance.TabStop = False
-        ' 
         ' btnRefresh
         ' 
         btnRefresh.Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -117,6 +104,20 @@ Partial Class frmOrganization
         btnRefresh.TabStop = False
         btnRefresh.Text = "Refresh"
         btnRefresh.UseVisualStyleBackColor = False
+        ' 
+        ' grdAttendance
+        ' 
+        grdAttendance.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        grdAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        grdAttendance.BackgroundColor = Color.White
+        grdAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        grdAttendance.Location = New Point(20, 22)
+        grdAttendance.Name = "grdAttendance"
+        grdAttendance.ReadOnly = True
+        grdAttendance.RowTemplate.Height = 25
+        grdAttendance.Size = New Size(1072, 558)
+        grdAttendance.TabIndex = 1
+        grdAttendance.TabStop = False
         ' 
         ' frmOrganization
         ' 
