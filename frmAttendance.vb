@@ -239,8 +239,9 @@ Public Class frmAttendance
         Try
             conn.Open()
             Dim currentDate As String = DateTime.Now.Date.ToString("yyyy-MM-dd")
-            Dim command As New MySqlCommand($"select dcourse from tblattendance join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid where 
-            tblattendance.ttimein > '{currentDate} 00:00:00' and tblattendance.ttimein < '{currentDate} 23:59:59' and tblattendance.ttimeout is null;", conn)
+            Dim command As New MySqlCommand($"SELECT dcourse FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance 
+            WHERE ttimein BETWEEN '{currentDate} 00:00:00' AND '{currentDate} 23:59:59')
+            ;", conn)
             Dim reader As MySqlDataReader
             reader = command.ExecuteReader()
 
