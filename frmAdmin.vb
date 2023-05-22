@@ -97,8 +97,9 @@ Public Class frmAdmin
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
         ' Build the query string
-        Dim query As String = $"select * from tblattendance natural join tblstudent
-        where tblattendance.ttimein between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
+        Dim query As String = $"select idtblattendance as 'Attendance ID', ttimein as 'Time In', ttimeout as 'Time Out', tblstudent.dstudentid as 'Student ID', 
+        dfullname as 'Full Name', dcourse as 'Course', dyearlevel as 'Year Level'
+        from tblattendance natural join tblstudent where tblattendance.ttimein between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
         'and tblattendance.ttimeout between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
 
         ' If not all student org
