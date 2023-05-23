@@ -4,36 +4,36 @@ Imports MySql.Data.MySqlClient
 Public Class frmOrganization
     Public stOrg As String
 
-    Private organizations As New Dictionary(Of String, Organization)
-
-    Private Structure Organization
-        Public logo As Image
-        Public stFullName As String
-    End Structure
-
     Private Sub frmOrganization_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Try
-            Path.Combine(Application.StartupPath, "Img\Org Logo\LYCO-CPE.png")
-            organizations.Add("CE", New Organization With {.logo = Image.FromFile(Path.Combine(Application.StartupPath, "Img\Org Logo\CE.png")),
-                          .stFullName = "Philippine Institute of Civil Engineers"})
-            organizations.Add("CPS", New Organization With {.logo = Image.FromFile(Path.Combine(Application.StartupPath, "Img\Org Logo\CPS.png")),
-                              .stFullName = "Computer Programming Society"})
-            organizations.Add("IECEP", New Organization With {.logo = Image.FromFile(Path.Combine(Application.StartupPath, "Img\Org Logo\IECEP.png")),
-                              .stFullName = "Institute of Electronics Engineers of the Philippines"})
-            organizations.Add("IIEE", New Organization With {.logo = Image.FromFile(Path.Combine(Application.StartupPath, "Img\Org Logo\IIEE.png")),
-                              .stFullName = "Institute of Integrated Electrical Engineers"})
-            organizations.Add("LPIES", New Organization With {.logo = Image.FromFile(Path.Combine(Application.StartupPath, "Img\Org Logo\LPIES.png")),
-                              .stFullName = "Lyceum of the Philippines - Laguna Industrial Engineering Society"})
-            organizations.Add("LYCO", New Organization With {.logo = Image.FromFile(Path.Combine(Application.StartupPath, "Img\Org Logo\LYCO-CPE.png")),
-                              .stFullName = "Lycean’s Coalition of Computer Engineers"})
+        Dim logo As Image = Nothing
+        Dim stFullName As String = "LPU"
 
-            ' Place proper Logo and Org name
-            picOrg.Image = organizations(stOrg).logo
-            lblOrg.Text = organizations(stOrg).stFullName
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        Select Case stOrg
+            Case "CPS"
+                logo = frmAttendance.picCPS.Image
+                stFullName = "Computer Programming Society"
+            Case "IECEP"
+                logo = frmAttendance.picIECEP.Image
+                stFullName = "Institute of Electronics Engineers of the Philippines"
+            Case "IIEE"
+                logo = frmAttendance.picIIEE.Image
+                stFullName = "Institute of Integrated Electrical Engineers"
+            Case "LPIES"
+                logo = frmAttendance.picLPIES.Image
+                stFullName = "Lyceum of the Philippines - Laguna Industrial Engineering Society"
+            Case "LYCO-CpE"
+                logo = frmAttendance.picLYCO.Image
+                stFullName = "Lycean’s Coalition of Computer Engineers"
+            Case "CE"
+                logo = frmAttendance.picCE.Image
+                stFullName = "Philippine Institute of Civil Engineers"
+        End Select
+
+        ' Place proper Logo and Org name
+        picOrg.Image = logo
+        lblOrg.Text = stFullName
+
         ' Re allign Title
         Dim x, y As Double
         x = (frmAttendance.Size.Width / 2) - (panOrg.Size.Width / 2)
@@ -64,7 +64,7 @@ Public Class frmOrganization
 
             Dim stDate As String = Date.Now.ToString("yyyy-MM-dd")
             Dim command As New MySqlCommand($"SELECT dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
-            FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59');", conn)
+            FROM tblstudent WHERE dstudentid IN (SELECT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null);", conn)
             Dim dataset As New DataSet
             Dim adapter As New MySqlDataAdapter With {
                 .SelectCommand = command

@@ -240,8 +240,7 @@ Public Class frmAttendance
             conn.Open()
             Dim currentDate As String = DateTime.Now.Date.ToString("yyyy-MM-dd")
             Dim command As New MySqlCommand($"SELECT dcourse FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance 
-            WHERE ttimein BETWEEN '{currentDate} 00:00:00' AND '{currentDate} 23:59:59')
-            ;", conn)
+            WHERE ttimein BETWEEN '{currentDate} 00:00:00' AND '{currentDate} 23:59:59' and ttimeout is null);", conn)
             Dim reader As MySqlDataReader
             reader = command.ExecuteReader()
 
@@ -274,7 +273,7 @@ Public Class frmAttendance
             lblIIEE.Text = iiee
             lblLPIES.Text = lpies
             lblLYCO.Text = lyco
-            lblTotal.Text = $"Total Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
+            lblTotal.Text = $"Total Current Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
         Catch ex As Exception
             Timer1.Stop()
             MsgBox(ex.Message)

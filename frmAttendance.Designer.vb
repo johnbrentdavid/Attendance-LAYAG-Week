@@ -144,9 +144,9 @@ Partial Class frmAttendance
         lblTotal.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         lblTotal.Location = New Point(24, 542)
         lblTotal.Name = "lblTotal"
-        lblTotal.Size = New Size(170, 25)
+        lblTotal.Size = New Size(244, 25)
         lblTotal.TabIndex = 12
-        lblTotal.Text = "Total Attendees: 0"
+        lblTotal.Text = "Total Current Attendees: 0"
         lblTotal.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' lblLYCO
