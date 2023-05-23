@@ -75,9 +75,10 @@ Partial Class frmAdmin
         TabControl1.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         TabControl1.ItemSize = New Size(108, 30)
         TabControl1.Location = New Point(0, 0)
+        TabControl1.Margin = New Padding(3, 4, 3, 4)
         TabControl1.Name = "TabControl1"
         TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(1200, 877)
+        TabControl1.Size = New Size(1371, 1147)
         TabControl1.TabIndex = 0
         ' 
         ' tabControl
@@ -86,9 +87,10 @@ Partial Class frmAdmin
         tabControl.Controls.Add(panControl)
         tabControl.Controls.Add(panSettings)
         tabControl.Location = New Point(4, 34)
+        tabControl.Margin = New Padding(3, 4, 3, 4)
         tabControl.Name = "tabControl"
-        tabControl.Padding = New Padding(3)
-        tabControl.Size = New Size(1192, 839)
+        tabControl.Padding = New Padding(3, 4, 3, 4)
+        tabControl.Size = New Size(1363, 1109)
         tabControl.TabIndex = 1
         tabControl.Text = "Control"
         ' 
@@ -96,9 +98,10 @@ Partial Class frmAdmin
         ' 
         panControl.BackColor = Color.White
         panControl.Controls.Add(Label3)
-        panControl.Location = New Point(325, 45)
+        panControl.Location = New Point(371, 60)
+        panControl.Margin = New Padding(3, 4, 3, 4)
         panControl.Name = "panControl"
-        panControl.Size = New Size(543, 89)
+        panControl.Size = New Size(621, 119)
         panControl.TabIndex = 6
         ' 
         ' Label3
@@ -106,9 +109,9 @@ Partial Class frmAdmin
         Label3.Anchor = AnchorStyles.Top
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
-        Label3.Location = New Point(150, 19)
+        Label3.Location = New Point(171, 25)
         Label3.Name = "Label3"
-        Label3.Size = New Size(243, 50)
+        Label3.Size = New Size(306, 62)
         Label3.TabIndex = 5
         Label3.Text = "Control Panel"
         ' 
@@ -116,9 +119,10 @@ Partial Class frmAdmin
         ' 
         panSettings.BackColor = Color.White
         panSettings.Controls.Add(GroupBox1)
-        panSettings.Location = New Point(325, 185)
+        panSettings.Location = New Point(371, 247)
+        panSettings.Margin = New Padding(3, 4, 3, 4)
         panSettings.Name = "panSettings"
-        panSettings.Size = New Size(543, 574)
+        panSettings.Size = New Size(621, 765)
         panSettings.TabIndex = 5
         ' 
         ' GroupBox1
@@ -130,9 +134,11 @@ Partial Class frmAdmin
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(chkTimeIn)
         GroupBox1.Controls.Add(btnForce)
-        GroupBox1.Location = New Point(44, 39)
+        GroupBox1.Location = New Point(50, 52)
+        GroupBox1.Margin = New Padding(3, 4, 3, 4)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(454, 496)
+        GroupBox1.Padding = New Padding(3, 4, 3, 4)
+        GroupBox1.Size = New Size(519, 661)
         GroupBox1.TabIndex = 5
         GroupBox1.TabStop = False
         GroupBox1.Text = "Time In / Out"
@@ -141,9 +147,10 @@ Partial Class frmAdmin
         ' 
         btnResetSettings.BackColor = SystemColors.ScrollBar
         btnResetSettings.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnResetSettings.Location = New Point(265, 436)
+        btnResetSettings.Location = New Point(303, 581)
+        btnResetSettings.Margin = New Padding(3, 4, 3, 4)
         btnResetSettings.Name = "btnResetSettings"
-        btnResetSettings.Size = New Size(110, 44)
+        btnResetSettings.Size = New Size(126, 59)
         btnResetSettings.TabIndex = 10
         btnResetSettings.Text = "Reset"
         btnResetSettings.UseVisualStyleBackColor = False
@@ -152,9 +159,10 @@ Partial Class frmAdmin
         ' 
         btnSave.BackColor = SystemColors.ScrollBar
         btnSave.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSave.Location = New Point(80, 436)
+        btnSave.Location = New Point(91, 581)
+        btnSave.Margin = New Padding(3, 4, 3, 4)
         btnSave.Name = "btnSave"
-        btnSave.Size = New Size(172, 44)
+        btnSave.Size = New Size(197, 59)
         btnSave.TabIndex = 9
         btnSave.Text = "Save Changes"
         btnSave.UseVisualStyleBackColor = False
@@ -164,18 +172,19 @@ Partial Class frmAdmin
         lblMessage.Anchor = AnchorStyles.Top
         lblMessage.AutoSize = True
         lblMessage.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        lblMessage.Location = New Point(325, 246)
+        lblMessage.Location = New Point(371, 328)
         lblMessage.Name = "lblMessage"
-        lblMessage.Size = New Size(47, 20)
+        lblMessage.Size = New Size(59, 25)
         lblMessage.TabIndex = 8
         lblMessage.Text = "0 / 40"
         ' 
         ' rtfMessage
         ' 
-        rtfMessage.Location = New Point(83, 160)
+        rtfMessage.Location = New Point(95, 213)
+        rtfMessage.Margin = New Padding(3, 4, 3, 4)
         rtfMessage.MaxLength = 40
         rtfMessage.Name = "rtfMessage"
-        rtfMessage.Size = New Size(289, 83)
+        rtfMessage.Size = New Size(330, 109)
         rtfMessage.TabIndex = 7
         rtfMessage.Text = "Please wait for the admin to come back."
         ' 
@@ -184,9 +193,9 @@ Partial Class frmAdmin
         Label4.Anchor = AnchorStyles.Top
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.Location = New Point(67, 351)
+        Label4.Location = New Point(77, 468)
         Label4.Name = "Label4"
-        Label4.Size = New Size(320, 20)
+        Label4.Size = New Size(404, 25)
         Label4.TabIndex = 6
         Label4.Text = "Forces to time out all the attendance for today."
         ' 
@@ -194,9 +203,10 @@ Partial Class frmAdmin
         ' 
         chkTimeIn.AutoSize = True
         chkTimeIn.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        chkTimeIn.Location = New Point(147, 125)
+        chkTimeIn.Location = New Point(168, 167)
+        chkTimeIn.Margin = New Padding(3, 4, 3, 4)
         chkTimeIn.Name = "chkTimeIn"
-        chkTimeIn.Size = New Size(161, 29)
+        chkTimeIn.Size = New Size(205, 36)
         chkTimeIn.TabIndex = 0
         chkTimeIn.Text = "Enable Time In"
         chkTimeIn.UseVisualStyleBackColor = True
@@ -205,9 +215,10 @@ Partial Class frmAdmin
         ' 
         btnForce.BackColor = Color.FromArgb(CByte(255), CByte(89), CByte(0))
         btnForce.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnForce.Location = New Point(141, 373)
+        btnForce.Location = New Point(161, 497)
+        btnForce.Margin = New Padding(3, 4, 3, 4)
         btnForce.Name = "btnForce"
-        btnForce.Size = New Size(172, 40)
+        btnForce.Size = New Size(197, 53)
         btnForce.TabIndex = 4
         btnForce.Text = "Force Time Out"
         btnForce.UseVisualStyleBackColor = False
@@ -219,9 +230,10 @@ Partial Class frmAdmin
         tabData.Controls.Add(panGrid)
         tabData.Controls.Add(panFilter)
         tabData.Location = New Point(4, 34)
+        tabData.Margin = New Padding(3, 4, 3, 4)
         tabData.Name = "tabData"
-        tabData.Padding = New Padding(3)
-        tabData.Size = New Size(1192, 839)
+        tabData.Padding = New Padding(3, 4, 3, 4)
+        tabData.Size = New Size(1363, 1131)
         tabData.TabIndex = 0
         tabData.Text = "Export"
         ' 
@@ -229,9 +241,10 @@ Partial Class frmAdmin
         ' 
         panTitle.BackColor = Color.White
         panTitle.Controls.Add(Label2)
-        panTitle.Location = New Point(325, 45)
+        panTitle.Location = New Point(371, 60)
+        panTitle.Margin = New Padding(3, 4, 3, 4)
         panTitle.Name = "panTitle"
-        panTitle.Size = New Size(543, 89)
+        panTitle.Size = New Size(621, 119)
         panTitle.TabIndex = 6
         ' 
         ' Label2
@@ -239,9 +252,9 @@ Partial Class frmAdmin
         Label2.Anchor = AnchorStyles.Top
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
-        Label2.Location = New Point(123, 19)
+        Label2.Location = New Point(141, 25)
         Label2.Name = "Label2"
-        Label2.Size = New Size(297, 50)
+        Label2.Size = New Size(378, 62)
         Label2.TabIndex = 4
         Label2.Text = "Attendance Logs"
         ' 
@@ -249,9 +262,10 @@ Partial Class frmAdmin
         ' 
         panGrid.BackColor = Color.White
         panGrid.Controls.Add(grdAttendance)
-        panGrid.Location = New Point(468, 205)
+        panGrid.Location = New Point(535, 273)
+        panGrid.Margin = New Padding(3, 4, 3, 4)
         panGrid.Name = "panGrid"
-        panGrid.Size = New Size(713, 588)
+        panGrid.Size = New Size(815, 784)
         panGrid.TabIndex = 1
         ' 
         ' grdAttendance
@@ -260,11 +274,13 @@ Partial Class frmAdmin
         grdAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         grdAttendance.BackgroundColor = Color.White
         grdAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        grdAttendance.Location = New Point(27, 26)
+        grdAttendance.Location = New Point(31, 35)
+        grdAttendance.Margin = New Padding(3, 4, 3, 4)
         grdAttendance.Name = "grdAttendance"
         grdAttendance.ReadOnly = True
+        grdAttendance.RowHeadersWidth = 51
         grdAttendance.RowTemplate.Height = 25
-        grdAttendance.Size = New Size(658, 537)
+        grdAttendance.Size = New Size(752, 716)
         grdAttendance.TabIndex = 0
         grdAttendance.TabStop = False
         ' 
@@ -281,9 +297,10 @@ Partial Class frmAdmin
         panFilter.Controls.Add(cboOrg)
         panFilter.Controls.Add(PictureBox8)
         panFilter.Controls.Add(PictureBox7)
-        panFilter.Location = New Point(11, 205)
+        panFilter.Location = New Point(13, 273)
+        panFilter.Margin = New Padding(3, 4, 3, 4)
         panFilter.Name = "panFilter"
-        panFilter.Size = New Size(451, 588)
+        panFilter.Size = New Size(515, 784)
         panFilter.TabIndex = 0
         ' 
         ' cboYear
@@ -291,18 +308,20 @@ Partial Class frmAdmin
         cboYear.DropDownStyle = ComboBoxStyle.DropDownList
         cboYear.FormattingEnabled = True
         cboYear.Items.AddRange(New Object() {"YEAR - ALL", "1", "2", "3", "4"})
-        cboYear.Location = New Point(103, 300)
+        cboYear.Location = New Point(118, 400)
+        cboYear.Margin = New Padding(3, 4, 3, 4)
         cboYear.Name = "cboYear"
-        cboYear.Size = New Size(245, 33)
+        cboYear.Size = New Size(279, 40)
         cboYear.TabIndex = 23
         ' 
         ' btnReset
         ' 
         btnReset.BackColor = SystemColors.ScrollBar
         btnReset.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnReset.Location = New Point(281, 434)
+        btnReset.Location = New Point(321, 579)
+        btnReset.Margin = New Padding(3, 4, 3, 4)
         btnReset.Name = "btnReset"
-        btnReset.Size = New Size(67, 40)
+        btnReset.Size = New Size(77, 53)
         btnReset.TabIndex = 22
         btnReset.TabStop = False
         btnReset.Text = "Reset"
@@ -313,9 +332,10 @@ Partial Class frmAdmin
         btnExport.BackColor = SystemColors.ScrollBar
         btnExport.Enabled = False
         btnExport.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnExport.Location = New Point(103, 480)
+        btnExport.Location = New Point(118, 640)
+        btnExport.Margin = New Padding(3, 4, 3, 4)
         btnExport.Name = "btnExport"
-        btnExport.Size = New Size(245, 40)
+        btnExport.Size = New Size(280, 53)
         btnExport.TabIndex = 4
         btnExport.Text = "Export"
         btnExport.UseVisualStyleBackColor = False
@@ -324,9 +344,10 @@ Partial Class frmAdmin
         ' 
         btnSearch.BackColor = Color.CornflowerBlue
         btnSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSearch.Location = New Point(103, 434)
+        btnSearch.Location = New Point(118, 579)
+        btnSearch.Margin = New Padding(3, 4, 3, 4)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(172, 40)
+        btnSearch.Size = New Size(197, 53)
         btnSearch.TabIndex = 3
         btnSearch.Text = "Search"
         btnSearch.UseVisualStyleBackColor = False
@@ -335,9 +356,9 @@ Partial Class frmAdmin
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        Label1.Location = New Point(215, 375)
+        Label1.Location = New Point(246, 500)
         Label1.Name = "Label1"
-        Label1.Size = New Size(20, 17)
+        Label1.Size = New Size(26, 23)
         Label1.TabIndex = 19
         Label1.Text = "to"
         ' 
@@ -345,11 +366,12 @@ Partial Class frmAdmin
         ' 
         dtpTo.CustomFormat = "MMMM dd, yyyy"
         dtpTo.Format = DateTimePickerFormat.Custom
-        dtpTo.Location = New Point(103, 395)
+        dtpTo.Location = New Point(118, 527)
+        dtpTo.Margin = New Padding(3, 4, 3, 4)
         dtpTo.MaxDate = New DateTime(2023, 6, 30, 0, 0, 0, 0)
         dtpTo.MinDate = New DateTime(2023, 5, 1, 0, 0, 0, 0)
         dtpTo.Name = "dtpTo"
-        dtpTo.Size = New Size(245, 33)
+        dtpTo.Size = New Size(279, 39)
         dtpTo.TabIndex = 2
         dtpTo.Value = New DateTime(2023, 6, 1, 0, 0, 0, 0)
         ' 
@@ -357,11 +379,12 @@ Partial Class frmAdmin
         ' 
         dtpFrom.CustomFormat = "MMMM dd, yyyy"
         dtpFrom.Format = DateTimePickerFormat.Custom
-        dtpFrom.Location = New Point(103, 339)
+        dtpFrom.Location = New Point(118, 452)
+        dtpFrom.Margin = New Padding(3, 4, 3, 4)
         dtpFrom.MaxDate = New DateTime(2023, 6, 30, 0, 0, 0, 0)
         dtpFrom.MinDate = New DateTime(2023, 5, 1, 0, 0, 0, 0)
         dtpFrom.Name = "dtpFrom"
-        dtpFrom.Size = New Size(245, 33)
+        dtpFrom.Size = New Size(279, 39)
         dtpFrom.TabIndex = 1
         dtpFrom.Value = New DateTime(2023, 6, 1, 0, 0, 0, 0)
         ' 
@@ -370,18 +393,20 @@ Partial Class frmAdmin
         cboOrg.DropDownStyle = ComboBoxStyle.DropDownList
         cboOrg.FormattingEnabled = True
         cboOrg.Items.AddRange(New Object() {"Organization - ALL", "CPS", "IECEP", "IIEE", "LPIES", "LYCO-CpE", "PICE"})
-        cboOrg.Location = New Point(103, 261)
+        cboOrg.Location = New Point(118, 348)
+        cboOrg.Margin = New Padding(3, 4, 3, 4)
         cboOrg.Name = "cboOrg"
-        cboOrg.Size = New Size(245, 33)
+        cboOrg.Size = New Size(279, 40)
         cboOrg.TabIndex = 0
         ' 
         ' PictureBox8
         ' 
         PictureBox8.Anchor = AnchorStyles.Top
         PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), Image)
-        PictureBox8.Location = New Point(233, 35)
+        PictureBox8.Location = New Point(266, 47)
+        PictureBox8.Margin = New Padding(3, 4, 3, 4)
         PictureBox8.Name = "PictureBox8"
-        PictureBox8.Size = New Size(150, 150)
+        PictureBox8.Size = New Size(171, 200)
         PictureBox8.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox8.TabIndex = 15
         PictureBox8.TabStop = False
@@ -390,9 +415,10 @@ Partial Class frmAdmin
         ' 
         PictureBox7.Anchor = AnchorStyles.Top
         PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), Image)
-        PictureBox7.Location = New Point(67, 35)
+        PictureBox7.Location = New Point(77, 47)
+        PictureBox7.Margin = New Padding(3, 4, 3, 4)
         PictureBox7.Name = "PictureBox7"
-        PictureBox7.Size = New Size(150, 150)
+        PictureBox7.Size = New Size(171, 200)
         PictureBox7.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox7.TabIndex = 14
         PictureBox7.TabStop = False
@@ -400,9 +426,10 @@ Partial Class frmAdmin
         ' btnClose
         ' 
         btnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnClose.Location = New Point(1127, 0)
+        btnClose.Location = New Point(1288, 0)
+        btnClose.Margin = New Padding(3, 4, 3, 4)
         btnClose.Name = "btnClose"
-        btnClose.Size = New Size(75, 23)
+        btnClose.Size = New Size(86, 31)
         btnClose.TabIndex = 2
         btnClose.TabStop = False
         btnClose.Text = "Close"
@@ -410,13 +437,14 @@ Partial Class frmAdmin
         ' 
         ' frmAdmin
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1200, 877)
+        ClientSize = New Size(1371, 1147)
         Controls.Add(btnClose)
         Controls.Add(TabControl1)
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "frmAdmin"
         StartPosition = FormStartPosition.CenterScreen
         Text = "frmAdmin"
