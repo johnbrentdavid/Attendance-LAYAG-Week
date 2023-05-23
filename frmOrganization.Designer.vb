@@ -133,7 +133,7 @@ Partial Class frmOrganization
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmOrganization"
-        StartPosition = FormStartPosition.CenterScreen
+        StartPosition = FormStartPosition.CenterParent
         Text = "frmOrganization"
         WindowState = FormWindowState.Maximized
         panOrg.ResumeLayout(False)

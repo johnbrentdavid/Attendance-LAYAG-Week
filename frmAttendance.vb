@@ -9,6 +9,7 @@ Public Class frmAttendance
     Private iTimer As Integer = 0
     Private dPerSecond As Double
     Private bTimeInState As Boolean = True
+    Private bUpdate = True
 
     ' Too easily pass data between functions
     Private Structure AttendanceData
@@ -58,26 +59,26 @@ Public Class frmAttendance
         yCenter = (tabAttendance.Size.Height * 0.9) - (lblMessage.Size.Height / 2)
         lblMessage.Location = New Point(xCenter, yCenter)
 
-        ' Check Connection
-        If Not TestConnection() Then Exit Sub
-
-        ' Start Time
-        Timer1.Start()
+        ' Frequency of tick to a second
         dPerSecond = 1000 / Timer1.Interval
+
+        ' Check Connection
+        TestConnection()
     End Sub
 
     Private Function TestConnection() As Boolean
-        Dim connection As New MySqlConnection(stConnection)
-
+        Dim conn As New MySqlConnection(stConnection)
         Try
-            connection.Open()
+            conn.Open()
+
         Catch ex As Exception
-            ' An error occurred while opening the connection
-            MsgBox("Connection error: " & ex.Message)
-            Me.Close()
+            bUpdate = False
+            btnReconnect.Enabled = True
+            btnReconnect.BackColor = redColor
+            MsgBox("Failed to connect")
             Return False
         Finally
-            connection.Close()
+            conn.Close()
         End Try
 
         Return True
@@ -98,6 +99,11 @@ Public Class frmAttendance
         Else
             iTimer += 1
         End If
+
+        If Not bUpdate Then Exit Sub
+
+        ' Establish Reconnect if needed
+        If Not TestConnection() Then Exit Sub
 
         checkStudentAttendance()
         updateOrgAttendees()
@@ -161,9 +167,7 @@ Public Class frmAttendance
 
             Return bTimeInState
         Catch ex As Exception
-            Timer1.Stop()
             MsgBox(ex.Message)
-            Me.Close()
         Finally
             conn.Close()
         End Try
@@ -276,9 +280,7 @@ Public Class frmAttendance
             lblLYCO.Text = lyco
             lblTotal.Text = $"Total Current Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
         Catch ex As Exception
-            Timer1.Stop()
             MsgBox(ex.Message)
-            Me.Close()
         Finally
             conn.Close()
         End Try
@@ -324,41 +326,32 @@ Public Class frmAttendance
     End Function
 
     Private Sub picCE_Click(sender As Object, e As EventArgs) Handles picCE.Click
-        openOrgForm("CE", "BSCE")
+        openOrgForm("CE")
     End Sub
 
     Private Sub picCPS_Click(sender As Object, e As EventArgs) Handles picCPS.Click
-        openOrgForm("CPS", "BSCS", "BSIT")
+        openOrgForm("CPS")
     End Sub
 
     Private Sub picIECEP_Click(sender As Object, e As EventArgs) Handles picIECEP.Click
-        openOrgForm("IECEP", "BSECE")
+        openOrgForm("IECEP")
     End Sub
 
     Private Sub picIIEE_Click(sender As Object, e As EventArgs) Handles picIIEE.Click
-        openOrgForm("IIEE", "BSEE")
+        openOrgForm("IIEE")
     End Sub
 
     Private Sub picLPIES_Click(sender As Object, e As EventArgs) Handles picLPIES.Click
-        openOrgForm("LPIES", "BSIE")
+        openOrgForm("LPIES")
     End Sub
 
     Private Sub picLYCO_Click(sender As Object, e As EventArgs) Handles picLYCO.Click
-        openOrgForm("LYCO", "BSCpE")
+        openOrgForm("LYCO")
     End Sub
     'Overload function
-    Private Sub openOrgForm(org As String, course1 As String)
+    Private Sub openOrgForm(org As String)
         frmOrganization.stOrg = org
-        frmOrganization.stCourse1 = course1
-        frmOrganization.Show()
-        Me.Hide()
-    End Sub
-    'Overload function
-    Private Sub openOrgForm(org As String, course1 As String, course2 As String)
-        frmOrganization.stOrg = org
-        frmOrganization.stCourse1 = course1
-        frmOrganization.stCourse2 = course2
-        frmOrganization.Show()
+        frmOrganization.Show(Me)
         Me.Hide()
     End Sub
 
@@ -379,7 +372,7 @@ Public Class frmAttendance
             If reader.Read() Then
                 ' Open the admin control panel form
                 'MsgBox("Successful Login!")
-                frmAdmin.Show()
+                frmAdmin.Show(Me)
                 Me.Hide()
             Else
                 MsgBox("Invalid Credentials.")
@@ -387,6 +380,21 @@ Public Class frmAttendance
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
+    Private Sub btnReconnect_Click(sender As Object, e As EventArgs) Handles btnReconnect.Click
+        Dim conn As New MySqlConnection(stConnection)
+        Try
+            conn.Open()
+            bUpdate = True
+            btnReconnect.Enabled = False
+            btnReconnect.BackColor = greenColor
+            MsgBox("Reconnected")
+        Catch ex As Exception
+            MsgBox("Failed to Reconnect")
         Finally
             conn.Close()
         End Try
@@ -400,6 +408,14 @@ Public Class frmAttendance
         ' Close if yes
         If result = vbYes Then
             Me.Close()
+        End If
+    End Sub
+
+    Private Sub frmAttendance_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+        If Me.Visible Then
+            Timer1.Start()
+        Else
+            Timer1.Stop()
         End If
     End Sub
 End Class

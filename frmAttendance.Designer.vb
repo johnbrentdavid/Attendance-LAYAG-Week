@@ -67,6 +67,7 @@ Partial Class frmAttendance
         txtUsername = New TextBox()
         btnClose = New Button()
         Timer1 = New Timer(components)
+        btnReconnect = New Button()
         TabControl1.SuspendLayout()
         tabAttendance.SuspendLayout()
         panLogos.SuspendLayout()
@@ -94,10 +95,9 @@ Partial Class frmAttendance
         TabControl1.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         TabControl1.ItemSize = New Size(108, 30)
         TabControl1.Location = New Point(0, 0)
-        TabControl1.Margin = New Padding(3, 4, 3, 4)
         TabControl1.Name = "TabControl1"
         TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(1371, 1147)
+        TabControl1.Size = New Size(1200, 900)
         TabControl1.TabIndex = 0
         ' 
         ' tabAttendance
@@ -110,10 +110,9 @@ Partial Class frmAttendance
         tabAttendance.Controls.Add(panTime)
         tabAttendance.Controls.Add(panStudentID)
         tabAttendance.Location = New Point(4, 34)
-        tabAttendance.Margin = New Padding(3, 4, 3, 4)
         tabAttendance.Name = "tabAttendance"
-        tabAttendance.Padding = New Padding(3, 4, 3, 4)
-        tabAttendance.Size = New Size(1363, 1109)
+        tabAttendance.Padding = New Padding(3)
+        tabAttendance.Size = New Size(1192, 862)
         tabAttendance.TabIndex = 0
         tabAttendance.Text = "Attendance"
         ' 
@@ -134,10 +133,9 @@ Partial Class frmAttendance
         panLogos.Controls.Add(picIECEP)
         panLogos.Controls.Add(picCE)
         panLogos.Controls.Add(picCPS)
-        panLogos.Location = New Point(601, 211)
-        panLogos.Margin = New Padding(3, 4, 3, 4)
+        panLogos.Location = New Point(526, 158)
         panLogos.Name = "panLogos"
-        panLogos.Size = New Size(707, 783)
+        panLogos.Size = New Size(619, 588)
         panLogos.TabIndex = 3
         ' 
         ' lblTotal
@@ -145,9 +143,9 @@ Partial Class frmAttendance
         lblTotal.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         lblTotal.AutoSize = True
         lblTotal.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblTotal.Location = New Point(27, 723)
+        lblTotal.Location = New Point(24, 542)
         lblTotal.Name = "lblTotal"
-        lblTotal.Size = New Size(314, 32)
+        lblTotal.Size = New Size(244, 25)
         lblTotal.TabIndex = 12
         lblTotal.Text = "Total Current Attendees: 0"
         lblTotal.TextAlign = ContentAlignment.MiddleCenter
@@ -157,9 +155,9 @@ Partial Class frmAttendance
         lblLYCO.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         lblLYCO.AutoSize = True
         lblLYCO.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblLYCO.Location = New Point(579, 612)
+        lblLYCO.Location = New Point(507, 459)
         lblLYCO.Name = "lblLYCO"
-        lblLYCO.Size = New Size(28, 32)
+        lblLYCO.Size = New Size(23, 25)
         lblLYCO.TabIndex = 11
         lblLYCO.Text = "0"
         lblLYCO.TextAlign = ContentAlignment.MiddleCenter
@@ -169,9 +167,9 @@ Partial Class frmAttendance
         lblLPIES.Anchor = AnchorStyles.Bottom
         lblLPIES.AutoSize = True
         lblLPIES.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblLPIES.Location = New Point(342, 612)
+        lblLPIES.Location = New Point(299, 459)
         lblLPIES.Name = "lblLPIES"
-        lblLPIES.Size = New Size(28, 32)
+        lblLPIES.Size = New Size(23, 25)
         lblLPIES.TabIndex = 10
         lblLPIES.Text = "0"
         lblLPIES.TextAlign = ContentAlignment.MiddleCenter
@@ -181,9 +179,9 @@ Partial Class frmAttendance
         lblIIEE.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         lblIIEE.AutoSize = True
         lblIIEE.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblIIEE.Location = New Point(101, 612)
+        lblIIEE.Location = New Point(88, 459)
         lblIIEE.Name = "lblIIEE"
-        lblIIEE.Size = New Size(28, 32)
+        lblIIEE.Size = New Size(23, 25)
         lblIIEE.TabIndex = 9
         lblIIEE.Text = "0"
         lblIIEE.TextAlign = ContentAlignment.MiddleCenter
@@ -193,9 +191,9 @@ Partial Class frmAttendance
         lblIECEP.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblIECEP.AutoSize = True
         lblIECEP.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblIECEP.Location = New Point(579, 229)
+        lblIECEP.Location = New Point(507, 172)
         lblIECEP.Name = "lblIECEP"
-        lblIECEP.Size = New Size(28, 32)
+        lblIECEP.Size = New Size(23, 25)
         lblIECEP.TabIndex = 8
         lblIECEP.Text = "0"
         lblIECEP.TextAlign = ContentAlignment.MiddleCenter
@@ -205,9 +203,9 @@ Partial Class frmAttendance
         lblCPS.Anchor = AnchorStyles.Top
         lblCPS.AutoSize = True
         lblCPS.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCPS.Location = New Point(342, 229)
+        lblCPS.Location = New Point(299, 172)
         lblCPS.Name = "lblCPS"
-        lblCPS.Size = New Size(28, 32)
+        lblCPS.Size = New Size(23, 25)
         lblCPS.TabIndex = 7
         lblCPS.Text = "0"
         lblCPS.TextAlign = ContentAlignment.MiddleCenter
@@ -216,9 +214,9 @@ Partial Class frmAttendance
         ' 
         lblCE.AutoSize = True
         lblCE.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCE.Location = New Point(101, 229)
+        lblCE.Location = New Point(88, 172)
         lblCE.Name = "lblCE"
-        lblCE.Size = New Size(28, 32)
+        lblCE.Size = New Size(23, 25)
         lblCE.TabIndex = 6
         lblCE.Text = "0"
         lblCE.TextAlign = ContentAlignment.MiddleCenter
@@ -227,10 +225,9 @@ Partial Class frmAttendance
         ' 
         picLYCO.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         picLYCO.Image = CType(resources.GetObject("picLYCO.Image"), Image)
-        picLYCO.Location = New Point(506, 408)
-        picLYCO.Margin = New Padding(3, 4, 3, 4)
+        picLYCO.Location = New Point(443, 306)
         picLYCO.Name = "picLYCO"
-        picLYCO.Size = New Size(171, 200)
+        picLYCO.Size = New Size(150, 150)
         picLYCO.SizeMode = PictureBoxSizeMode.StretchImage
         picLYCO.TabIndex = 5
         picLYCO.TabStop = False
@@ -239,10 +236,9 @@ Partial Class frmAttendance
         ' 
         picIIEE.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         picIIEE.Image = CType(resources.GetObject("picIIEE.Image"), Image)
-        picIIEE.Location = New Point(27, 408)
-        picIIEE.Margin = New Padding(3, 4, 3, 4)
+        picIIEE.Location = New Point(24, 306)
         picIIEE.Name = "picIIEE"
-        picIIEE.Size = New Size(171, 200)
+        picIIEE.Size = New Size(150, 150)
         picIIEE.SizeMode = PictureBoxSizeMode.StretchImage
         picIIEE.TabIndex = 4
         picIIEE.TabStop = False
@@ -251,10 +247,9 @@ Partial Class frmAttendance
         ' 
         picLPIES.Anchor = AnchorStyles.Bottom
         picLPIES.Image = CType(resources.GetObject("picLPIES.Image"), Image)
-        picLPIES.Location = New Point(269, 408)
-        picLPIES.Margin = New Padding(3, 4, 3, 4)
+        picLPIES.Location = New Point(235, 306)
         picLPIES.Name = "picLPIES"
-        picLPIES.Size = New Size(171, 200)
+        picLPIES.Size = New Size(150, 150)
         picLPIES.SizeMode = PictureBoxSizeMode.StretchImage
         picLPIES.TabIndex = 3
         picLPIES.TabStop = False
@@ -263,10 +258,9 @@ Partial Class frmAttendance
         ' 
         picIECEP.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         picIECEP.Image = CType(resources.GetObject("picIECEP.Image"), Image)
-        picIECEP.Location = New Point(506, 25)
-        picIECEP.Margin = New Padding(3, 4, 3, 4)
+        picIECEP.Location = New Point(443, 19)
         picIECEP.Name = "picIECEP"
-        picIECEP.Size = New Size(171, 200)
+        picIECEP.Size = New Size(150, 150)
         picIECEP.SizeMode = PictureBoxSizeMode.StretchImage
         picIECEP.TabIndex = 2
         picIECEP.TabStop = False
@@ -274,10 +268,9 @@ Partial Class frmAttendance
         ' picCE
         ' 
         picCE.Image = CType(resources.GetObject("picCE.Image"), Image)
-        picCE.Location = New Point(27, 25)
-        picCE.Margin = New Padding(3, 4, 3, 4)
+        picCE.Location = New Point(24, 19)
         picCE.Name = "picCE"
-        picCE.Size = New Size(171, 200)
+        picCE.Size = New Size(150, 150)
         picCE.SizeMode = PictureBoxSizeMode.StretchImage
         picCE.TabIndex = 1
         picCE.TabStop = False
@@ -286,10 +279,9 @@ Partial Class frmAttendance
         ' 
         picCPS.Anchor = AnchorStyles.Top
         picCPS.Image = CType(resources.GetObject("picCPS.Image"), Image)
-        picCPS.Location = New Point(269, 25)
-        picCPS.Margin = New Padding(3, 4, 3, 4)
+        picCPS.Location = New Point(235, 19)
         picCPS.Name = "picCPS"
-        picCPS.Size = New Size(171, 200)
+        picCPS.Size = New Size(150, 150)
         picCPS.SizeMode = PictureBoxSizeMode.StretchImage
         picCPS.TabIndex = 0
         picCPS.TabStop = False
@@ -302,9 +294,9 @@ Partial Class frmAttendance
         lblMessage.BorderStyle = BorderStyle.FixedSingle
         lblMessage.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
         lblMessage.ForeColor = Color.Black
-        lblMessage.Location = New Point(296, 1024)
+        lblMessage.Location = New Point(259, 768)
         lblMessage.Name = "lblMessage"
-        lblMessage.Size = New Size(859, 64)
+        lblMessage.Size = New Size(677, 52)
         lblMessage.TabIndex = 6
         lblMessage.Text = "Please wait for the admin to come back."
         ' 
@@ -313,10 +305,9 @@ Partial Class frmAttendance
         panTime.BackColor = Color.White
         panTime.BorderStyle = BorderStyle.FixedSingle
         panTime.Controls.Add(lblTime)
-        panTime.Location = New Point(371, 60)
-        panTime.Margin = New Padding(3, 4, 3, 4)
+        panTime.Location = New Point(325, 45)
         panTime.Name = "panTime"
-        panTime.Size = New Size(620, 118)
+        panTime.Size = New Size(543, 89)
         panTime.TabIndex = 5
         ' 
         ' lblTime
@@ -324,9 +315,9 @@ Partial Class frmAttendance
         lblTime.Anchor = AnchorStyles.Top
         lblTime.AutoSize = True
         lblTime.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
-        lblTime.Location = New Point(251, 25)
+        lblTime.Location = New Point(220, 19)
         lblTime.Name = "lblTime"
-        lblTime.Size = New Size(128, 62)
+        lblTime.Size = New Size(101, 50)
         lblTime.TabIndex = 4
         lblTime.Text = "Time"
         ' 
@@ -345,28 +336,27 @@ Partial Class frmAttendance
         panStudentID.Controls.Add(btnSubmit)
         panStudentID.Controls.Add(lblStudent)
         panStudentID.Controls.Add(txtStudentID)
-        panStudentID.Location = New Point(55, 211)
-        panStudentID.Margin = New Padding(3, 4, 3, 4)
+        panStudentID.Location = New Point(48, 158)
         panStudentID.Name = "panStudentID"
-        panStudentID.Size = New Size(515, 783)
+        panStudentID.Size = New Size(451, 588)
         panStudentID.TabIndex = 2
         ' 
         ' lblTimeIn
         ' 
         lblTimeIn.AutoSize = True
         lblTimeIn.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblTimeIn.Location = New Point(87, 628)
+        lblTimeIn.Location = New Point(76, 471)
         lblTimeIn.Name = "lblTimeIn"
-        lblTimeIn.Size = New Size(0, 32)
+        lblTimeIn.Size = New Size(0, 25)
         lblTimeIn.TabIndex = 19
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label2.Location = New Point(87, 595)
+        Label2.Location = New Point(76, 446)
         Label2.Name = "Label2"
-        Label2.Size = New Size(97, 32)
+        Label2.Size = New Size(77, 25)
         Label2.TabIndex = 18
         Label2.Text = "Time-In"
         ' 
@@ -374,27 +364,27 @@ Partial Class frmAttendance
         ' 
         lblCourse.AutoSize = True
         lblCourse.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCourse.Location = New Point(87, 532)
+        lblCourse.Location = New Point(76, 399)
         lblCourse.Name = "lblCourse"
-        lblCourse.Size = New Size(0, 32)
+        lblCourse.Size = New Size(0, 25)
         lblCourse.TabIndex = 17
         ' 
         ' lblFullName
         ' 
         lblFullName.AutoSize = True
         lblFullName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        lblFullName.Location = New Point(87, 436)
+        lblFullName.Location = New Point(76, 327)
         lblFullName.Name = "lblFullName"
-        lblFullName.Size = New Size(0, 32)
+        lblFullName.Size = New Size(0, 25)
         lblFullName.TabIndex = 16
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label8.Location = New Point(87, 496)
+        Label8.Location = New Point(76, 372)
         Label8.Name = "Label8"
-        Label8.Size = New Size(156, 32)
+        Label8.Size = New Size(125, 25)
         Label8.TabIndex = 15
         Label8.Text = "Course - Year"
         ' 
@@ -402,9 +392,9 @@ Partial Class frmAttendance
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label7.Location = New Point(87, 403)
+        Label7.Location = New Point(76, 302)
         Label7.Name = "Label7"
-        Label7.Size = New Size(123, 32)
+        Label7.Size = New Size(97, 25)
         Label7.TabIndex = 14
         Label7.Text = "Full Name"
         ' 
@@ -412,10 +402,9 @@ Partial Class frmAttendance
         ' 
         PictureBox8.Anchor = AnchorStyles.Top
         PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), Image)
-        PictureBox8.Location = New Point(265, 47)
-        PictureBox8.Margin = New Padding(3, 4, 3, 4)
+        PictureBox8.Location = New Point(232, 35)
         PictureBox8.Name = "PictureBox8"
-        PictureBox8.Size = New Size(171, 200)
+        PictureBox8.Size = New Size(150, 150)
         PictureBox8.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox8.TabIndex = 13
         PictureBox8.TabStop = False
@@ -424,10 +413,9 @@ Partial Class frmAttendance
         ' 
         PictureBox7.Anchor = AnchorStyles.Top
         PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), Image)
-        PictureBox7.Location = New Point(75, 47)
-        PictureBox7.Margin = New Padding(3, 4, 3, 4)
+        PictureBox7.Location = New Point(66, 35)
         PictureBox7.Name = "PictureBox7"
-        PictureBox7.Size = New Size(171, 200)
+        PictureBox7.Size = New Size(150, 150)
         PictureBox7.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox7.TabIndex = 12
         PictureBox7.TabStop = False
@@ -437,10 +425,9 @@ Partial Class frmAttendance
         btnSubmit.BackColor = SystemColors.ScrollBar
         btnSubmit.Enabled = False
         btnSubmit.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSubmit.Location = New Point(120, 700)
-        btnSubmit.Margin = New Padding(3, 4, 3, 4)
+        btnSubmit.Location = New Point(105, 525)
         btnSubmit.Name = "btnSubmit"
-        btnSubmit.Size = New Size(275, 53)
+        btnSubmit.Size = New Size(241, 40)
         btnSubmit.TabIndex = 1
         btnSubmit.Text = "Time In/Out"
         btnSubmit.UseVisualStyleBackColor = False
@@ -449,21 +436,20 @@ Partial Class frmAttendance
         ' 
         lblStudent.AutoSize = True
         lblStudent.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        lblStudent.Location = New Point(87, 285)
+        lblStudent.Location = New Point(76, 214)
         lblStudent.Name = "lblStudent"
-        lblStudent.Size = New Size(141, 32)
+        lblStudent.Size = New Size(110, 25)
         lblStudent.TabIndex = 1
         lblStudent.Text = "Student No."
         ' 
         ' txtStudentID
         ' 
         txtStudentID.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        txtStudentID.Location = New Point(87, 323)
-        txtStudentID.Margin = New Padding(3, 4, 3, 4)
+        txtStudentID.Location = New Point(76, 242)
         txtStudentID.MaxLength = 10
         txtStudentID.Name = "txtStudentID"
         txtStudentID.PlaceholderText = "1234-12345"
-        txtStudentID.Size = New Size(340, 39)
+        txtStudentID.Size = New Size(298, 33)
         txtStudentID.TabIndex = 0
         ' 
         ' tabView
@@ -473,10 +459,9 @@ Partial Class frmAttendance
         tabView.BackgroundImageLayout = ImageLayout.Stretch
         tabView.Controls.Add(panLogin)
         tabView.Location = New Point(4, 34)
-        tabView.Margin = New Padding(3, 4, 3, 4)
         tabView.Name = "tabView"
-        tabView.Padding = New Padding(3, 4, 3, 4)
-        tabView.Size = New Size(1363, 1131)
+        tabView.Padding = New Padding(3)
+        tabView.Size = New Size(1192, 862)
         tabView.TabIndex = 1
         tabView.Text = "View"
         ' 
@@ -491,19 +476,18 @@ Partial Class frmAttendance
         panLogin.Controls.Add(btnLogin)
         panLogin.Controls.Add(Label1)
         panLogin.Controls.Add(txtUsername)
-        panLogin.Location = New Point(442, 207)
-        panLogin.Margin = New Padding(3, 4, 3, 4)
+        panLogin.Location = New Point(387, 155)
         panLogin.Name = "panLogin"
-        panLogin.Size = New Size(515, 784)
+        panLogin.Size = New Size(451, 588)
         panLogin.TabIndex = 0
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.Location = New Point(161, 295)
+        Label4.Location = New Point(141, 221)
         Label4.Name = "Label4"
-        Label4.Size = New Size(210, 46)
+        Label4.Size = New Size(169, 37)
         Label4.TabIndex = 21
         Label4.Text = "Admin Login"
         ' 
@@ -511,21 +495,20 @@ Partial Class frmAttendance
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label3.Location = New Point(87, 529)
+        Label3.Location = New Point(76, 397)
         Label3.Name = "Label3"
-        Label3.Size = New Size(111, 32)
+        Label3.Size = New Size(91, 25)
         Label3.TabIndex = 20
         Label3.Text = "Password"
         ' 
         ' txtPassword
         ' 
         txtPassword.Font = New Font("Wingdings", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        txtPassword.Location = New Point(87, 567)
-        txtPassword.Margin = New Padding(3, 4, 3, 4)
+        txtPassword.Location = New Point(76, 425)
         txtPassword.MaxLength = 20
         txtPassword.Name = "txtPassword"
         txtPassword.PasswordChar = "l"c
-        txtPassword.Size = New Size(340, 34)
+        txtPassword.Size = New Size(298, 29)
         txtPassword.TabIndex = 1
         txtPassword.Text = "password123"
         ' 
@@ -533,10 +516,9 @@ Partial Class frmAttendance
         ' 
         PictureBox9.Anchor = AnchorStyles.Top
         PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), Image)
-        PictureBox9.Location = New Point(266, 47)
-        PictureBox9.Margin = New Padding(3, 4, 3, 4)
+        PictureBox9.Location = New Point(233, 35)
         PictureBox9.Name = "PictureBox9"
-        PictureBox9.Size = New Size(171, 200)
+        PictureBox9.Size = New Size(150, 150)
         PictureBox9.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox9.TabIndex = 18
         PictureBox9.TabStop = False
@@ -545,10 +527,9 @@ Partial Class frmAttendance
         ' 
         PictureBox10.Anchor = AnchorStyles.Top
         PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), Image)
-        PictureBox10.Location = New Point(77, 47)
-        PictureBox10.Margin = New Padding(3, 4, 3, 4)
+        PictureBox10.Location = New Point(67, 35)
         PictureBox10.Name = "PictureBox10"
-        PictureBox10.Size = New Size(171, 200)
+        PictureBox10.Size = New Size(150, 150)
         PictureBox10.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox10.TabIndex = 17
         PictureBox10.TabStop = False
@@ -557,10 +538,9 @@ Partial Class frmAttendance
         ' 
         btnLogin.BackColor = SystemColors.ScrollBar
         btnLogin.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnLogin.Location = New Point(120, 659)
-        btnLogin.Margin = New Padding(3, 4, 3, 4)
+        btnLogin.Location = New Point(105, 494)
         btnLogin.Name = "btnLogin"
-        btnLogin.Size = New Size(275, 53)
+        btnLogin.Size = New Size(241, 40)
         btnLogin.TabIndex = 2
         btnLogin.Text = "Login"
         btnLogin.UseVisualStyleBackColor = False
@@ -569,30 +549,28 @@ Partial Class frmAttendance
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label1.Location = New Point(87, 397)
+        Label1.Location = New Point(76, 298)
         Label1.Name = "Label1"
-        Label1.Size = New Size(121, 32)
+        Label1.Size = New Size(97, 25)
         Label1.TabIndex = 16
         Label1.Text = "Username"
         ' 
         ' txtUsername
         ' 
         txtUsername.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        txtUsername.Location = New Point(87, 435)
-        txtUsername.Margin = New Padding(3, 4, 3, 4)
+        txtUsername.Location = New Point(76, 326)
         txtUsername.MaxLength = 20
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(340, 39)
+        txtUsername.Size = New Size(298, 33)
         txtUsername.TabIndex = 0
         txtUsername.Text = "2020-10735"
         ' 
         ' btnClose
         ' 
         btnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnClose.Location = New Point(1288, 0)
-        btnClose.Margin = New Padding(3, 4, 3, 4)
+        btnClose.Location = New Point(1127, 0)
         btnClose.Name = "btnClose"
-        btnClose.Size = New Size(86, 31)
+        btnClose.Size = New Size(75, 23)
         btnClose.TabIndex = 1
         btnClose.TabStop = False
         btnClose.Text = "Close"
@@ -601,16 +579,29 @@ Partial Class frmAttendance
         ' Timer1
         ' 
         ' 
+        ' btnReconnect
+        ' 
+        btnReconnect.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnReconnect.BackColor = Color.FromArgb(CByte(3), CByte(252), CByte(15))
+        btnReconnect.Enabled = False
+        btnReconnect.Location = New Point(1046, 0)
+        btnReconnect.Name = "btnReconnect"
+        btnReconnect.Size = New Size(75, 23)
+        btnReconnect.TabIndex = 2
+        btnReconnect.TabStop = False
+        btnReconnect.Text = "Recon"
+        btnReconnect.UseVisualStyleBackColor = False
+        ' 
         ' frmAttendance
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1371, 1147)
+        ClientSize = New Size(1200, 900)
         Controls.Add(btnClose)
+        Controls.Add(btnReconnect)
         Controls.Add(TabControl1)
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "frmAttendance"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Form1"
@@ -683,4 +674,5 @@ Partial Class frmAttendance
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents lblMessage As Label
+    Friend WithEvents btnReconnect As Button
 End Class

@@ -3,8 +3,6 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmOrganization
     Public stOrg As String
-    Public stCourse1 As String = ""
-    Public stCourse2 As String = ""
 
     Private Sub frmOrganization_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -24,7 +22,7 @@ Public Class frmOrganization
             Case "LPIES"
                 logo = frmAttendance.picLPIES.Image
                 stFullName = "Lyceum of the Philippines - Laguna Industrial Engineering Society"
-            Case "LYCO-CpE"
+            Case "LYCO"
                 logo = frmAttendance.picLYCO.Image
                 stFullName = "Lycean’s Coalition of Computer Engineers"
             Case "CE"
@@ -77,7 +75,6 @@ Public Class frmOrganization
 
         Catch ex As Exception
             MsgBox(ex.Message)
-            Me.Close()
         Finally
             conn.Close()
         End Try
