@@ -26,6 +26,7 @@ Partial Class frmAttendance
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAttendance))
         TabControl1 = New TabControl()
         tabAttendance = New TabPage()
+        lblMessage = New Label()
         panLogos = New Panel()
         lblTotal = New Label()
         lblLYCO = New Label()
@@ -40,7 +41,6 @@ Partial Class frmAttendance
         picIECEP = New PictureBox()
         picCE = New PictureBox()
         picCPS = New PictureBox()
-        lblMessage = New Label()
         panTime = New Panel()
         lblTime = New Label()
         panStudentID = New Panel()
@@ -66,8 +66,9 @@ Partial Class frmAttendance
         Label1 = New Label()
         txtUsername = New TextBox()
         btnClose = New Button()
-        Timer1 = New Timer(components)
+        tmrSlow = New Timer(components)
         btnReconnect = New Button()
+        tmrFast = New Timer(components)
         TabControl1.SuspendLayout()
         tabAttendance.SuspendLayout()
         panLogos.SuspendLayout()
@@ -105,8 +106,8 @@ Partial Class frmAttendance
         tabAttendance.BackColor = Color.CornflowerBlue
         tabAttendance.BackgroundImage = My.Resources.Resources.Main_Background
         tabAttendance.BackgroundImageLayout = ImageLayout.Stretch
-        tabAttendance.Controls.Add(panLogos)
         tabAttendance.Controls.Add(lblMessage)
+        tabAttendance.Controls.Add(panLogos)
         tabAttendance.Controls.Add(panTime)
         tabAttendance.Controls.Add(panStudentID)
         tabAttendance.Location = New Point(4, 34)
@@ -115,6 +116,21 @@ Partial Class frmAttendance
         tabAttendance.Size = New Size(1192, 862)
         tabAttendance.TabIndex = 0
         tabAttendance.Text = "Attendance"
+        ' 
+        ' lblMessage
+        ' 
+        lblMessage.Anchor = AnchorStyles.Bottom
+        lblMessage.AutoSize = True
+        lblMessage.BackColor = Color.White
+        lblMessage.BorderStyle = BorderStyle.FixedSingle
+        lblMessage.FlatStyle = FlatStyle.Flat
+        lblMessage.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
+        lblMessage.Location = New Point(259, 775)
+        lblMessage.Name = "lblMessage"
+        lblMessage.Size = New Size(677, 52)
+        lblMessage.TabIndex = 7
+        lblMessage.Text = "Please wait for the admin to come back."
+        lblMessage.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' panLogos
         ' 
@@ -285,20 +301,6 @@ Partial Class frmAttendance
         picCPS.SizeMode = PictureBoxSizeMode.StretchImage
         picCPS.TabIndex = 0
         picCPS.TabStop = False
-        ' 
-        ' lblMessage
-        ' 
-        lblMessage.Anchor = AnchorStyles.Top
-        lblMessage.AutoSize = True
-        lblMessage.BackColor = Color.White
-        lblMessage.BorderStyle = BorderStyle.FixedSingle
-        lblMessage.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
-        lblMessage.ForeColor = Color.Black
-        lblMessage.Location = New Point(259, 768)
-        lblMessage.Name = "lblMessage"
-        lblMessage.Size = New Size(677, 52)
-        lblMessage.TabIndex = 6
-        lblMessage.Text = "Please wait for the admin to come back."
         ' 
         ' panTime
         ' 
@@ -577,8 +579,9 @@ Partial Class frmAttendance
         btnClose.Text = "Close"
         btnClose.UseVisualStyleBackColor = True
         ' 
-        ' Timer1
+        ' tmrSlow
         ' 
+        tmrSlow.Interval = 1000
         ' 
         ' btnReconnect
         ' 
@@ -594,6 +597,9 @@ Partial Class frmAttendance
         btnReconnect.TabStop = False
         btnReconnect.Text = "Status"
         btnReconnect.UseVisualStyleBackColor = False
+        ' 
+        ' tmrFast
+        ' 
         ' 
         ' frmAttendance
         ' 
@@ -663,7 +669,7 @@ Partial Class frmAttendance
     Friend WithEvents Label7 As Label
     Friend WithEvents lblTotal As Label
     Friend WithEvents lblTime As Label
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents tmrSlow As Timer
     Friend WithEvents panTime As Panel
     Friend WithEvents lblTimeIn As Label
     Friend WithEvents Label2 As Label
@@ -676,6 +682,7 @@ Partial Class frmAttendance
     Friend WithEvents Label1 As Label
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents lblMessage As Label
     Friend WithEvents btnReconnect As Button
+    Friend WithEvents tmrFast As Timer
+    Friend WithEvents lblMessage As Label
 End Class

@@ -6,8 +6,7 @@ Public Class frmAttendance
     Private stStudentID As String
 
     ' Flag
-    Private iTimer As Integer = 0
-    Private dPerSecond As Double
+    Private counter As Integer = 1
     Private bTimeInState As Boolean = True
     Private bUpdate = True
 
@@ -35,9 +34,6 @@ Public Class frmAttendance
         yCenter = (tabView.Size.Height / 2) - (panLogin.Size.Height / 2)
         panLogin.Location = New Point(xCenter, yCenter)
 
-        ' Update Attendees Per Org
-        'updateOrgAttendees()
-
         ' Update Time
         updateTime()
 
@@ -51,13 +47,7 @@ Public Class frmAttendance
         yCenter = (panTime.Size.Height / 2) - (lblTime.Size.Height / 2)
         lblTime.Location = New Point(xCenter, yCenter)
 
-        ' Relocate message
-        xCenter = (tabAttendance.Size.Width / 2) - (lblMessage.Size.Width / 2)
-        yCenter = (tabAttendance.Size.Height * 0.9) - (lblMessage.Size.Height / 2)
-        lblMessage.Location = New Point(xCenter, yCenter)
-
-        ' Frequency of tick to a second
-        dPerSecond = 1000 / Timer1.Interval
+        CenterMessage()
 
         ' Check Connection
         TestConnection()
@@ -67,12 +57,14 @@ Public Class frmAttendance
         Dim conn As New MySqlConnection(stConnection)
         Try
             conn.Open()
-
+            bUpdate = True
         Catch ex As Exception
-            bUpdate = False
             btnReconnect.Enabled = True
             btnReconnect.BackColor = redColor
-            MessageBox.Show("Failed to connect.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If bUpdate Then
+                bUpdate = False
+                MessageBox.Show("Failed to connect.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
             Return False
         Finally
             conn.Close()
@@ -81,22 +73,18 @@ Public Class frmAttendance
         Return True
     End Function
 
-    Private Sub lblMessage_TextChanged(sender As Object, e As EventArgs) Handles lblMessage.TextChanged
-        Dim x As Double = (tabAttendance.Size.Width / 2) - (lblMessage.Size.Width / 2)
-        lblMessage.Location = New Point(x, lblMessage.Location.Y)
+    Private Sub lblMessage_SizeChanged(sender As Object, e As EventArgs) Handles lblMessage.SizeChanged
+        CenterMessage()
     End Sub
 
-    ' Every Second Update
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Public Sub CenterMessage()
+        Dim xCenter = (tabAttendance.Size.Width / 2) - (lblMessage.Size.Width / 2)
+        Dim yCenter = (tabAttendance.Size.Height * 0.9) - (lblMessage.Size.Height / 2)
+        lblMessage.Location = New Point(xCenter, yCenter)
+    End Sub
 
-        ' Updated every second
-        If iTimer Mod dPerSecond = 0 Then
-            updateTime()
-            iTimer = 0
-        Else
-            iTimer += 1
-        End If
-
+    ' Every 1/10 of a second
+    Private Sub tmrFast_Tick(sender As Object, e As EventArgs) Handles tmrFast.Tick
         If Not bUpdate Then Exit Sub
 
         ' Establish Reconnect if needed
@@ -104,6 +92,22 @@ Public Class frmAttendance
 
         checkStudentAttendance()
         updateOrgAttendees()
+    End Sub
+
+    ' Every Second Update
+    Private Sub tmeSlow_Tick(sender As Object, e As EventArgs) Handles tmrSlow.Tick
+        updateTime()
+
+        If Not bUpdate Then
+            If Not counter Mod 8 = 0 Then
+                counter += 1
+                Exit Sub
+            End If
+
+            counter = 1
+
+            Reconnect()
+        End If
     End Sub
 
     Private Sub updateTime()
@@ -192,7 +196,7 @@ Public Class frmAttendance
         btnSubmit.Enabled = False
 
         ' Check if na update yung attendance ni student
-        Threading.Thread.Sleep(Timer1.Interval / 2)
+        Threading.Thread.Sleep(tmrSlow.Interval / 2)
         Dim temp = bTimeInState
         If Not temp = checkStudentAttendance() Then
             MessageBox.Show($"Looks like something changed to your time in/out.{vbCrLf}Please press the button again if you want to proceed.",
@@ -296,29 +300,6 @@ Public Class frmAttendance
         End If
     End Sub
 
-    Private Function getAttendanceID() As String
-        Dim conn As New MySqlConnection(stConnection)
-
-        Try
-            conn.Open()
-
-            Dim command As New MySqlCommand($"select max(ttimein) from tblattendance where dstudentid = '{stStudentID}' and ttimeout is null;", conn)
-            Dim reader As MySqlDataReader = command.ExecuteReader()
-
-            If reader.Read() Then
-                Dim timeIn As DateTime = reader(0)
-                Return timeIn.ToString("hh:mm:ss tt")
-            End If
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Attendance", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            conn.Close()
-        End Try
-
-        Return Nothing
-    End Function
-
     Private Sub picCE_Click(sender As Object, e As EventArgs) Handles picCE.Click
         openOrgForm("CE")
     End Sub
@@ -380,18 +361,25 @@ Public Class frmAttendance
     End Sub
 
     Private Sub btnReconnect_Click(sender As Object, e As EventArgs) Handles btnReconnect.Click
+        Reconnect()
+    End Sub
+
+    Private Sub Reconnect()
+        btnReconnect.Text = "Reconn"
         Dim conn As New MySqlConnection(stConnection)
         Try
             conn.Open()
             bUpdate = True
             btnReconnect.Enabled = False
             btnReconnect.BackColor = greenColor
-            MessageBox.Show("Reconnected.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'MessageBox.Show("Reconnected.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            MessageBox.Show("Failed to Reconnect.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            'MessageBox.Show("Failed to Reconnect.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
+        btnReconnect.Text = "Status"
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -407,9 +395,11 @@ Public Class frmAttendance
 
     Private Sub frmAttendance_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         If Me.Visible Then
-            Timer1.Start()
+            tmrSlow.Start()
+            tmrFast.Start()
         Else
-            Timer1.Stop()
+            tmrSlow.Stop()
+            tmrFast.Stop()
         End If
     End Sub
 End Class

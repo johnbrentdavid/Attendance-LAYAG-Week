@@ -262,11 +262,6 @@ Public Class frmAdmin
         frmAttendance.txtStudentID.Enabled = chkTimeIn.Checked
         frmAttendance.lblMessage.Visible = Not chkTimeIn.Checked
 
-        ' When Disabled
-        If Not chkTimeIn.Checked Then
-            frmAttendance.txtStudentID.Text = String.Empty
-        End If
-
         ' Update message
         frmAttendance.lblMessage.Text = rtfMessage.Text
 
