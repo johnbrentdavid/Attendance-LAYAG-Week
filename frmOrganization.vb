@@ -62,7 +62,7 @@ Public Class frmOrganization
             conn.Open()
 
             Dim stDate As String = Date.Now.ToString("yyyy-MM-dd")
-            Dim command As New MySqlCommand($"SELECT dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
+            Dim command As New MySqlCommand($"SELECT DISTINCT dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
             FROM tblstudent WHERE dstudentid IN (SELECT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null);", conn)
             Dim dataset As New DataSet
             Dim adapter As New MySqlDataAdapter With {
