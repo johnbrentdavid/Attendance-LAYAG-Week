@@ -444,6 +444,7 @@ Partial Class frmAttendance
         ' 
         ' txtStudentID
         ' 
+        txtStudentID.Enabled = False
         txtStudentID.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         txtStudentID.Location = New Point(76, 242)
         txtStudentID.MaxLength = 10

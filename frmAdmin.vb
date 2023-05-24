@@ -256,7 +256,7 @@ Public Class frmAdmin
 
         Dim result = MessageBox.Show("Are you sure you want to save changes?", "Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        If Not result = DialogResult.No Then Exit Sub
+        If result = DialogResult.No Then Exit Sub
 
         ' Enable / Disable student id text box
         frmAttendance.txtStudentID.Enabled = chkTimeIn.Checked

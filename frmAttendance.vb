@@ -51,9 +51,6 @@ Public Class frmAttendance
         yCenter = (panTime.Size.Height / 2) - (lblTime.Size.Height / 2)
         lblTime.Location = New Point(xCenter, yCenter)
 
-        ' Check if can time in
-        txtStudentID.Enabled = frmAdmin.chkTimeIn.Checked
-
         ' Relocate message
         xCenter = (tabAttendance.Size.Width / 2) - (lblMessage.Size.Width / 2)
         yCenter = (tabAttendance.Size.Height * 0.9) - (lblMessage.Size.Height / 2)
@@ -115,6 +112,9 @@ Public Class frmAttendance
     End Sub
 
     Private Sub txtStudentID_TextChanged(sender As Object, e As EventArgs) Handles txtStudentID.TextChanged
+        ' Student ID Validation
+        If Not txtStudentID.Text.Length = txtStudentID.MaxLength Then Exit Sub
+
         checkStudentAttendance()
     End Sub
 
@@ -149,20 +149,29 @@ Public Class frmAttendance
             lblCourse.Text = reader(2).ToString() & " - " & reader(3).ToString()
             reader.Close()
 
-            Dim result As AttendanceData = getAttendanceID()
+            ' Get latest Time In
+            command.CommandText = $"select max(ttimein) from tblattendance where dstudentid = '{stStudentID}' and ttimeout is null;"
+            reader = command.ExecuteReader()
 
-            If result.id IsNot Nothing Then
-                ' Button Appearance
-                btnChange(1)
-                lblTimeIn.Text = result.timeIn.ToString("hh:mm:ss tt")
+            Dim timeIn As DateTime = Nothing
 
-                bTimeInState = True
-            Else
+            If reader.Read() And Not IsDBNull(reader(0)) Then
+                timeIn = reader(0)
+            End If
+
+            If timeIn = DateTime.MinValue Then
                 ' Button Appearance
                 btnChange(0)
                 lblTimeIn.Text = String.Empty
 
                 bTimeInState = False
+            Else
+                ' Button Appearance
+                btnChange(1)
+
+                lblTimeIn.Text = timeIn.ToString("hh:mm:ss tt")
+
+                bTimeInState = True
             End If
 
             Return bTimeInState
@@ -201,25 +210,10 @@ Public Class frmAttendance
             Dim currentTime As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
 
             If btnSubmit.Text = "Time Out" Then
-                ' Update time in if exist
-                Dim attendance As AttendanceData = getAttendanceID()
-
-                command.CommandText = $"update tblattendance set ttimeout = '{currentTime}' where idtblattendance = {attendance.id};"
-
-                ' Update time in lbl
-                'lblTimeIn.Text = String.Empty
-
-                ' Change Appearance
-                'btnChange(0)
+                command.CommandText = $"update tblattendance set ttimeout = '{currentTime}' where dstudentid = '{stStudentID}' and ttimeout is null;"
             Else
                 ' Create new time in
                 command.CommandText = $"insert into tblattendance values(null, '{stStudentID}', '{currentTime}', null);"
-
-                ' Update time in lbl
-                'lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt")
-
-                ' Change Appearance
-                'btnChange(1)
             End If
 
             ' Execute
@@ -302,21 +296,18 @@ Public Class frmAttendance
         End If
     End Sub
 
-    Private Function getAttendanceID() As AttendanceData
+    Private Function getAttendanceID() As String
         Dim conn As New MySqlConnection(stConnection)
 
         Try
             conn.Open()
 
-            Dim command As New MySqlCommand($"select idtblattendance, ttimein from tblattendance where dstudentid = '{stStudentID}' and ttimeout is null;", conn)
+            Dim command As New MySqlCommand($"select max(ttimein) from tblattendance where dstudentid = '{stStudentID}' and ttimeout is null;", conn)
             Dim reader As MySqlDataReader = command.ExecuteReader()
 
             If reader.Read() Then
-                Dim attendance As AttendanceData
-                attendance.id = reader(0)
-                attendance.timeIn = reader(1)
-
-                Return attendance
+                Dim timeIn As DateTime = reader(0)
+                Return timeIn.ToString("hh:mm:ss tt")
             End If
 
         Catch ex As Exception
@@ -351,7 +342,7 @@ Public Class frmAttendance
     Private Sub picLYCO_Click(sender As Object, e As EventArgs) Handles picLYCO.Click
         openOrgForm("LYCO")
     End Sub
-    'Overload function
+
     Private Sub openOrgForm(org As String)
         frmOrganization.stOrg = org
         frmOrganization.Show(Me)
@@ -406,7 +397,6 @@ Public Class frmAttendance
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
         ' Prompt if they really want to close
-
         Dim result = MessageBox.Show("Are you sure you want to exit?", "Attendance", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Close if yes
