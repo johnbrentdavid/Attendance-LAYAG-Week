@@ -75,7 +75,7 @@ Public Class frmAttendance
             bUpdate = False
             btnReconnect.Enabled = True
             btnReconnect.BackColor = redColor
-            MsgBox("Failed to connect")
+            MessageBox.Show("Failed to connect.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         Finally
             conn.Close()
@@ -167,7 +167,7 @@ Public Class frmAttendance
 
             Return bTimeInState
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Attendance", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -177,6 +177,8 @@ Public Class frmAttendance
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
 
+        Const stTitle As String = "Time In/Out"
+
         ' Lock Button
         btnSubmit.Enabled = False
 
@@ -184,7 +186,8 @@ Public Class frmAttendance
         Threading.Thread.Sleep(Timer1.Interval / 2)
         Dim temp = bTimeInState
         If Not temp = checkStudentAttendance() Then
-            MsgBox($"Looks like something changed to your time in/out.{vbCrLf}Please press the button again if you want to proceed.")
+            MessageBox.Show($"Looks like something changed to your time in/out.{vbCrLf}Please press the button again if you want to proceed.",
+                            stTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
 
@@ -228,7 +231,7 @@ Public Class frmAttendance
             ' Reload student data
             checkStudentAttendance()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -280,7 +283,7 @@ Public Class frmAttendance
             lblLYCO.Text = lyco
             lblTotal.Text = $"Total Current Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Organization Attendees", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -317,7 +320,7 @@ Public Class frmAttendance
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Attendance", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -359,6 +362,7 @@ Public Class frmAttendance
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         Dim conn As New MySqlConnection(stConnection)
+        Dim stTitle As String = "Login"
 
         Try
             conn.Open()
@@ -371,15 +375,14 @@ Public Class frmAttendance
 
             If reader.Read() Then
                 ' Open the admin control panel form
-                'MsgBox("Successful Login!")
                 frmAdmin.Show(Me)
                 Me.Hide()
             Else
-                MsgBox("Invalid Credentials.")
+                MessageBox.Show("Invalid Credentials.", stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -392,9 +395,9 @@ Public Class frmAttendance
             bUpdate = True
             btnReconnect.Enabled = False
             btnReconnect.BackColor = greenColor
-            MsgBox("Reconnected")
+            MessageBox.Show("Reconnected.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            MsgBox("Failed to Reconnect")
+            MessageBox.Show("Failed to Reconnect.", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -403,10 +406,11 @@ Public Class frmAttendance
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
         ' Prompt if they really want to close
-        Dim result = MsgBox("Are you sure you want to exit?", vbYesNo, "Attendance")
+
+        Dim result = MessageBox.Show("Are you sure you want to exit?", "Attendance", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Close if yes
-        If result = vbYes Then
+        If result = DialogResult.Yes Then
             Me.Close()
         End If
     End Sub

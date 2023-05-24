@@ -154,7 +154,7 @@ Public Class frmAdmin
                 btnExport.BackColor = grayColor
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Search", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -181,6 +181,8 @@ Public Class frmAdmin
     Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
         btnExport.Enabled = False
 
+        Dim stTitle As String = "Export"
+
         ' File path to user desktop
         Dim path As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         Dim filename As String = "\Attendance Logs as of " & Year(Now()) & Month(Now()) & Second(Now()) & ".csv"
@@ -191,7 +193,7 @@ Public Class frmAdmin
             Directory.CreateDirectory(path & "\COECS WEEK ATTENDANCE LOGS")
             path += "\COECS WEEK ATTENDANCE LOGS"
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         ' Create csv file
@@ -225,7 +227,7 @@ Public Class frmAdmin
         Process.Start("explorer.exe", path)
 
         ' Success Message
-        MsgBox($"File has been saved.{vbCrLf}File name {filename}", vbOKOnly, "Success")
+        MessageBox.Show($"File has been saved.{vbCrLf}File name {filename}", stTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         btnExport.Enabled = True
     End Sub
 
@@ -252,9 +254,9 @@ Public Class frmAdmin
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        Dim result = MsgBox("Are you sure you want to save changes?", vbYesNo)
+        Dim result = MessageBox.Show("Are you sure you want to save changes?", "Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        If Not result = vbYes Then Exit Sub
+        If Not result = DialogResult.No Then Exit Sub
 
         ' Enable / Disable student id text box
         frmAttendance.txtStudentID.Enabled = chkTimeIn.Checked
@@ -284,11 +286,13 @@ Public Class frmAdmin
     End Sub
 
     Private Sub btnForce_Click(sender As Object, e As EventArgs) Handles btnForce.Click
+
         ' Prompt if they really want to close
-        Dim result = MsgBox("Are you sure you want to force time out all attendance?", vbYesNo, "Force Time out")
+        Dim stTitle As String = "Force Timeout"
+        Dim result = MessageBox.Show("Are you sure you want to force time out all attendance?", stTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Close if yes
-        If result = vbNo Then Exit Sub
+        If result = DialogResult.No Then Exit Sub
 
         Dim conn As New MySqlConnection(stConnection)
 
@@ -302,7 +306,7 @@ Public Class frmAdmin
             ' Either reset the txtbox which is easier or reload the query which is better
             frmAttendance.checkStudentAttendance()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -310,15 +314,13 @@ Public Class frmAdmin
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         ' Prompt if they really want to close
-        Dim result = MsgBox("Are you sure you want to exit?", vbYesNo, "Attendance")
+        Dim result = MessageBox.Show("Are you sure you want to exit?", "Admin", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Close if yes
-        If result = vbYes Then
+        If result = DialogResult.Yes Then
             frmAttendance.TabControl1.SelectedIndex = 0
             frmAttendance.Show()
             Me.Close()
         End If
     End Sub
-
-
 End Class

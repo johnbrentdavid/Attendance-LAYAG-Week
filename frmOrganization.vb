@@ -1,5 +1,4 @@
-﻿Imports System.IO
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 
 Public Class frmOrganization
     Public stOrg As String
@@ -74,7 +73,7 @@ Public Class frmOrganization
             grdAttendance.DataSource = dataset.Tables("Attendees")
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Organization Attendees", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
@@ -83,10 +82,10 @@ Public Class frmOrganization
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
         ' Prompt if they really want to close
-        Dim result = MsgBox("Are you sure you want to exit?", vbYesNo, "Attendance")
+        Dim result = MessageBox.Show("Are you sure you want to exit?", "Organization Attendees", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Close if yes
-        If result = vbYes Then
+        If result = DialogResult.Yes Then
             frmAttendance.Show()
             Me.Close()
         End If

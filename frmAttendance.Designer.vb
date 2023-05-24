@@ -584,12 +584,14 @@ Partial Class frmAttendance
         btnReconnect.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnReconnect.BackColor = Color.FromArgb(CByte(3), CByte(252), CByte(15))
         btnReconnect.Enabled = False
+        btnReconnect.FlatAppearance.BorderSize = 0
+        btnReconnect.FlatStyle = FlatStyle.Flat
         btnReconnect.Location = New Point(1046, 0)
         btnReconnect.Name = "btnReconnect"
         btnReconnect.Size = New Size(75, 23)
         btnReconnect.TabIndex = 2
         btnReconnect.TabStop = False
-        btnReconnect.Text = "Recon"
+        btnReconnect.Text = "Status"
         btnReconnect.UseVisualStyleBackColor = False
         ' 
         ' frmAttendance
