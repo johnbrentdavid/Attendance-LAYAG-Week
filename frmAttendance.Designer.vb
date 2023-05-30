@@ -41,7 +41,6 @@ Partial Class frmAttendance
         picIECEP = New PictureBox()
         picCE = New PictureBox()
         picCPS = New PictureBox()
-        panTime = New Panel()
         lblTime = New Label()
         panStudentID = New Panel()
         lblTimeIn = New Label()
@@ -78,7 +77,6 @@ Partial Class frmAttendance
         CType(picIECEP, ComponentModel.ISupportInitialize).BeginInit()
         CType(picCE, ComponentModel.ISupportInitialize).BeginInit()
         CType(picCPS, ComponentModel.ISupportInitialize).BeginInit()
-        panTime.SuspendLayout()
         panStudentID.SuspendLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox7, ComponentModel.ISupportInitialize).BeginInit()
@@ -106,9 +104,9 @@ Partial Class frmAttendance
         tabAttendance.BackColor = Color.CornflowerBlue
         tabAttendance.BackgroundImage = My.Resources.Resources.Main_Background
         tabAttendance.BackgroundImageLayout = ImageLayout.Stretch
+        tabAttendance.Controls.Add(lblTime)
         tabAttendance.Controls.Add(lblMessage)
         tabAttendance.Controls.Add(panLogos)
-        tabAttendance.Controls.Add(panTime)
         tabAttendance.Controls.Add(panStudentID)
         tabAttendance.Location = New Point(4, 34)
         tabAttendance.Name = "tabAttendance"
@@ -302,24 +300,16 @@ Partial Class frmAttendance
         picCPS.TabIndex = 0
         picCPS.TabStop = False
         ' 
-        ' panTime
-        ' 
-        panTime.BackColor = Color.White
-        panTime.BorderStyle = BorderStyle.FixedSingle
-        panTime.Controls.Add(lblTime)
-        panTime.Location = New Point(325, 45)
-        panTime.Name = "panTime"
-        panTime.Size = New Size(543, 89)
-        panTime.TabIndex = 5
-        ' 
         ' lblTime
         ' 
         lblTime.Anchor = AnchorStyles.Top
         lblTime.AutoSize = True
+        lblTime.BackColor = Color.White
+        lblTime.BorderStyle = BorderStyle.FixedSingle
         lblTime.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
-        lblTime.Location = New Point(220, 19)
+        lblTime.Location = New Point(545, 64)
         lblTime.Name = "lblTime"
-        lblTime.Size = New Size(101, 50)
+        lblTime.Size = New Size(103, 52)
         lblTime.TabIndex = 4
         lblTime.Text = "Time"
         ' 
@@ -626,8 +616,6 @@ Partial Class frmAttendance
         CType(picIECEP, ComponentModel.ISupportInitialize).EndInit()
         CType(picCE, ComponentModel.ISupportInitialize).EndInit()
         CType(picCPS, ComponentModel.ISupportInitialize).EndInit()
-        panTime.ResumeLayout(False)
-        panTime.PerformLayout()
         panStudentID.ResumeLayout(False)
         panStudentID.PerformLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).EndInit()
@@ -670,7 +658,6 @@ Partial Class frmAttendance
     Friend WithEvents lblTotal As Label
     Friend WithEvents lblTime As Label
     Friend WithEvents tmrSlow As Timer
-    Friend WithEvents panTime As Panel
     Friend WithEvents lblTimeIn As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents panLogin As Panel

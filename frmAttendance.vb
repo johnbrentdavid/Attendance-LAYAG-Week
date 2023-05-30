@@ -38,13 +38,8 @@ Public Class frmAttendance
         updateTime()
 
         ' Center Time Panel
-        xCenter = (tabAttendance.Size.Width / 2) - (panTime.Size.Width / 2)
-        yCenter = (tabAttendance.Size.Height * 0.1) - (panTime.Size.Height / 2)
-        panTime.Location = New Point(xCenter, yCenter)
-
-        ' Center Time Label in Time Panel
-        xCenter = (panTime.Size.Width / 2) - (lblTime.Size.Width / 2)
-        yCenter = (panTime.Size.Height / 2) - (lblTime.Size.Height / 2)
+        xCenter = (tabAttendance.Size.Width / 2) - (lblTime.Size.Width / 2)
+        yCenter = (tabAttendance.Size.Height * 0.1) - (lblTime.Size.Height / 2)
         lblTime.Location = New Point(xCenter, yCenter)
 
         CenterMessage()

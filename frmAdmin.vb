@@ -265,6 +265,10 @@ Public Class frmAdmin
         ' Update message
         frmAttendance.lblMessage.Text = rtfMessage.Text
 
+        If Not chkTimeIn.Checked Then
+            frmAttendance.txtStudentID.Text = String.Empty
+        End If
+
         changeBtnSave()
     End Sub
 
