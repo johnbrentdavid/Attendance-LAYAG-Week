@@ -6,9 +6,12 @@ Public Class frmAdmin
     Private fromValue As DateTime
     Private ToValue As DateTime
 
+    Private isLoaded As Boolean = False
+
     Private Sub frmAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Start of code about Export
+        isLoaded = True
 
         ' Center the Filter Panel
         Dim xCenter As Double = (tabData.Size.Width * 0.2) - (panFilter.Size.Width / 2)
@@ -90,7 +93,11 @@ Public Class frmAdmin
         If dtpFrom.Value <= dtpTo.Value Then
             placeholder = dtp.Value
         Else
-            dtp.Value = placeholder
+            If isLoaded Then
+                dtp.Value = placeholder
+            Else
+                dtp.Value = dtp.MinDate
+            End If
         End If
     End Sub
 
