@@ -1,5 +1,5 @@
 ﻿Module Config
-    Public ReadOnly stConnection As String = "Database=attendancedb;Data Source=127.0.0.1; User id=root; Password=admin1234; Port=3306; Command TimeOut=1800;"
+    Public ReadOnly stConnection As String = "Database=attendancedb;Data Source=192.168.1.3; User id=attendance; Password=attendance1234; Port=3306; Command TimeOut=1800;"
 
     ' Colors
     ' Button Colors
