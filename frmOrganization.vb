@@ -2,6 +2,8 @@
 
 Public Class frmOrganization
     Public stOrg As String
+    Public stCourse1 As String
+    Public stCourse2 As String
 
     Private Sub frmOrganization_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -63,7 +65,8 @@ Public Class frmOrganization
 
             Dim stDate As String = Date.Now.ToString("yyyy-MM-dd")
             Dim command As New MySqlCommand($"SELECT DISTINCT dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
-            FROM tblstudent WHERE dstudentid IN (SELECT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null);", conn)
+            FROM tblstudent WHERE dstudentid IN (SELECT dstudentid FROM tblattendance WHERE ttimein BETWEEN '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null)
+            AND dstudentid IN (SELECT dstudentid FROM tblstudent WHERE dcourse = '{stCourse1}' OR dcourse = '{stCourse2}');", conn)
             Dim dataset As New DataSet
             Dim adapter As New MySqlDataAdapter With {
                 .SelectCommand = command

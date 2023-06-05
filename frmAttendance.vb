@@ -296,31 +296,33 @@ Public Class frmAttendance
     End Sub
 
     Private Sub picCE_Click(sender As Object, e As EventArgs) Handles picCE.Click
-        openOrgForm("CE")
+        openOrgForm("CE", "BSCE", "")
     End Sub
 
     Private Sub picCPS_Click(sender As Object, e As EventArgs) Handles picCPS.Click
-        openOrgForm("CPS")
+        openOrgForm("CPS", "BSCS", "BSIT")
     End Sub
 
     Private Sub picIECEP_Click(sender As Object, e As EventArgs) Handles picIECEP.Click
-        openOrgForm("IECEP")
+        openOrgForm("IECEP", "BSECE", "")
     End Sub
 
     Private Sub picIIEE_Click(sender As Object, e As EventArgs) Handles picIIEE.Click
-        openOrgForm("IIEE")
+        openOrgForm("IIEE", "BSEE", "")
     End Sub
 
     Private Sub picLPIES_Click(sender As Object, e As EventArgs) Handles picLPIES.Click
-        openOrgForm("LPIES")
+        openOrgForm("LPIES", "BSIE", "")
     End Sub
 
     Private Sub picLYCO_Click(sender As Object, e As EventArgs) Handles picLYCO.Click
-        openOrgForm("LYCO")
+        openOrgForm("LYCO", "BSCpE", "")
     End Sub
 
-    Private Sub openOrgForm(org As String)
+    Private Sub openOrgForm(org As String, course1 As String, course2 As String)
         frmOrganization.stOrg = org
+        frmOrganization.stCourse1 = course1
+        frmOrganization.stCourse2 = course2
         frmOrganization.Show(Me)
         Me.Hide()
     End Sub
