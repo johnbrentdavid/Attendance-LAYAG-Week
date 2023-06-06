@@ -210,6 +210,7 @@ Public Class frmAttendance
 
             If btnSubmit.Text = "Time Out" Then
                 command.CommandText = $"update tblattendance set ttimeout = '{currentTime}' where dstudentid = '{stStudentID}' and ttimeout is null;"
+
             Else
                 ' Create new time in
                 command.CommandText = $"insert into tblattendance values(null, '{stStudentID}', '{currentTime}', null);"
@@ -223,6 +224,8 @@ Public Class frmAttendance
 
             ' Reload student data
             checkStudentAttendance()
+
+            txtStudentID.Text = ""
         Catch ex As Exception
             MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -399,4 +402,8 @@ Public Class frmAttendance
             tmrFast.Stop()
         End If
     End Sub
+
+
+
+
 End Class

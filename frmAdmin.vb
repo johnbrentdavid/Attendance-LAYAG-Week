@@ -325,6 +325,8 @@ Public Class frmAdmin
         ' Close if yes
         If result = DialogResult.Yes Then
             frmAttendance.TabControl1.SelectedIndex = 0
+            frmAttendance.txtPassword.Text = ""
+            frmAttendance.txtUsername.Text = ""
             frmAttendance.Show()
             Me.Close()
         End If
