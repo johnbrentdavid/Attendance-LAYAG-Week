@@ -87,7 +87,7 @@ Partial Class frmAdmin
         tabControl.Controls.Add(panSettings)
         tabControl.Location = New Point(4, 34)
         tabControl.Name = "tabControl"
-        tabControl.Padding = New Padding(3, 3, 3, 3)
+        tabControl.Padding = New Padding(3)
         tabControl.Size = New Size(1192, 787)
         tabControl.TabIndex = 1
         tabControl.Text = "Control"
@@ -220,8 +220,8 @@ Partial Class frmAdmin
         tabData.Controls.Add(panFilter)
         tabData.Location = New Point(4, 34)
         tabData.Name = "tabData"
-        tabData.Padding = New Padding(3, 3, 3, 3)
-        tabData.Size = New Size(1192, 822)
+        tabData.Padding = New Padding(3)
+        tabData.Size = New Size(1192, 787)
         tabData.TabIndex = 0
         tabData.Text = "Export"
         ' 
@@ -347,7 +347,7 @@ Partial Class frmAdmin
         dtpTo.CustomFormat = "MMMM dd, yyyy"
         dtpTo.Format = DateTimePickerFormat.Custom
         dtpTo.Location = New Point(103, 395)
-        dtpTo.MaxDate = New DateTime(2023, 6, 30, 0, 0, 0, 0)
+        dtpTo.MaxDate = New DateTime(2024, 10, 31, 0, 0, 0, 0)
         dtpTo.MinDate = New DateTime(2023, 5, 1, 0, 0, 0, 0)
         dtpTo.Name = "dtpTo"
         dtpTo.Size = New Size(245, 33)
@@ -359,7 +359,7 @@ Partial Class frmAdmin
         dtpFrom.CustomFormat = "MMMM dd, yyyy"
         dtpFrom.Format = DateTimePickerFormat.Custom
         dtpFrom.Location = New Point(103, 339)
-        dtpFrom.MaxDate = New DateTime(2023, 6, 30, 0, 0, 0, 0)
+        dtpFrom.MaxDate = New DateTime(2024, 10, 31, 0, 0, 0, 0)
         dtpFrom.MinDate = New DateTime(2023, 5, 1, 0, 0, 0, 0)
         dtpFrom.Name = "dtpFrom"
         dtpFrom.Size = New Size(245, 33)
