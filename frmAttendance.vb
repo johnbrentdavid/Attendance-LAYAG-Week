@@ -184,7 +184,9 @@ Public Class frmAttendance
     End Function
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
-
+        Submit()
+    End Sub
+    Private Sub Submit()
         Const stTitle As String = "Time In/Out"
 
         ' Lock Button
@@ -226,6 +228,7 @@ Public Class frmAttendance
             checkStudentAttendance()
 
             txtStudentID.Text = ""
+            txtStudentID.Select()
         Catch ex As Exception
             MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -235,7 +238,6 @@ Public Class frmAttendance
         ' Unlock Button
         btnSubmit.Enabled = True
     End Sub
-
     Private Sub updateOrgAttendees()
         Dim conn As New MySqlConnection(stConnection)
 
@@ -332,7 +334,10 @@ Public Class frmAttendance
 
     ' ADMIN LOGIN
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        Login()
+    End Sub
 
+    Private Sub Login()
         Dim conn As New MySqlConnection(stConnection)
         Dim stTitle As String = "Login"
 
@@ -359,7 +364,6 @@ Public Class frmAttendance
             conn.Close()
         End Try
     End Sub
-
     Private Sub btnReconnect_Click(sender As Object, e As EventArgs) Handles btnReconnect.Click
         Reconnect()
     End Sub
@@ -403,7 +407,30 @@ Public Class frmAttendance
         End If
     End Sub
 
+    'UX CODES
+    Private Sub txtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            Login()
+        End If
+    End Sub
 
+    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        If TabControl1.SelectedIndex = 0 Then
+            If txtStudentID.Enabled = True Then
+                txtStudentID.Select()
+            End If
+        ElseIf TabControl1.SelectedIndex = 1 Then
+            txtUsername.Select()
+        End If
+    End Sub
 
-
+    Private Sub txtStudentID_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStudentID.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            If btnSubmit.Enabled = True Then
+                Submit()
+            End If
+        End If
+    End Sub
 End Class
