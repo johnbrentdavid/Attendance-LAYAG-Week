@@ -477,7 +477,7 @@ Partial Class frmAttendance
         ' 
         lblStudent.AutoSize = True
         lblStudent.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        lblStudent.Location = New Point(76, 214)
+        lblStudent.Location = New Point(76, 206)
         lblStudent.Name = "lblStudent"
         lblStudent.Size = New Size(110, 25)
         lblStudent.TabIndex = 1
@@ -486,7 +486,7 @@ Partial Class frmAttendance
         ' txtStudentID
         ' 
         txtStudentID.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        txtStudentID.Location = New Point(76, 242)
+        txtStudentID.Location = New Point(76, 234)
         txtStudentID.MaxLength = 10
         txtStudentID.Name = "txtStudentID"
         txtStudentID.PlaceholderText = "1234-12345"
