@@ -124,7 +124,9 @@ Public Class frmAttendance
         Try
             conn.Open()
 
-            Dim command As New MySqlCommand("select * from tblstudent where dstudentid = @ID;", conn)
+            Dim command As New MySqlCommand("SELECT tblstudent.dstudentid,tblstudent.dfullname,tblstudent.dcourse,tblstudent.dyearlevel,tblprogram.ddepartment FROM tblstudent
+                                            join tblprogram on tblstudent.dcourse = tblprogram.dcourse
+                                            where dstudentid = @ID;", conn)
             command.Parameters.AddWithValue("@ID", txtStudentID.Text)
 
             Dim reader As MySqlDataReader = command.ExecuteReader()
@@ -133,6 +135,7 @@ Public Class frmAttendance
             If Not reader.Read() Then
                 lblFullName.Text = String.Empty
                 lblCourse.Text = String.Empty
+                lblDepartment.Text = String.Empty
                 lblTimeIn.Text = String.Empty
                 btnSubmit.Enabled = False
 
@@ -146,6 +149,7 @@ Public Class frmAttendance
             stStudentID = reader(0).ToString()
             lblFullName.Text = reader(1).ToString()
             lblCourse.Text = reader(2).ToString() & " - " & reader(3).ToString()
+            lblDepartment.Text = reader(4).ToString()
             reader.Close()
 
             ' Get latest Time In
