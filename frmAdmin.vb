@@ -395,7 +395,9 @@ Public Class frmAdmin
     Private Sub resetAddUser()
         txtStudentID.Text = ""
         txtFullName.Text = ""
-        cboStudentDepartment.SelectedIndex = 0
+        cboStudentDepartment.SelectedIndex = -1
+        cboStudentYear.SelectedIndex = -1
+        cboStudentCourse.SelectedIndex = -1
         cboStudentCourse.Enabled = False
         cboStudentYear.Enabled = False
     End Sub
@@ -403,6 +405,13 @@ Public Class frmAdmin
     Private Sub cboStudentDepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboStudentDepartment.SelectedIndexChanged
         cboStudentCourse.Enabled = True
         cboStudentYear.Enabled = True
+        cboStudentCourse.Items.Clear()
+        cboStudentCourse.SelectedIndex = -1
         getCourse()
+    End Sub
+
+    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+
+
     End Sub
 End Class
