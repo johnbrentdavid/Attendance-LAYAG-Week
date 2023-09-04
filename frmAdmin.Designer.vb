@@ -52,6 +52,24 @@ Partial Class frmAdmin
         cboOrg = New ComboBox()
         PictureBox8 = New PictureBox()
         PictureBox7 = New PictureBox()
+        tabAddUser = New TabPage()
+        panAddUser = New Panel()
+        cboStudentCourse = New ComboBox()
+        cboStudentYear = New ComboBox()
+        txtFullName = New TextBox()
+        cboStudentDepartment = New ComboBox()
+        Label5 = New Label()
+        Label6 = New Label()
+        lblDepartment = New Label()
+        lblTimeIn = New Label()
+        lblCourse = New Label()
+        lblFullName = New Label()
+        Label8 = New Label()
+        Label7 = New Label()
+        PictureBox2 = New PictureBox()
+        btnAddUser = New Button()
+        lblStudent = New Label()
+        txtStudentID = New TextBox()
         btnClose = New Button()
         TabControl1.SuspendLayout()
         tabControl.SuspendLayout()
@@ -65,12 +83,16 @@ Partial Class frmAdmin
         panFilter.SuspendLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox7, ComponentModel.ISupportInitialize).BeginInit()
+        tabAddUser.SuspendLayout()
+        panAddUser.SuspendLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TabControl1
         ' 
         TabControl1.Controls.Add(tabControl)
         TabControl1.Controls.Add(tabData)
+        TabControl1.Controls.Add(tabAddUser)
         TabControl1.Dock = DockStyle.Fill
         TabControl1.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         TabControl1.ItemSize = New Size(108, 30)
@@ -398,6 +420,204 @@ Partial Class frmAdmin
         PictureBox7.TabIndex = 14
         PictureBox7.TabStop = False
         ' 
+        ' tabAddUser
+        ' 
+        tabAddUser.BackgroundImage = CType(resources.GetObject("tabAddUser.BackgroundImage"), Image)
+        tabAddUser.BackgroundImageLayout = ImageLayout.Stretch
+        tabAddUser.Controls.Add(panAddUser)
+        tabAddUser.Location = New Point(4, 34)
+        tabAddUser.Name = "tabAddUser"
+        tabAddUser.Padding = New Padding(3)
+        tabAddUser.Size = New Size(1192, 787)
+        tabAddUser.TabIndex = 2
+        tabAddUser.Text = "Add Student"
+        tabAddUser.UseVisualStyleBackColor = True
+        ' 
+        ' panAddUser
+        ' 
+        panAddUser.BackColor = Color.WhiteSmoke
+        panAddUser.BorderStyle = BorderStyle.Fixed3D
+        panAddUser.Controls.Add(cboStudentCourse)
+        panAddUser.Controls.Add(cboStudentYear)
+        panAddUser.Controls.Add(txtFullName)
+        panAddUser.Controls.Add(cboStudentDepartment)
+        panAddUser.Controls.Add(Label5)
+        panAddUser.Controls.Add(Label6)
+        panAddUser.Controls.Add(lblDepartment)
+        panAddUser.Controls.Add(lblTimeIn)
+        panAddUser.Controls.Add(lblCourse)
+        panAddUser.Controls.Add(lblFullName)
+        panAddUser.Controls.Add(Label8)
+        panAddUser.Controls.Add(Label7)
+        panAddUser.Controls.Add(PictureBox2)
+        panAddUser.Controls.Add(btnAddUser)
+        panAddUser.Controls.Add(lblStudent)
+        panAddUser.Controls.Add(txtStudentID)
+        panAddUser.Location = New Point(398, 105)
+        panAddUser.Name = "panAddUser"
+        panAddUser.Size = New Size(459, 576)
+        panAddUser.TabIndex = 3
+        ' 
+        ' cboStudentCourse
+        ' 
+        cboStudentCourse.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentCourse.Enabled = False
+        cboStudentCourse.FormattingEnabled = True
+        cboStudentCourse.Location = New Point(82, 458)
+        cboStudentCourse.Name = "cboStudentCourse"
+        cboStudentCourse.Size = New Size(224, 33)
+        cboStudentCourse.TabIndex = 3
+        ' 
+        ' cboStudentYear
+        ' 
+        cboStudentYear.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentYear.Enabled = False
+        cboStudentYear.FormattingEnabled = True
+        cboStudentYear.Items.AddRange(New Object() {"1", "2", "3", "4"})
+        cboStudentYear.Location = New Point(312, 458)
+        cboStudentYear.Name = "cboStudentYear"
+        cboStudentYear.Size = New Size(62, 33)
+        cboStudentYear.TabIndex = 4
+        ' 
+        ' txtFullName
+        ' 
+        txtFullName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+        txtFullName.Location = New Point(76, 315)
+        txtFullName.MaxLength = 50
+        txtFullName.Name = "txtFullName"
+        txtFullName.PlaceholderText = "Dela Cruz, Juan"
+        txtFullName.Size = New Size(298, 33)
+        txtFullName.TabIndex = 1
+        ' 
+        ' cboStudentDepartment
+        ' 
+        cboStudentDepartment.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentDepartment.FormattingEnabled = True
+        cboStudentDepartment.Items.AddRange(New Object() {"All"})
+        cboStudentDepartment.Location = New Point(76, 389)
+        cboStudentDepartment.Name = "cboStudentDepartment"
+        cboStudentDepartment.Size = New Size(298, 33)
+        cboStudentDepartment.TabIndex = 2
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label5.Location = New Point(75, 361)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(112, 25)
+        Label5.TabIndex = 27
+        Label5.Text = "Department"
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Location = New Point(312, 430)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(48, 25)
+        Label6.TabIndex = 25
+        Label6.Text = "Year"
+        ' 
+        ' lblDepartment
+        ' 
+        lblDepartment.AutoSize = True
+        lblDepartment.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+        lblDepartment.Location = New Point(76, 420)
+        lblDepartment.Name = "lblDepartment"
+        lblDepartment.Size = New Size(0, 25)
+        lblDepartment.TabIndex = 21
+        ' 
+        ' lblTimeIn
+        ' 
+        lblTimeIn.AutoSize = True
+        lblTimeIn.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+        lblTimeIn.Location = New Point(76, 480)
+        lblTimeIn.Name = "lblTimeIn"
+        lblTimeIn.Size = New Size(0, 25)
+        lblTimeIn.TabIndex = 19
+        ' 
+        ' lblCourse
+        ' 
+        lblCourse.AutoSize = True
+        lblCourse.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+        lblCourse.Location = New Point(76, 360)
+        lblCourse.Name = "lblCourse"
+        lblCourse.Size = New Size(0, 25)
+        lblCourse.TabIndex = 17
+        ' 
+        ' lblFullName
+        ' 
+        lblFullName.AutoSize = True
+        lblFullName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+        lblFullName.Location = New Point(76, 300)
+        lblFullName.Name = "lblFullName"
+        lblFullName.Size = New Size(0, 25)
+        lblFullName.TabIndex = 16
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label8.Location = New Point(76, 430)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(71, 25)
+        Label8.TabIndex = 15
+        Label8.Text = "Course"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label7.Location = New Point(76, 287)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(97, 25)
+        Label7.TabIndex = 14
+        Label7.Text = "Full Name"
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Anchor = AnchorStyles.Top
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(156, 30)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(150, 150)
+        PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox2.TabIndex = 12
+        PictureBox2.TabStop = False
+        ' 
+        ' btnAddUser
+        ' 
+        btnAddUser.BackColor = SystemColors.ScrollBar
+        btnAddUser.Enabled = False
+        btnAddUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
+        btnAddUser.Location = New Point(105, 506)
+        btnAddUser.Name = "btnAddUser"
+        btnAddUser.Size = New Size(241, 40)
+        btnAddUser.TabIndex = 5
+        btnAddUser.Text = "Add User"
+        btnAddUser.UseVisualStyleBackColor = False
+        ' 
+        ' lblStudent
+        ' 
+        lblStudent.AutoSize = True
+        lblStudent.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        lblStudent.Location = New Point(76, 211)
+        lblStudent.Name = "lblStudent"
+        lblStudent.Size = New Size(110, 25)
+        lblStudent.TabIndex = 1
+        lblStudent.Text = "Student No."
+        ' 
+        ' txtStudentID
+        ' 
+        txtStudentID.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+        txtStudentID.Location = New Point(76, 239)
+        txtStudentID.MaxLength = 10
+        txtStudentID.Name = "txtStudentID"
+        txtStudentID.PlaceholderText = "1234-12345"
+        txtStudentID.Size = New Size(298, 33)
+        txtStudentID.TabIndex = 0
+        ' 
         ' btnClose
         ' 
         btnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -411,7 +631,7 @@ Partial Class frmAdmin
         ' 
         ' frmAdmin
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1200, 825)
         Controls.Add(btnClose)
@@ -438,6 +658,10 @@ Partial Class frmAdmin
         panFilter.PerformLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox7, ComponentModel.ISupportInitialize).EndInit()
+        tabAddUser.ResumeLayout(False)
+        panAddUser.ResumeLayout(False)
+        panAddUser.PerformLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -471,4 +695,25 @@ Partial Class frmAdmin
     Friend WithEvents lblMessage As Label
     Friend WithEvents btnSave As Button
     Friend WithEvents btnResetSettings As Button
+    Friend WithEvents tabAddUser As TabPage
+    Friend WithEvents cboStudentYear As ComboBox
+    Friend WithEvents panAddUser As Panel
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents lblDepartment As Label
+    Friend WithEvents lblTimeIn As Label
+    Friend WithEvents lblCourse As Label
+    Friend WithEvents lblFullName As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents btnAddUser As Button
+    Friend WithEvents lblStudent As Label
+    Friend WithEvents txtStudentID As TextBox
+    Friend WithEvents cboStudentDepartment As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtFullName As TextBox
+    Friend WithEvents cboStudentCourse As ComboBox
 End Class
