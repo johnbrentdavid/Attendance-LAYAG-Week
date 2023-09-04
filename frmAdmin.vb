@@ -48,6 +48,15 @@ Public Class frmAdmin
         resetSettings()
 
         ' End of code about Control
+
+        'Start of code about Add User
+        xCenter = (tabAddUser.Size.Width / 2) - (panAddUser.Size.Width / 2)
+        yCenter = (tabAddUser.Size.Height / 2) - (panAddUser.Size.Height / 2)
+        panAddUser.Location = New Point(xCenter, yCenter)
+
+        getDepartment()
+        'End of code about Add User
+
     End Sub
 
     'Private Sub cboOrg_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOrg.SelectedIndexChanged
@@ -330,5 +339,70 @@ Public Class frmAdmin
             frmAttendance.Show()
             Me.Close()
         End If
+    End Sub
+
+    'CODE FOR ADD STUDENT
+    Private Sub getDepartment()
+        Dim conn As New MySqlConnection(stConnection)
+        Try
+            conn.Open()
+            Dim command As New MySqlCommand($"SELECT distinct(ddepartment) FROM tblprogram;", conn)
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read()
+                cboStudentDepartment.Items.Add(reader(0)).ToString()
+            End While
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
+    Private Sub getCourse()
+        Dim conn As New MySqlConnection(stConnection)
+        Try
+            conn.Open()
+            Dim command As New MySqlCommand($"Select dcourse from tblprogram where ddepartment='{cboStudentDepartment.Text}';", conn)
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read()
+                cboStudentCourse.Items.Add(reader(0)).ToString()
+            End While
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+    Private Sub saveAddUser()
+        Dim conn As New MySqlConnection(stConnection)
+
+        Try
+            conn.Open()
+            Dim command As New MySqlCommand($"insert into tblstudent (dstudentid,dfullname,dcourse,dyearlevel) values (@ID ,@FULLNAME ,{cboStudentCourse.Text},{cboStudentYear.Text});", conn)
+            command.Parameters.AddWithValue("@ID", txtStudentID.Text)
+            command.Parameters.AddWithValue("@FULLNAME", txtFullName.Text)
+
+            command.ExecuteNonQuery()
+            resetAddUser()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
+    Private Sub resetAddUser()
+        txtStudentID.Text = ""
+        txtFullName.Text = ""
+        cboStudentDepartment.SelectedIndex = 0
+        cboStudentCourse.Enabled = False
+        cboStudentYear.Enabled = False
+    End Sub
+
+    Private Sub cboStudentDepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboStudentDepartment.SelectedIndexChanged
+        cboStudentCourse.Enabled = True
+        cboStudentYear.Enabled = True
+        getCourse()
     End Sub
 End Class
