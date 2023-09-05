@@ -49,7 +49,7 @@ Partial Class frmAdmin
         Label1 = New Label()
         dtpTo = New DateTimePicker()
         dtpFrom = New DateTimePicker()
-        cboOrg = New ComboBox()
+        cboDepartment = New ComboBox()
         PictureBox8 = New PictureBox()
         PictureBox7 = New PictureBox()
         tabAddUser = New TabPage()
@@ -301,7 +301,7 @@ Partial Class frmAdmin
         panFilter.Controls.Add(Label1)
         panFilter.Controls.Add(dtpTo)
         panFilter.Controls.Add(dtpFrom)
-        panFilter.Controls.Add(cboOrg)
+        panFilter.Controls.Add(cboDepartment)
         panFilter.Controls.Add(PictureBox8)
         panFilter.Controls.Add(PictureBox7)
         panFilter.Location = New Point(11, 205)
@@ -317,7 +317,7 @@ Partial Class frmAdmin
         cboYear.Location = New Point(103, 300)
         cboYear.Name = "cboYear"
         cboYear.Size = New Size(245, 33)
-        cboYear.TabIndex = 23
+        cboYear.TabIndex = 3
         ' 
         ' btnReset
         ' 
@@ -326,7 +326,7 @@ Partial Class frmAdmin
         btnReset.Location = New Point(281, 434)
         btnReset.Name = "btnReset"
         btnReset.Size = New Size(67, 40)
-        btnReset.TabIndex = 22
+        btnReset.TabIndex = 7
         btnReset.TabStop = False
         btnReset.Text = "Reset"
         btnReset.UseVisualStyleBackColor = False
@@ -339,7 +339,7 @@ Partial Class frmAdmin
         btnExport.Location = New Point(103, 480)
         btnExport.Name = "btnExport"
         btnExport.Size = New Size(245, 40)
-        btnExport.TabIndex = 4
+        btnExport.TabIndex = 8
         btnExport.Text = "Export"
         btnExport.UseVisualStyleBackColor = False
         ' 
@@ -350,7 +350,7 @@ Partial Class frmAdmin
         btnSearch.Location = New Point(103, 434)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(172, 40)
-        btnSearch.TabIndex = 3
+        btnSearch.TabIndex = 6
         btnSearch.Text = "Search"
         btnSearch.UseVisualStyleBackColor = False
         ' 
@@ -373,7 +373,7 @@ Partial Class frmAdmin
         dtpTo.MinDate = New DateTime(2023, 5, 1, 0, 0, 0, 0)
         dtpTo.Name = "dtpTo"
         dtpTo.Size = New Size(245, 33)
-        dtpTo.TabIndex = 2
+        dtpTo.TabIndex = 5
         dtpTo.Value = New DateTime(2023, 6, 1, 0, 0, 0, 0)
         ' 
         ' dtpFrom
@@ -385,18 +385,18 @@ Partial Class frmAdmin
         dtpFrom.MinDate = New DateTime(2023, 5, 1, 0, 0, 0, 0)
         dtpFrom.Name = "dtpFrom"
         dtpFrom.Size = New Size(245, 33)
-        dtpFrom.TabIndex = 1
+        dtpFrom.TabIndex = 4
         dtpFrom.Value = New DateTime(2023, 6, 1, 0, 0, 0, 0)
         ' 
-        ' cboOrg
+        ' cboDepartment
         ' 
-        cboOrg.DropDownStyle = ComboBoxStyle.DropDownList
-        cboOrg.FormattingEnabled = True
-        cboOrg.Items.AddRange(New Object() {"Organization - ALL", "CPS", "IECEP", "IIEE", "LPIES", "LYCO-CpE", "PICE"})
-        cboOrg.Location = New Point(103, 261)
-        cboOrg.Name = "cboOrg"
-        cboOrg.Size = New Size(245, 33)
-        cboOrg.TabIndex = 0
+        cboDepartment.DropDownStyle = ComboBoxStyle.DropDownList
+        cboDepartment.FormattingEnabled = True
+        cboDepartment.Items.AddRange(New Object() {"Department  - ALL"})
+        cboDepartment.Location = New Point(103, 261)
+        cboDepartment.Name = "cboDepartment"
+        cboDepartment.Size = New Size(245, 33)
+        cboDepartment.TabIndex = 2
         ' 
         ' PictureBox8
         ' 
@@ -682,7 +682,7 @@ Partial Class frmAdmin
     Friend WithEvents PictureBox7 As PictureBox
     Friend WithEvents panGrid As Panel
     Friend WithEvents grdAttendance As DataGridView
-    Friend WithEvents cboOrg As ComboBox
+    Friend WithEvents cboDepartment As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents dtpTo As DateTimePicker
     Friend WithEvents dtpFrom As DateTimePicker
