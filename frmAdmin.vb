@@ -57,7 +57,8 @@ Public Class frmAdmin
         yCenter = (tabAddUser.Size.Height / 2) - (panAddUser.Size.Height / 2)
         panAddUser.Location = New Point(xCenter, yCenter)
 
-        getDepartment()
+        getDepartment("Export")
+        getDepartment("Add")
         'End of code about Add User
 
     End Sub
@@ -116,32 +117,15 @@ Public Class frmAdmin
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
         ' Build the query string
-        Dim query As String = $"select idtblattendance as 'Attendance ID', ttimein as 'Time In', ttimeout as 'Time Out', tblstudent.dstudentid as 'Student ID', 
-        dfullname as 'Full Name', dcourse as 'Course', dyearlevel as 'Year Level'
-        from tblattendance natural join tblstudent where tblattendance.ttimein between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
-        'and tblattendance.ttimeout between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
+        Dim query As String = $"Select idtblattendance as 'Attendance ID', ttimein as 'Time In', ttimeout as 'Time Out', tblstudent.dstudentid as 'Student ID', 
+                                    dfullname as 'Full Name', dcourse as 'Course',ddepartment as 'Department', dyearlevel as 'Year Level' from tblattendance 
+                                natural join tblstudent 
+                                natural join tblprogram 
+                                where ttimein between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
 
         ' If not all student org
-        If cboOrg.SelectedIndex > 0 Then
-
-            Dim org As String = ""
-
-            Select Case cboOrg.Text
-                Case "CPS"
-                    org = "('BSCS', 'BSIT')"
-                Case "IECEP"
-                    org = "('BSECE')"
-                Case "IIEE"
-                    org = "('BSEE')"
-                Case "LPIES"
-                    org = "('BSIE')"
-                Case "LYCO-CpE"
-                    org = "('BSCpE')"
-                Case "PICE"
-                    org = "('BSCE')"
-            End Select
-
-            query += $" and tblstudent.dcourse in {org}"
+        If cboDepartment.SelectedIndex > 0 Then
+            query += $" and tblstudent.ddepartment in '{cboDepartment.Text}'"
         End If
 
         ' if not all year
@@ -184,7 +168,7 @@ Public Class frmAdmin
     End Sub
 
     Private Sub resetValues()
-        cboOrg.SelectedIndex = 0
+        cboDepartment.SelectedIndex = 0
         cboYear.SelectedIndex = 0
 
         If DateTime.Now.Date < dtpFrom.Value Then
@@ -345,14 +329,19 @@ Public Class frmAdmin
     End Sub
 
     'CODE FOR ADD STUDENT
-    Private Sub getDepartment()
+    Private Sub getDepartment(fill As String)
         Dim conn As New MySqlConnection(stConnection)
         Try
             conn.Open()
             Dim command As New MySqlCommand($"SELECT distinct(ddepartment) FROM tblprogram;", conn)
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read()
-                cboStudentDepartment.Items.Add(reader(0)).ToString()
+                If fill = "Add" Then
+                    cboStudentDepartment.Items.Add(reader(0)).ToString()
+                ElseIf fill = "Export" Then
+                    cboDepartment.Items.Add(reader(0)).ToString()
+                End If
+
             End While
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
