@@ -595,7 +595,8 @@ Partial Class frmAdmin
         ' 
         ' btnAddUser
         ' 
-        btnAddUser.BackColor = Color.Gold
+        btnAddUser.BackColor = Color.Silver
+        btnAddUser.Enabled = False
         btnAddUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         btnAddUser.Location = New Point(105, 506)
         btnAddUser.Name = "btnAddUser"
