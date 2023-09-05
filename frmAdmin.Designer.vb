@@ -466,7 +466,7 @@ Partial Class frmAdmin
         cboStudentCourse.Location = New Point(82, 458)
         cboStudentCourse.Name = "cboStudentCourse"
         cboStudentCourse.Size = New Size(224, 33)
-        cboStudentCourse.TabIndex = 3
+        cboStudentCourse.TabIndex = 4
         ' 
         ' cboStudentYear
         ' 
@@ -477,31 +477,35 @@ Partial Class frmAdmin
         cboStudentYear.Location = New Point(312, 458)
         cboStudentYear.Name = "cboStudentYear"
         cboStudentYear.Size = New Size(62, 33)
-        cboStudentYear.TabIndex = 4
+        cboStudentYear.TabIndex = 5
         ' 
         ' txtFullName
         ' 
+        txtFullName.CharacterCasing = CharacterCasing.Upper
+        txtFullName.Enabled = False
         txtFullName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         txtFullName.Location = New Point(76, 315)
         txtFullName.MaxLength = 50
         txtFullName.Name = "txtFullName"
-        txtFullName.PlaceholderText = "Dela Cruz, Juan"
+        txtFullName.PlaceholderText = "DELA CRUZ, JUAN"
         txtFullName.Size = New Size(298, 33)
-        txtFullName.TabIndex = 1
+        txtFullName.TabIndex = 2
         ' 
         ' cboStudentDepartment
         ' 
         cboStudentDepartment.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentDepartment.Enabled = False
         cboStudentDepartment.FormattingEnabled = True
         cboStudentDepartment.Items.AddRange(New Object() {"All"})
         cboStudentDepartment.Location = New Point(76, 389)
         cboStudentDepartment.Name = "cboStudentDepartment"
         cboStudentDepartment.Size = New Size(298, 33)
-        cboStudentDepartment.TabIndex = 2
+        cboStudentDepartment.TabIndex = 3
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
+        Label5.BackColor = Color.Transparent
         Label5.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label5.Location = New Point(75, 361)
         Label5.Name = "Label5"
@@ -512,6 +516,7 @@ Partial Class frmAdmin
         ' Label6
         ' 
         Label6.AutoSize = True
+        Label6.BackColor = Color.Transparent
         Label6.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(312, 430)
         Label6.Name = "Label6"
@@ -558,6 +563,7 @@ Partial Class frmAdmin
         ' Label8
         ' 
         Label8.AutoSize = True
+        Label8.BackColor = Color.Transparent
         Label8.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label8.Location = New Point(76, 430)
         Label8.Name = "Label8"
@@ -568,6 +574,7 @@ Partial Class frmAdmin
         ' Label7
         ' 
         Label7.AutoSize = True
+        Label7.BackColor = Color.Transparent
         Label7.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(76, 287)
         Label7.Name = "Label7"
@@ -593,15 +600,16 @@ Partial Class frmAdmin
         btnAddUser.Location = New Point(105, 506)
         btnAddUser.Name = "btnAddUser"
         btnAddUser.Size = New Size(241, 40)
-        btnAddUser.TabIndex = 5
+        btnAddUser.TabIndex = 6
         btnAddUser.Text = "Add User"
         btnAddUser.UseVisualStyleBackColor = False
         ' 
         ' lblStudent
         ' 
         lblStudent.AutoSize = True
+        lblStudent.BackColor = Color.Transparent
         lblStudent.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        lblStudent.Location = New Point(76, 211)
+        lblStudent.Location = New Point(75, 207)
         lblStudent.Name = "lblStudent"
         lblStudent.Size = New Size(110, 25)
         lblStudent.TabIndex = 1
@@ -615,7 +623,7 @@ Partial Class frmAdmin
         txtStudentID.Name = "txtStudentID"
         txtStudentID.PlaceholderText = "1234-12345"
         txtStudentID.Size = New Size(298, 33)
-        txtStudentID.TabIndex = 0
+        txtStudentID.TabIndex = 1
         ' 
         ' btnClose
         ' 
@@ -630,7 +638,7 @@ Partial Class frmAdmin
         ' 
         ' frmAdmin
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1200, 825)
         Controls.Add(btnClose)

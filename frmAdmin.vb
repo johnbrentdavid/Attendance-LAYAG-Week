@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
+Imports System.Text.RegularExpressions
 
 Public Class frmAdmin
 
@@ -360,9 +361,15 @@ Public Class frmAdmin
 
     Private Sub getCourse()
         Dim conn As New MySqlConnection(stConnection)
+        Dim query As String
+        If cboStudentDepartment.SelectedIndex = 0 Then
+            query = $"Select dcourse from tblprogram;"
+        Else
+            query = $"Select dcourse from tblprogram where ddepartment='{cboStudentDepartment.Text}';"
+        End If
         Try
             conn.Open()
-            Dim command As New MySqlCommand($"Select dcourse from tblprogram where ddepartment='{cboStudentDepartment.Text}';", conn)
+            Dim command As New MySqlCommand(query, conn)
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read()
                 cboStudentCourse.Items.Add(reader(0)).ToString()
@@ -398,20 +405,50 @@ Public Class frmAdmin
         cboStudentDepartment.SelectedIndex = -1
         cboStudentYear.SelectedIndex = -1
         cboStudentCourse.SelectedIndex = -1
+        cboStudentDepartment.SelectedIndex = -1
+        cboStudentDepartment.Enabled = False
         cboStudentCourse.Enabled = False
         cboStudentYear.Enabled = False
     End Sub
 
     Private Sub cboStudentDepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboStudentDepartment.SelectedIndexChanged
-        cboStudentCourse.Enabled = True
-        cboStudentYear.Enabled = True
-        cboStudentCourse.Items.Clear()
-        cboStudentCourse.SelectedIndex = -1
-        getCourse()
+        If Not cboStudentDepartment.SelectedIndex = -1 Then
+            cboStudentCourse.Enabled = True
+            cboStudentYear.Enabled = True
+            cboStudentCourse.SelectedIndex = -1
+            cboStudentCourse.Items.Clear()
+            getCourse()
+        End If
     End Sub
 
-    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+    Private Sub txtStudentID_TextChanged(sender As Object, e As EventArgs) Handles txtStudentID.TextChanged
+        Dim regexPattern As String = "^\d{4}-\d{5}$"
+        If txtStudentID.TextLength = 10 And Regex.IsMatch(txtStudentID.Text.ToString(), regexPattern) Then
+            txtFullName.Enabled = True
+        Else
+            txtFullName.Enabled = False
+            cboStudentDepartment.Enabled = False
+            cboStudentCourse.Enabled = False
+            cboStudentYear.Enabled = False
+        End If
+    End Sub
 
+    Private Sub txtFullName_TextChanged(sender As Object, e As EventArgs) Handles txtFullName.TextChanged
+        Dim regexPattern As String = "\w+,\s\w+"
+        If Regex.IsMatch(txtFullName.Text.ToString(), regexPattern) Then
+            cboStudentDepartment.Enabled = True
+        Else
+            cboStudentDepartment.Enabled = False
+            cboStudentCourse.Enabled = False
+            cboStudentYear.Enabled = False
+        End If
+    End Sub
 
+    Private Sub textBox_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFullName.KeyDown, txtStudentID.KeyDown
+        'There is a a sound beep though when this event is handled
+        If e.Control AndAlso e.KeyCode = Keys.A Then
+            e.Handled = True
+            DirectCast(sender, TextBox).SelectAll()
+        End If
     End Sub
 End Class
