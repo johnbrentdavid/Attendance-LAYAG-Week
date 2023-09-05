@@ -382,24 +382,56 @@ Public Class frmAdmin
             conn.Close()
         End Try
     End Sub
-    Private Sub saveAddUser()
+    Private Sub insertUser()
         Dim conn As New MySqlConnection(stConnection)
+        If Not isExisting() Then
+            Try
+                conn.Open()
+                Dim command As New MySqlCommand($"insert into tblstudent (dstudentid,dfullname,dcourse,dyearlevel) values (@ID ,@FULLNAME ,'{cboStudentCourse.Text}','{cboStudentYear.Text}');", conn)
+                command.Parameters.AddWithValue("@ID", txtStudentID.Text)
+                command.Parameters.AddWithValue("@FULLNAME", txtFullName.Text)
+                command.ExecuteNonQuery()
 
+                MessageBox.Show("Succesfully Added the User!")
+                resetAddUser()
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                conn.Close()
+            End Try
+        Else
+            Exit Sub
+        End If
+
+    End Sub
+
+    Private Function isExisting()
+        Dim conn As New MySqlConnection(stConnection)
         Try
             conn.Open()
-            Dim command As New MySqlCommand($"insert into tblstudent (dstudentid,dfullname,dcourse,dyearlevel) values (@ID ,@FULLNAME ,{cboStudentCourse.Text},{cboStudentYear.Text});", conn)
+            Dim command As New MySqlCommand($"Select dstudentid,dfullname from tblstudent where dstudentid = @ID or dfullname= @FULLNAME", conn)
             command.Parameters.AddWithValue("@ID", txtStudentID.Text)
             command.Parameters.AddWithValue("@FULLNAME", txtFullName.Text)
 
-            command.ExecuteNonQuery()
-            resetAddUser()
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            If reader.HasRows() Then
+                While reader.Read()
+                    MessageBox.Show($"Existing Data Found: ID={reader(0)} Name={reader(1)}")
+                End While
+                Return True
+            Else
+                Return False
+            End If
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "Existing Data Found", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return Nothing
         Finally
             conn.Close()
         End Try
-    End Sub
+
+    End Function
 
     Private Sub resetAddUser()
         txtStudentID.Text = ""
@@ -478,7 +510,7 @@ Public Class frmAdmin
 
     Private Sub btnAddUser_Click(sender As Object, e As EventArgs) Handles btnAddUser.Click
         If cboStudentYear.Enabled = True And Not cboStudentYear.SelectedIndex = -1 Then
-
+            insertUser()
         End If
     End Sub
 End Class
