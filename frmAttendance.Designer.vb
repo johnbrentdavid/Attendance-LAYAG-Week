@@ -93,7 +93,7 @@ Partial Class frmAttendance
         TabControl1.Controls.Add(tabAttendance)
         TabControl1.Controls.Add(tabView)
         TabControl1.Dock = DockStyle.Fill
-        TabControl1.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        TabControl1.Font = New Font("Baskerville Old Face", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point)
         TabControl1.ItemSize = New Size(108, 30)
         TabControl1.Location = New Point(0, 0)
         TabControl1.Margin = New Padding(5, 6, 5, 6)
@@ -125,12 +125,11 @@ Partial Class frmAttendance
         lblCopyright.Anchor = AnchorStyles.Bottom
         lblCopyright.AutoSize = True
         lblCopyright.BackColor = Color.Transparent
-        lblCopyright.BorderStyle = BorderStyle.FixedSingle
-        lblCopyright.Font = New Font("Times New Roman", 18F, FontStyle.Italic, GraphicsUnit.Point)
-        lblCopyright.Location = New Point(564, 1531)
+        lblCopyright.Font = New Font("Times New Roman", 14.1428576F, FontStyle.Italic, GraphicsUnit.Point)
+        lblCopyright.Location = New Point(1745, 1568)
         lblCopyright.Margin = New Padding(5, 0, 5, 0)
         lblCopyright.Name = "lblCopyright"
-        lblCopyright.Size = New Size(867, 50)
+        lblCopyright.Size = New Size(687, 38)
         lblCopyright.TabIndex = 8
         lblCopyright.Text = "Copyright 2023 | Computer Programming Society"
         ' 
@@ -138,13 +137,12 @@ Partial Class frmAttendance
         ' 
         lblTime.Anchor = AnchorStyles.Top
         lblTime.AutoSize = True
-        lblTime.BackColor = Color.White
-        lblTime.BorderStyle = BorderStyle.FixedSingle
-        lblTime.Font = New Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point)
+        lblTime.BackColor = Color.Transparent
+        lblTime.Font = New Font("Baskerville Old Face", 36F, FontStyle.Regular, GraphicsUnit.Point)
         lblTime.Location = New Point(934, 128)
         lblTime.Margin = New Padding(5, 0, 5, 0)
         lblTime.Name = "lblTime"
-        lblTime.Size = New Size(179, 89)
+        lblTime.Size = New Size(223, 96)
         lblTime.TabIndex = 4
         lblTime.Text = "Time"
         ' 
@@ -153,20 +151,19 @@ Partial Class frmAttendance
         lblMessage.Anchor = AnchorStyles.Bottom
         lblMessage.AutoSize = True
         lblMessage.BackColor = Color.WhiteSmoke
-        lblMessage.BorderStyle = BorderStyle.Fixed3D
         lblMessage.FlatStyle = FlatStyle.Flat
-        lblMessage.Font = New Font("Lucida Bright", 27.8571434F, FontStyle.Bold, GraphicsUnit.Point)
-        lblMessage.Location = New Point(390, 1444)
+        lblMessage.Font = New Font("Baskerville Old Face", 36F, FontStyle.Bold, GraphicsUnit.Point)
+        lblMessage.Location = New Point(422, 1510)
         lblMessage.Margin = New Padding(5, 0, 5, 0)
         lblMessage.Name = "lblMessage"
-        lblMessage.Size = New Size(1340, 77)
+        lblMessage.Size = New Size(1403, 96)
         lblMessage.TabIndex = 7
         lblMessage.Text = "Please wait for the admin to come back."
         lblMessage.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' panLogos
         ' 
-        panLogos.BackColor = Color.White
+        panLogos.BackColor = Color.WhiteSmoke
         panLogos.BorderStyle = BorderStyle.Fixed3D
         panLogos.Controls.Add(Label6)
         panLogos.Controls.Add(lblTotal)
@@ -185,14 +182,14 @@ Partial Class frmAttendance
         panLogos.Location = New Point(902, 316)
         panLogos.Margin = New Padding(5, 6, 5, 6)
         panLogos.Name = "panLogos"
-        panLogos.Size = New Size(1058, 1172)
+        panLogos.Size = New Size(1126, 1172)
         panLogos.TabIndex = 3
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Britannic Bold", 26.1428585F, FontStyle.Regular, GraphicsUnit.Point)
-        Label6.Location = New Point(217, 457)
+        Label6.Location = New Point(256, 456)
         Label6.Margin = New Padding(5, 0, 5, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(609, 68)
@@ -218,7 +215,7 @@ Partial Class frmAttendance
         lblLYCO.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         lblLYCO.AutoSize = True
         lblLYCO.Font = New Font("Baskerville Old Face", 18F, FontStyle.Bold, GraphicsUnit.Point)
-        lblLYCO.Location = New Point(866, 917)
+        lblLYCO.Location = New Point(934, 917)
         lblLYCO.Margin = New Padding(5, 0, 5, 0)
         lblLYCO.Name = "lblLYCO"
         lblLYCO.Size = New Size(42, 48)
@@ -231,7 +228,7 @@ Partial Class frmAttendance
         lblLPIES.Anchor = AnchorStyles.Bottom
         lblLPIES.AutoSize = True
         lblLPIES.Font = New Font("Baskerville Old Face", 18F, FontStyle.Bold, GraphicsUnit.Point)
-        lblLPIES.Location = New Point(511, 919)
+        lblLPIES.Location = New Point(545, 919)
         lblLPIES.Margin = New Padding(5, 0, 5, 0)
         lblLPIES.Name = "lblLPIES"
         lblLPIES.Size = New Size(42, 48)
@@ -257,7 +254,7 @@ Partial Class frmAttendance
         lblIECEP.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblIECEP.AutoSize = True
         lblIECEP.Font = New Font("Baskerville Old Face", 18F, FontStyle.Bold, GraphicsUnit.Point)
-        lblIECEP.Location = New Point(866, 349)
+        lblIECEP.Location = New Point(934, 349)
         lblIECEP.Margin = New Padding(5, 0, 5, 0)
         lblIECEP.Name = "lblIECEP"
         lblIECEP.Size = New Size(42, 48)
@@ -270,7 +267,7 @@ Partial Class frmAttendance
         lblCPS.Anchor = AnchorStyles.Top
         lblCPS.AutoSize = True
         lblCPS.Font = New Font("Baskerville Old Face", 18F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCPS.Location = New Point(511, 350)
+        lblCPS.Location = New Point(545, 350)
         lblCPS.Margin = New Padding(5, 0, 5, 0)
         lblCPS.Name = "lblCPS"
         lblCPS.Size = New Size(42, 48)
@@ -294,7 +291,7 @@ Partial Class frmAttendance
         ' 
         picLYCO.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         picLYCO.Image = CType(resources.GetObject("picLYCO.Image"), Image)
-        picLYCO.Location = New Point(756, 608)
+        picLYCO.Location = New Point(824, 608)
         picLYCO.Margin = New Padding(5, 6, 5, 6)
         picLYCO.Name = "picLYCO"
         picLYCO.Size = New Size(257, 300)
@@ -318,7 +315,7 @@ Partial Class frmAttendance
         ' 
         picLPIES.Anchor = AnchorStyles.Bottom
         picLPIES.Image = CType(resources.GetObject("picLPIES.Image"), Image)
-        picLPIES.Location = New Point(401, 608)
+        picLPIES.Location = New Point(435, 608)
         picLPIES.Margin = New Padding(5, 6, 5, 6)
         picLPIES.Name = "picLPIES"
         picLPIES.Size = New Size(257, 300)
@@ -330,7 +327,7 @@ Partial Class frmAttendance
         ' 
         picIECEP.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         picIECEP.Image = CType(resources.GetObject("picIECEP.Image"), Image)
-        picIECEP.Location = New Point(756, 38)
+        picIECEP.Location = New Point(824, 38)
         picIECEP.Margin = New Padding(5, 6, 5, 6)
         picIECEP.Name = "picIECEP"
         picIECEP.Size = New Size(257, 300)
@@ -353,7 +350,7 @@ Partial Class frmAttendance
         ' 
         picCPS.Anchor = AnchorStyles.Top
         picCPS.Image = CType(resources.GetObject("picCPS.Image"), Image)
-        picCPS.Location = New Point(401, 38)
+        picCPS.Location = New Point(435, 38)
         picCPS.Margin = New Padding(5, 6, 5, 6)
         picCPS.Name = "picCPS"
         picCPS.Size = New Size(257, 300)
@@ -363,7 +360,7 @@ Partial Class frmAttendance
         ' 
         ' panStudentID
         ' 
-        panStudentID.BackColor = Color.White
+        panStudentID.BackColor = Color.WhiteSmoke
         panStudentID.BorderStyle = BorderStyle.Fixed3D
         panStudentID.Controls.Add(lblDepartment)
         panStudentID.Controls.Add(Label5)
@@ -377,10 +374,11 @@ Partial Class frmAttendance
         panStudentID.Controls.Add(btnSubmit)
         panStudentID.Controls.Add(lblStudent)
         panStudentID.Controls.Add(txtStudentID)
+        panStudentID.Font = New Font("Century", 14.1428576F, FontStyle.Regular, GraphicsUnit.Point)
         panStudentID.Location = New Point(82, 316)
         panStudentID.Margin = New Padding(5, 6, 5, 6)
         panStudentID.Name = "panStudentID"
-        panStudentID.Size = New Size(770, 1172)
+        panStudentID.Size = New Size(782, 1172)
         panStudentID.TabIndex = 2
         ' 
         ' lblDepartment
@@ -471,7 +469,7 @@ Partial Class frmAttendance
         ' 
         PictureBox7.Anchor = AnchorStyles.Top
         PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), Image)
-        PictureBox7.Location = New Point(261, 52)
+        PictureBox7.Location = New Point(267, 52)
         PictureBox7.Margin = New Padding(5, 6, 5, 6)
         PictureBox7.Name = "PictureBox7"
         PictureBox7.Size = New Size(257, 234)
@@ -484,10 +482,10 @@ Partial Class frmAttendance
         btnSubmit.BackColor = Color.DarkGray
         btnSubmit.Enabled = False
         btnSubmit.Font = New Font("Baskerville Old Face", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSubmit.Location = New Point(180, 1050)
+        btnSubmit.Location = New Point(231, 1048)
         btnSubmit.Margin = New Padding(5, 6, 5, 6)
         btnSubmit.Name = "btnSubmit"
-        btnSubmit.Size = New Size(413, 80)
+        btnSubmit.Size = New Size(257, 80)
         btnSubmit.TabIndex = 1
         btnSubmit.Text = "Time In/Out"
         btnSubmit.UseVisualStyleBackColor = False
@@ -506,13 +504,13 @@ Partial Class frmAttendance
         ' txtStudentID
         ' 
         txtStudentID.Enabled = False
-        txtStudentID.Font = New Font("Baskerville Old Face", 14.1428576F, FontStyle.Regular, GraphicsUnit.Point)
-        txtStudentID.Location = New Point(130, 467)
+        txtStudentID.Font = New Font("Century", 14.1428576F, FontStyle.Regular, GraphicsUnit.Point)
+        txtStudentID.Location = New Point(132, 467)
         txtStudentID.Margin = New Padding(5, 6, 5, 6)
         txtStudentID.MaxLength = 10
         txtStudentID.Name = "txtStudentID"
         txtStudentID.PlaceholderText = "1234-12345"
-        txtStudentID.Size = New Size(508, 45)
+        txtStudentID.Size = New Size(508, 47)
         txtStudentID.TabIndex = 0
         ' 
         ' tabView
@@ -549,29 +547,29 @@ Partial Class frmAttendance
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.Location = New Point(242, 442)
+        Label4.Font = New Font("Baskerville Old Face", 24F, FontStyle.Bold, GraphicsUnit.Point)
+        Label4.Location = New Point(220, 442)
         Label4.Margin = New Padding(5, 0, 5, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(298, 65)
+        Label4.Size = New Size(337, 64)
         Label4.TabIndex = 21
         Label4.Text = "Admin Login"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label3.Location = New Point(130, 794)
+        Label3.Font = New Font("Baskerville Old Face", 15.8571434F, FontStyle.Regular, GraphicsUnit.Point)
+        Label3.Location = New Point(130, 791)
         Label3.Margin = New Padding(5, 0, 5, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(160, 46)
+        Label3.Size = New Size(165, 43)
         Label3.TabIndex = 20
-        Label3.Text = "Password"
+        Label3.Text = "Password:"
         ' 
         ' txtPassword
         ' 
         txtPassword.Font = New Font("Wingdings", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        txtPassword.Location = New Point(130, 850)
+        txtPassword.Location = New Point(139, 850)
         txtPassword.Margin = New Padding(5, 6, 5, 6)
         txtPassword.MaxLength = 20
         txtPassword.Name = "txtPassword"
@@ -606,11 +604,11 @@ Partial Class frmAttendance
         ' btnLogin
         ' 
         btnLogin.BackColor = SystemColors.ScrollBar
-        btnLogin.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        btnLogin.Location = New Point(180, 988)
+        btnLogin.Font = New Font("Baskerville Old Face", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point)
+        btnLogin.Location = New Point(277, 993)
         btnLogin.Margin = New Padding(5, 6, 5, 6)
         btnLogin.Name = "btnLogin"
-        btnLogin.Size = New Size(413, 80)
+        btnLogin.Size = New Size(224, 80)
         btnLogin.TabIndex = 3
         btnLogin.Text = "Login"
         btnLogin.UseVisualStyleBackColor = False
@@ -618,35 +616,37 @@ Partial Class frmAttendance
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label1.Location = New Point(130, 596)
+        Label1.Font = New Font("Baskerville Old Face", 15.8571434F, FontStyle.Regular, GraphicsUnit.Point)
+        Label1.Location = New Point(130, 589)
         Label1.Margin = New Padding(5, 0, 5, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(170, 46)
+        Label1.Size = New Size(181, 43)
         Label1.TabIndex = 16
-        Label1.Text = "Username"
+        Label1.Text = "Username:"
         ' 
         ' txtUsername
         ' 
-        txtUsername.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        txtUsername.Location = New Point(130, 652)
+        txtUsername.Font = New Font("Century", 14.1428576F, FontStyle.Regular, GraphicsUnit.Point)
+        txtUsername.Location = New Point(140, 652)
         txtUsername.Margin = New Padding(5, 6, 5, 6)
         txtUsername.MaxLength = 20
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(508, 52)
+        txtUsername.Size = New Size(508, 47)
         txtUsername.TabIndex = 1
         ' 
         ' btnClose
         ' 
         btnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnClose.Location = New Point(1932, 0)
+        btnClose.BackColor = Color.LightCoral
+        btnClose.Font = New Font("Baskerville Old Face", 9.857143F, FontStyle.Regular, GraphicsUnit.Point)
+        btnClose.Location = New Point(1921, 0)
         btnClose.Margin = New Padding(5, 6, 5, 6)
         btnClose.Name = "btnClose"
-        btnClose.Size = New Size(129, 46)
+        btnClose.Size = New Size(140, 60)
         btnClose.TabIndex = 1
         btnClose.TabStop = False
         btnClose.Text = "Close"
-        btnClose.UseVisualStyleBackColor = True
+        btnClose.UseVisualStyleBackColor = False
         ' 
         ' tmrSlow
         ' 
@@ -655,14 +655,14 @@ Partial Class frmAttendance
         ' btnReconnect
         ' 
         btnReconnect.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnReconnect.BackColor = Color.FromArgb(CByte(3), CByte(252), CByte(15))
+        btnReconnect.BackColor = Color.FromArgb(CByte(128), CByte(255), CByte(128))
         btnReconnect.Enabled = False
         btnReconnect.FlatAppearance.BorderSize = 0
-        btnReconnect.FlatStyle = FlatStyle.Flat
-        btnReconnect.Location = New Point(1793, 0)
+        btnReconnect.Font = New Font("Baskerville Old Face", 9.857143F, FontStyle.Regular, GraphicsUnit.Point)
+        btnReconnect.Location = New Point(1788, 0)
         btnReconnect.Margin = New Padding(5, 6, 5, 6)
         btnReconnect.Name = "btnReconnect"
-        btnReconnect.Size = New Size(129, 46)
+        btnReconnect.Size = New Size(134, 60)
         btnReconnect.TabIndex = 2
         btnReconnect.TabStop = False
         btnReconnect.Text = "Status"
