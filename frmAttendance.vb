@@ -449,4 +449,12 @@ Public Class frmAttendance
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
 
     End Sub
+
+    Private Sub panStudentID_Paint(sender As Object, e As PaintEventArgs) Handles panStudentID.Paint
+
+    End Sub
+
+    Private Sub tabView_Click(sender As Object, e As EventArgs) Handles tabView.Click
+
+    End Sub
 End Class
