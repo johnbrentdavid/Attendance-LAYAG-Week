@@ -125,12 +125,12 @@ Public Class frmAdmin
 
         ' If not all student org
         If cboDepartment.SelectedIndex > 0 Then
-            query += $" and tblstudent.ddepartment in '{cboDepartment.Text}'"
+            query += $" and ddepartment = '{cboDepartment.Text}'"
         End If
 
         ' if not all year
         If cboYear.SelectedIndex > 0 Then
-            query += $" and tblstudent.dyearlevel = '{cboYear.Text}'"
+            query += $" and dyearlevel = '{cboYear.Text}' "
         End If
 
         query += ";"
@@ -503,31 +503,4 @@ Public Class frmAdmin
         End If
     End Sub
 
-    Private Sub panSettings_Paint(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
-    Private Sub panGrid_Paint(sender As Object, e As PaintEventArgs) Handles panGrid.Paint
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub lblStudent_Click(sender As Object, e As EventArgs) Handles lblStudent.Click
-
-    End Sub
-
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
-
-    End Sub
-
-    Private Sub tabAddUser_Click(sender As Object, e As EventArgs) Handles tabAddUser.Click
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs)
-
-    End Sub
 End Class
