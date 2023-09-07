@@ -13,22 +13,19 @@ Public Class frmOrganization
         Select Case stOrg
             Case "CPS"
                 logo = frmAttendance.picCPS.Image
-                stFullName = "Computer Programming Society"
+                stFullName = "College of Arts and Sciences"
             Case "IECEP"
                 logo = frmAttendance.picIECEP.Image
-                stFullName = "Institute of Electronics Engineers of the Philippines"
+                stFullName = "College of Business and Accountancy"
             Case "IIEE"
                 logo = frmAttendance.picIIEE.Image
-                stFullName = "Institute of Integrated Electrical Engineers"
+                stFullName = "College of International Tourism and Hospitality Management"
             Case "LPIES"
                 logo = frmAttendance.picLPIES.Image
-                stFullName = "Lyceum of the Philippines - Laguna Industrial Engineering Society"
-            Case "LYCO"
-                logo = frmAttendance.picLYCO.Image
-                stFullName = "Lycean’s Coalition of Computer Engineers"
+                stFullName = "College of Engineering and Computer Studies"
             Case "CE"
                 logo = frmAttendance.picCE.Image
-                stFullName = "Philippine Institute of Civil Engineers"
+                stFullName = "LPU St. Cabrini"
         End Select
 
         ' Place proper Logo and Org name
