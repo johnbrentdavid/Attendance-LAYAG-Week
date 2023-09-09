@@ -381,7 +381,8 @@ Public Class frmAdmin
                 command.Parameters.AddWithValue("@FULLNAME", txtFullName.Text)
                 command.ExecuteNonQuery()
 
-                MessageBox.Show("Succesfully Added the User!")
+                timeInUser()
+                MessageBox.Show("Succesfully Added and Timed In the User!")
                 resetAddUser()
 
             Catch ex As Exception
@@ -422,6 +423,19 @@ Public Class frmAdmin
 
     End Function
 
+    Private Sub timeInUser()
+        Dim conn As New MySqlConnection(stConnection)
+        Dim currentTime As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        Try
+            conn.Open()
+            Dim command As New MySqlCommand($"Insert into tblattendance values (null, '{txtStudentID.Text}','{currentTime}',null);", conn)
+            command.ExecuteNonQuery()
+        Catch ex As Exception
+
+        Finally
+            conn.Close()
+        End Try
+    End Sub
     Private Sub resetAddUser()
         txtStudentID.Text = ""
         txtFullName.Text = ""

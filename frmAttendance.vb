@@ -282,7 +282,6 @@ Public Class frmAttendance
             lblIECEP.Text = iecep
             lblIIEE.Text = iiee
             lblLPIES.Text = lpies
-            lblLYCO.Text = lyco
             lblTotal.Text = $"Total Current Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Organization Attendees", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -322,10 +321,6 @@ Public Class frmAttendance
 
     Private Sub picLPIES_Click(sender As Object, e As EventArgs) Handles picLPIES.Click
         openOrgForm("LPIES", "BSIE", "")
-    End Sub
-
-    Private Sub picLYCO_Click(sender As Object, e As EventArgs) Handles picLYCO.Click
-        openOrgForm("LYCO", "BSCpE", "")
     End Sub
 
     Private Sub openOrgForm(org As String, course1 As String, course2 As String)
