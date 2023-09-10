@@ -132,8 +132,6 @@ Partial Public Class frmAdmin
 
         query += ";"
 
-        MsgBox(query)
-
         Dim conn As New MySqlConnection(stConnection)
 
         Try
@@ -192,8 +190,8 @@ Partial Public Class frmAdmin
 
         ' Create the folder if not existing
         Try
-            Directory.CreateDirectory(path & "\COECS WEEK ATTENDANCE LOGS")
-            path += "\COECS WEEK ATTENDANCE LOGS"
+            Directory.CreateDirectory(path & "\ATTENDANCE LOGS")
+            path += "\ATTENDANCE LOGS"
         Catch ex As Exception
             MessageBox.Show(ex.Message, stTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -212,7 +210,7 @@ Partial Public Class frmAdmin
                 For i As Integer = 0 To table.Columns.Count - 1
 
                     ' If column dfullname
-                    If i = table.Columns.IndexOf("dfullname") Then
+                    If i = table.Columns.IndexOf("Full Name") Then
                         writer.Write($"""{row(i)}""")
                     Else
                         writer.Write(row(i).ToString())
@@ -332,7 +330,7 @@ Partial Public Class frmAdmin
         Dim conn As New MySqlConnection(stConnection)
         Try
             conn.Open()
-            Dim command As New MySqlCommand($"SELECT distinct(ddepartment) FROM tblprogram;", conn)
+            Dim command As New MySqlCommand($"SELECT distinct(ddepartment) FROM tblstudent;", conn)
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read()
                 If fill = "Add" Then

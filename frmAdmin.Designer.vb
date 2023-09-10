@@ -71,6 +71,7 @@ Partial Class frmAdmin
         lblStudent = New Label()
         txtStudentID = New TextBox()
         tabView = New TabPage()
+        Panel1 = New Panel()
         Label11 = New Label()
         lblViewDepartment = New Label()
         grdCurrentAttendance = New DataGridView()
@@ -81,7 +82,6 @@ Partial Class frmAdmin
         colTimeIn = New DataGridViewTextBoxColumn()
         cboViewDept = New ComboBox()
         btnClose = New Button()
-        Panel1 = New Panel()
         TabControl1.SuspendLayout()
         tabControl.SuspendLayout()
         panControl.SuspendLayout()
@@ -97,8 +97,8 @@ Partial Class frmAdmin
         panAddUser.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         tabView.SuspendLayout()
-        CType(grdCurrentAttendance, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
+        CType(grdCurrentAttendance, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TabControl1
@@ -151,9 +151,10 @@ Partial Class frmAdmin
         ' 
         ' panSettings
         ' 
+        panSettings.Anchor = AnchorStyles.Top
         panSettings.BackColor = Color.WhiteSmoke
         panSettings.Controls.Add(GroupBox1)
-        panSettings.Location = New Point(422, 143)
+        panSettings.Location = New Point(398, 143)
         panSettings.Name = "panSettings"
         panSettings.Size = New Size(495, 510)
         panSettings.TabIndex = 5
@@ -179,7 +180,7 @@ Partial Class frmAdmin
         ' 
         btnResetSettings.BackColor = Color.Silver
         btnResetSettings.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        btnResetSettings.Location = New Point(231, 360)
+        btnResetSettings.Location = New Point(232, 360)
         btnResetSettings.Name = "btnResetSettings"
         btnResetSettings.Size = New Size(128, 44)
         btnResetSettings.TabIndex = 10
@@ -190,7 +191,7 @@ Partial Class frmAdmin
         ' 
         btnSave.BackColor = Color.Silver
         btnSave.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSave.Location = New Point(58, 360)
+        btnSave.Location = New Point(59, 360)
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(159, 44)
         btnSave.TabIndex = 9
@@ -202,7 +203,7 @@ Partial Class frmAdmin
         lblMessage.Anchor = AnchorStyles.Top
         lblMessage.AutoSize = True
         lblMessage.Font = New Font("Segoe UI", 9.857143F, FontStyle.Regular, GraphicsUnit.Point)
-        lblMessage.Location = New Point(317, 203)
+        lblMessage.Location = New Point(310, 203)
         lblMessage.Name = "lblMessage"
         lblMessage.Size = New Size(46, 19)
         lblMessage.TabIndex = 8
@@ -211,7 +212,7 @@ Partial Class frmAdmin
         ' rtfMessage
         ' 
         rtfMessage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        rtfMessage.Location = New Point(65, 120)
+        rtfMessage.Location = New Point(58, 120)
         rtfMessage.MaxLength = 40
         rtfMessage.Name = "rtfMessage"
         rtfMessage.Size = New Size(303, 83)
@@ -223,7 +224,7 @@ Partial Class frmAdmin
         Label4.Anchor = AnchorStyles.Top
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 9.857143F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.Location = New Point(54, 294)
+        Label4.Location = New Point(61, 294)
         Label4.Name = "Label4"
         Label4.Size = New Size(297, 19)
         Label4.TabIndex = 6
@@ -233,7 +234,7 @@ Partial Class frmAdmin
         ' 
         chkTimeIn.AutoSize = True
         chkTimeIn.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        chkTimeIn.Location = New Point(144, 85)
+        chkTimeIn.Location = New Point(137, 85)
         chkTimeIn.Name = "chkTimeIn"
         chkTimeIn.Size = New Size(130, 25)
         chkTimeIn.TabIndex = 0
@@ -244,7 +245,7 @@ Partial Class frmAdmin
         ' 
         btnForce.BackColor = Color.LightCoral
         btnForce.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        btnForce.Location = New Point(128, 313)
+        btnForce.Location = New Point(129, 313)
         btnForce.Name = "btnForce"
         btnForce.Size = New Size(171, 40)
         btnForce.TabIndex = 4
@@ -267,6 +268,7 @@ Partial Class frmAdmin
         ' 
         ' panTitle
         ' 
+        panTitle.Anchor = AnchorStyles.Top
         panTitle.BackColor = Color.White
         panTitle.Controls.Add(Label2)
         panTitle.Location = New Point(467, 46)
@@ -665,6 +667,15 @@ Partial Class frmAdmin
         tabView.TabIndex = 3
         tabView.Text = "View"
         ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.White
+        Panel1.Controls.Add(Label11)
+        Panel1.Location = New Point(520, 8)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(250, 52)
+        Panel1.TabIndex = 7
+        ' 
         ' Label11
         ' 
         Label11.Anchor = AnchorStyles.Top
@@ -747,15 +758,6 @@ Partial Class frmAdmin
         btnClose.Text = "Close"
         btnClose.UseVisualStyleBackColor = False
         ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.White
-        Panel1.Controls.Add(Label11)
-        Panel1.Location = New Point(520, 8)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(250, 52)
-        Panel1.TabIndex = 7
-        ' 
         ' frmAdmin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -790,9 +792,9 @@ Partial Class frmAdmin
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         tabView.ResumeLayout(False)
         tabView.PerformLayout()
-        CType(grdCurrentAttendance, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
+        CType(grdCurrentAttendance, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
