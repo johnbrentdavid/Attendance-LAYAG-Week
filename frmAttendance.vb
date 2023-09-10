@@ -248,7 +248,7 @@ Public Class frmAttendance
             conn.Open()
             Dim currentDate As String = DateTime.Now.Date.ToString("yyyy-MM-dd")
             Dim command As New MySqlCommand($"select tblstudent.ddepartment from tblattendance inner join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid
-                                            where ttimein between '{currentDate} 00:00:00' and '{currentDate} 23:59:59';", conn)
+                                            where ttimein between '{currentDate} 00:00:00' and '{currentDate} 23:59:59' and ttimeout is null;", conn)
             Dim reader As MySqlDataReader
             reader = command.ExecuteReader()
 
@@ -259,12 +259,10 @@ Public Class frmAttendance
                 Select Case reader(0)
                     Case "College of International Tourism and Hospitality Management"
                         cithm += 1
-                    Case "College of Engineering"
+                    Case "College of Engineering and Computer Studies"
                         coecs += 1
                     Case "'College of Business and Accountancy'"
                         cba += 1
-                    Case "College of Computer Studies"
-                        coecs += 1
                     Case "'College of Arts and Sciences'"
                         cas += 1
                     Case "LPU - ST. CABRINI"
