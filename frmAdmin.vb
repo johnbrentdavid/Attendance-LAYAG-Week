@@ -25,9 +25,9 @@ Partial Public Class frmAdmin
         yCenter = (tabData.Size.Height / 2) - (panGrid.Size.Height / 2)
         panGrid.Location = New Point(xCenter, yCenter)
 
-        ' Center Title Panel
+        '' Center Title Panel
         xCenter = (tabData.Size.Width / 2) - (panTitle.Size.Width / 2)
-        yCenter = (tabData.Size.Height * 0.1) - (panTitle.Size.Height / 2)
+        yCenter = panTitle.Location.Y
         panTitle.Location = New Point(xCenter, yCenter)
 
         resetValues()
@@ -38,7 +38,7 @@ Partial Public Class frmAdmin
 
         ' Control Panel
         xCenter = (tabControl.Size.Width / 2) - (panControl.Size.Width / 2)
-        yCenter = (tabControl.Size.Height * 0.1) - (panControl.Size.Height / 2)
+        yCenter = panControl.Location.Y
         panControl.Location = New Point(xCenter, yCenter)
 
         ' Settings
@@ -55,8 +55,9 @@ Partial Public Class frmAdmin
         yCenter = (tabAddUser.Size.Height / 2) - (panAddUser.Size.Height / 2)
         panAddUser.Location = New Point(xCenter, yCenter)
 
-        getDepartment("Export")
-        getDepartment("Add")
+        getDepartment(cboStudentDepartment)
+        getDepartment(cboDepartment)
+        getDepartment(cboViewDept)
         'End of code about Add User
 
     End Sub
@@ -326,19 +327,14 @@ Partial Public Class frmAdmin
     End Sub
 
     'CODE FOR ADD STUDENT
-    Private Sub getDepartment(fill As String)
+    Private Sub getDepartment(cboBox As ComboBox)
         Dim conn As New MySqlConnection(stConnection)
         Try
             conn.Open()
             Dim command As New MySqlCommand($"SELECT distinct(ddepartment) FROM tblstudent;", conn)
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read()
-                If fill = "Add" Then
-                    cboStudentDepartment.Items.Add(reader(0)).ToString()
-                ElseIf fill = "Export" Then
-                    cboDepartment.Items.Add(reader(0)).ToString()
-                End If
-
+                cboBox.Items.Add(reader(0))
             End While
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -512,5 +508,41 @@ Partial Public Class frmAdmin
         If cboStudentYear.Enabled = True And Not cboStudentYear.SelectedIndex = -1 Then
             insertUser()
         End If
+    End Sub
+
+    '
+    ' View Attendance
+    '
+    Private Sub cboDept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboViewDept.SelectedIndexChanged
+        GetCurrentAttendance()
+    End Sub
+
+    Private Sub RefreshView_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        GetCurrentAttendance()
+    End Sub
+
+    Private Sub GetCurrentAttendance()
+        Dim conn As New MySqlConnection(stConnection)
+
+        Try
+            conn.Open()
+            ' TODO - Update the sql query
+            Dim stDate As String = Date.Now.ToString("yyyy-MM-dd")
+            Dim command As New MySqlCommand($"SELECT idtblattendance AS 'Attendance ID', ttimein AS 'Time In', tblstudent.dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
+                                            FROM tblattendance inner join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid
+                                            WHERE ddepartment = '{cboViewDept.SelectedItem}' and ttimein between '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null;", conn)
+            Dim dataset As New DataSet
+            Dim adapter As New MySqlDataAdapter With {
+                .SelectCommand = command
+            }
+            adapter.Fill(dataset, "Attendees")
+
+            grdCurrentAttendance.DataSource = dataset.Tables("Attendees")
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Organization Attendees", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            conn.Close()
+        End Try
     End Sub
 End Class
