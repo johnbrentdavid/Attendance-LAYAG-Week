@@ -252,7 +252,7 @@ Public Class frmAttendance
             Dim reader As MySqlDataReader
             reader = command.ExecuteReader()
 
-            Dim cas, cba, cithm, coecs, lpusc As Integer
+            Dim cas, cba, cithm, coecs, lpusc, total As Integer
 
             While reader.Read()
                 ' Iterate through each course
@@ -267,9 +267,11 @@ Public Class frmAttendance
                         coecs += 1
                     Case "'College of Arts and Sciences'"
                         cas += 1
-                        'Case "BSECE"
-                        '    iecep += 1
+                    Case "LPU - ST. CABRINI"
+                        lpusc += 1
                 End Select
+
+                total += 1
             End While
 
             ' Update labels
@@ -278,7 +280,7 @@ Public Class frmAttendance
             lblCITHM.Text = cithm
             lblCOECS.Text = coecs
             lblLPUSC.Text = lpusc
-            lblTotal.Text = $"Total Current Attendees: {cas + cba + cithm + coecs + lpusc}"
+            lblTotal.Text = $"Total Current Attendees: {total}"
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Organization Attendees", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
