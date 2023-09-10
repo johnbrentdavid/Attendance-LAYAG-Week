@@ -12,19 +12,19 @@ Public Class frmOrganization
 
         Select Case stOrg
             Case "CPS"
-                logo = frmAttendance.picCPS.Image
+                logo = frmAttendance.picCBA.Image
                 stFullName = "College of Arts and Sciences"
             Case "IECEP"
-                logo = frmAttendance.picIECEP.Image
+                logo = frmAttendance.picCITHM.Image
                 stFullName = "College of Business and Accountancy"
             Case "IIEE"
-                logo = frmAttendance.picIIEE.Image
+                logo = frmAttendance.picCOECS.Image
                 stFullName = "College of International Tourism and Hospitality Management"
             Case "LPIES"
-                logo = frmAttendance.picLPIES.Image
+                logo = frmAttendance.picLPUSC.Image
                 stFullName = "College of Engineering and Computer Studies"
             Case "CE"
-                logo = frmAttendance.picCE.Image
+                logo = frmAttendance.picCAS.Image
                 stFullName = "LPU St. Cabrini"
         End Select
 
