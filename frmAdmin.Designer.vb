@@ -42,16 +42,18 @@ Partial Class frmAdmin
         panGrid = New Panel()
         grdAttendance = New DataGridView()
         panFilter = New Panel()
+        dtpTo = New DateTimePicker()
+        dtpFrom = New DateTimePicker()
         cboYear = New ComboBox()
         btnReset = New Button()
         btnExport = New Button()
         btnSearch = New Button()
         Label1 = New Label()
-        dtpTo = New DateTimePicker()
-        dtpFrom = New DateTimePicker()
         cboDepartment = New ComboBox()
         PictureBox7 = New PictureBox()
         tabAddUser = New TabPage()
+        Panel2 = New Panel()
+        Label10 = New Label()
         panAddUser = New Panel()
         Label9 = New Label()
         cboStudentCourse = New ComboBox()
@@ -71,15 +73,11 @@ Partial Class frmAdmin
         lblStudent = New Label()
         txtStudentID = New TextBox()
         tabView = New TabPage()
+        btnRefresh = New Button()
         Panel1 = New Panel()
         Label11 = New Label()
         lblViewDepartment = New Label()
         grdCurrentAttendance = New DataGridView()
-        colId = New DataGridViewTextBoxColumn()
-        colName = New DataGridViewTextBoxColumn()
-        colProgram = New DataGridViewTextBoxColumn()
-        colYear = New DataGridViewTextBoxColumn()
-        colTimeIn = New DataGridViewTextBoxColumn()
         cboViewDept = New ComboBox()
         btnClose = New Button()
         TabControl1.SuspendLayout()
@@ -94,6 +92,7 @@ Partial Class frmAdmin
         panFilter.SuspendLayout()
         CType(PictureBox7, ComponentModel.ISupportInitialize).BeginInit()
         tabAddUser.SuspendLayout()
+        Panel2.SuspendLayout()
         panAddUser.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         tabView.SuspendLayout()
@@ -133,9 +132,9 @@ Partial Class frmAdmin
         ' 
         panControl.BackColor = Color.White
         panControl.Controls.Add(Label3)
-        panControl.Location = New Point(520, 62)
+        panControl.Location = New Point(488, 46)
         panControl.Name = "panControl"
-        panControl.Size = New Size(250, 52)
+        panControl.Size = New Size(315, 89)
         panControl.TabIndex = 6
         ' 
         ' Label3
@@ -143,7 +142,7 @@ Partial Class frmAdmin
         Label3.Anchor = AnchorStyles.Top
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point)
-        Label3.Location = New Point(14, 4)
+        Label3.Location = New Point(46, 22)
         Label3.Name = "Label3"
         Label3.Size = New Size(223, 45)
         Label3.TabIndex = 5
@@ -271,7 +270,7 @@ Partial Class frmAdmin
         panTitle.Anchor = AnchorStyles.Top
         panTitle.BackColor = Color.White
         panTitle.Controls.Add(Label2)
-        panTitle.Location = New Point(467, 46)
+        panTitle.Location = New Point(488, 46)
         panTitle.Name = "panTitle"
         panTitle.Size = New Size(315, 89)
         panTitle.TabIndex = 6
@@ -316,19 +315,45 @@ Partial Class frmAdmin
         ' panFilter
         ' 
         panFilter.BackColor = Color.White
+        panFilter.Controls.Add(dtpTo)
+        panFilter.Controls.Add(dtpFrom)
         panFilter.Controls.Add(cboYear)
         panFilter.Controls.Add(btnReset)
         panFilter.Controls.Add(btnExport)
         panFilter.Controls.Add(btnSearch)
         panFilter.Controls.Add(Label1)
-        panFilter.Controls.Add(dtpTo)
-        panFilter.Controls.Add(dtpFrom)
         panFilter.Controls.Add(cboDepartment)
         panFilter.Controls.Add(PictureBox7)
         panFilter.Location = New Point(11, 216)
         panFilter.Name = "panFilter"
         panFilter.Size = New Size(451, 588)
         panFilter.TabIndex = 0
+        ' 
+        ' dtpTo
+        ' 
+        dtpTo.CustomFormat = "MMMM dd, yyyy"
+        dtpTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        dtpTo.Format = DateTimePickerFormat.Custom
+        dtpTo.Location = New Point(103, 400)
+        dtpTo.MaxDate = New Date(2024, 10, 31, 0, 0, 0, 0)
+        dtpTo.MinDate = New Date(2023, 5, 1, 0, 0, 0, 0)
+        dtpTo.Name = "dtpTo"
+        dtpTo.Size = New Size(245, 29)
+        dtpTo.TabIndex = 5
+        dtpTo.Value = New Date(2023, 6, 1, 0, 0, 0, 0)
+        ' 
+        ' dtpFrom
+        ' 
+        dtpFrom.CustomFormat = "MMMM dd, yyyy"
+        dtpFrom.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        dtpFrom.Format = DateTimePickerFormat.Custom
+        dtpFrom.Location = New Point(103, 341)
+        dtpFrom.MaxDate = New Date(2024, 10, 31, 0, 0, 0, 0)
+        dtpFrom.MinDate = New Date(2023, 5, 1, 0, 0, 0, 0)
+        dtpFrom.Name = "dtpFrom"
+        dtpFrom.Size = New Size(245, 29)
+        dtpFrom.TabIndex = 4
+        dtpFrom.Value = New Date(2023, 6, 1, 0, 0, 0, 0)
         ' 
         ' cboYear
         ' 
@@ -386,32 +411,6 @@ Partial Class frmAdmin
         Label1.TabIndex = 19
         Label1.Text = "to"
         ' 
-        ' dtpTo
-        ' 
-        dtpTo.CustomFormat = "MMMM dd, yyyy"
-        dtpTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        dtpTo.Format = DateTimePickerFormat.Custom
-        dtpTo.Location = New Point(103, 400)
-        dtpTo.MaxDate = New Date(2024, 10, 31, 0, 0, 0, 0)
-        dtpTo.MinDate = New Date(2023, 5, 1, 0, 0, 0, 0)
-        dtpTo.Name = "dtpTo"
-        dtpTo.Size = New Size(245, 29)
-        dtpTo.TabIndex = 5
-        dtpTo.Value = New Date(2023, 6, 1, 0, 0, 0, 0)
-        ' 
-        ' dtpFrom
-        ' 
-        dtpFrom.CustomFormat = "MMMM dd, yyyy"
-        dtpFrom.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        dtpFrom.Format = DateTimePickerFormat.Custom
-        dtpFrom.Location = New Point(103, 341)
-        dtpFrom.MaxDate = New Date(2024, 10, 31, 0, 0, 0, 0)
-        dtpFrom.MinDate = New Date(2023, 5, 1, 0, 0, 0, 0)
-        dtpFrom.Name = "dtpFrom"
-        dtpFrom.Size = New Size(245, 29)
-        dtpFrom.TabIndex = 4
-        dtpFrom.Value = New Date(2023, 6, 1, 0, 0, 0, 0)
-        ' 
         ' cboDepartment
         ' 
         cboDepartment.DropDownStyle = ComboBoxStyle.DropDownList
@@ -438,6 +437,7 @@ Partial Class frmAdmin
         ' 
         tabAddUser.BackColor = Color.CornflowerBlue
         tabAddUser.BackgroundImageLayout = ImageLayout.Stretch
+        tabAddUser.Controls.Add(Panel2)
         tabAddUser.Controls.Add(panAddUser)
         tabAddUser.Location = New Point(4, 34)
         tabAddUser.Name = "tabAddUser"
@@ -445,6 +445,27 @@ Partial Class frmAdmin
         tabAddUser.Size = New Size(1291, 818)
         tabAddUser.TabIndex = 2
         tabAddUser.Text = "Add Student"
+        ' 
+        ' Panel2
+        ' 
+        Panel2.Anchor = AnchorStyles.Top
+        Panel2.BackColor = Color.White
+        Panel2.Controls.Add(Label10)
+        Panel2.Location = New Point(488, 46)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(315, 89)
+        Panel2.TabIndex = 8
+        ' 
+        ' Label10
+        ' 
+        Label10.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Label10.AutoSize = True
+        Label10.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point)
+        Label10.Location = New Point(53, 22)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(208, 45)
+        Label10.TabIndex = 6
+        Label10.Text = "Add Student"
         ' 
         ' panAddUser
         ' 
@@ -657,6 +678,7 @@ Partial Class frmAdmin
         ' tabView
         ' 
         tabView.BackColor = Color.CornflowerBlue
+        tabView.Controls.Add(btnRefresh)
         tabView.Controls.Add(Panel1)
         tabView.Controls.Add(lblViewDepartment)
         tabView.Controls.Add(grdCurrentAttendance)
@@ -667,32 +689,46 @@ Partial Class frmAdmin
         tabView.TabIndex = 3
         tabView.Text = "View"
         ' 
+        ' btnRefresh
+        ' 
+        btnRefresh.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnRefresh.BackColor = Color.WhiteSmoke
+        btnRefresh.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        btnRefresh.Location = New Point(1186, 187)
+        btnRefresh.Name = "btnRefresh"
+        btnRefresh.Size = New Size(97, 25)
+        btnRefresh.TabIndex = 8
+        btnRefresh.Text = "Refresh"
+        btnRefresh.UseVisualStyleBackColor = False
+        ' 
         ' Panel1
         ' 
+        Panel1.Anchor = AnchorStyles.Top
         Panel1.BackColor = Color.White
         Panel1.Controls.Add(Label11)
-        Panel1.Location = New Point(520, 8)
+        Panel1.Location = New Point(488, 46)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(250, 52)
+        Panel1.Size = New Size(315, 89)
         Panel1.TabIndex = 7
         ' 
         ' Label11
         ' 
-        Label11.Anchor = AnchorStyles.Top
+        Label11.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         Label11.AutoSize = True
-        Label11.Font = New Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point)
-        Label11.Location = New Point(21, 10)
+        Label11.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point)
+        Label11.Location = New Point(11, 22)
         Label11.Name = "Label11"
-        Label11.Size = New Size(209, 32)
+        Label11.Size = New Size(292, 45)
         Label11.TabIndex = 6
         Label11.Text = "Current Attendees"
         ' 
         ' lblViewDepartment
         ' 
         lblViewDepartment.AutoSize = True
-        lblViewDepartment.Location = New Point(8, 81)
+        lblViewDepartment.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        lblViewDepartment.Location = New Point(8, 191)
         lblViewDepartment.Name = "lblViewDepartment"
-        lblViewDepartment.Size = New Size(83, 19)
+        lblViewDepartment.Size = New Size(82, 17)
         lblViewDepartment.TabIndex = 2
         lblViewDepartment.Text = "Department"
         ' 
@@ -700,49 +736,27 @@ Partial Class frmAdmin
         ' 
         grdCurrentAttendance.AllowUserToAddRows = False
         grdCurrentAttendance.AllowUserToDeleteRows = False
+        grdCurrentAttendance.AllowUserToOrderColumns = True
         grdCurrentAttendance.AllowUserToResizeRows = False
         grdCurrentAttendance.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         grdCurrentAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         grdCurrentAttendance.BackgroundColor = Color.CornflowerBlue
         grdCurrentAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        grdCurrentAttendance.Columns.AddRange(New DataGridViewColumn() {colId, colName, colProgram, colYear, colTimeIn})
-        grdCurrentAttendance.Location = New Point(8, 109)
+        grdCurrentAttendance.Location = New Point(8, 218)
         grdCurrentAttendance.Name = "grdCurrentAttendance"
+        grdCurrentAttendance.ReadOnly = True
         grdCurrentAttendance.RowTemplate.Height = 25
-        grdCurrentAttendance.Size = New Size(1275, 701)
+        grdCurrentAttendance.Size = New Size(1275, 592)
         grdCurrentAttendance.TabIndex = 1
-        ' 
-        ' colId
-        ' 
-        colId.HeaderText = "Student ID"
-        colId.Name = "colId"
-        ' 
-        ' colName
-        ' 
-        colName.HeaderText = "Full Name"
-        colName.Name = "colName"
-        ' 
-        ' colProgram
-        ' 
-        colProgram.HeaderText = "Program"
-        colProgram.Name = "colProgram"
-        ' 
-        ' colYear
-        ' 
-        colYear.HeaderText = "Year Level"
-        colYear.Name = "colYear"
-        ' 
-        ' colTimeIn
-        ' 
-        colTimeIn.HeaderText = "Time In"
-        colTimeIn.Name = "colTimeIn"
         ' 
         ' cboViewDept
         ' 
+        cboViewDept.BackColor = Color.WhiteSmoke
+        cboViewDept.DropDownStyle = ComboBoxStyle.DropDownList
         cboViewDept.FormattingEnabled = True
-        cboViewDept.Location = New Point(97, 78)
+        cboViewDept.Location = New Point(97, 187)
         cboViewDept.Name = "cboViewDept"
-        cboViewDept.Size = New Size(325, 25)
+        cboViewDept.Size = New Size(462, 25)
         cboViewDept.TabIndex = 0
         ' 
         ' btnClose
@@ -787,6 +801,8 @@ Partial Class frmAdmin
         panFilter.PerformLayout()
         CType(PictureBox7, ComponentModel.ISupportInitialize).EndInit()
         tabAddUser.ResumeLayout(False)
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         panAddUser.ResumeLayout(False)
         panAddUser.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
@@ -853,11 +869,9 @@ Partial Class frmAdmin
     Friend WithEvents cboViewDept As ComboBox
     Friend WithEvents grdCurrentAttendance As DataGridView
     Friend WithEvents lblViewDepartment As Label
-    Friend WithEvents colId As DataGridViewTextBoxColumn
-    Friend WithEvents colName As DataGridViewTextBoxColumn
-    Friend WithEvents colProgram As DataGridViewTextBoxColumn
-    Friend WithEvents colYear As DataGridViewTextBoxColumn
-    Friend WithEvents colTimeIn As DataGridViewTextBoxColumn
     Friend WithEvents Label11 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents btnRefresh As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label10 As Label
 End Class

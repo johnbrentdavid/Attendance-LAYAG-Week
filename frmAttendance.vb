@@ -19,15 +19,15 @@ Public Class frmAttendance
     Private Sub frmAttendance_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Center the Student ID Panel
-        Dim xCenter As Double = (tabAttendance.Size.Width * 0.2) - (panStudentID.Size.Width / 2)
+        Dim xCenter As Double = panStudentID.Location.X
         Dim yCenter As Double = (tabAttendance.Size.Height / 2) - (panStudentID.Size.Height / 2)
-        'panStudentID.Location = New Point(xCenter, yCenter)
+        panStudentID.Location = New Point(xCenter, yCenter)
 
         '' Center the Logo Panel
         Dim temp As Double = tabAttendance.Size.Width * 0.4
-        xCenter = (temp + (tabAttendance.Size.Width - temp) / 2) - (panLogos.Size.Width / 2)
+        xCenter = panLogos.Location.X
         yCenter = (tabAttendance.Size.Height / 2) - (panLogos.Size.Height / 2)
-        'panLogos.Location = New Point(xCenter, yCenter)
+        panLogos.Location = New Point(xCenter, yCenter)
 
         ' Center Login Panel
         xCenter = (tabView.Size.Width / 2) - (panLogin.Size.Width / 2)
@@ -94,7 +94,7 @@ Public Class frmAttendance
         updateTime()
 
         If Not bUpdate Then
-            If Not counter Mod 8 = 0 Then
+            If Not counter Mod 20 = 0 Then
                 counter += 1
                 Exit Sub
             End If

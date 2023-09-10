@@ -43,6 +43,7 @@ Partial Class frmAttendance
         picCAS = New PictureBox()
         picCBA = New PictureBox()
         panStudentID = New Panel()
+        txtStudentID = New TextBox()
         lblDepartment = New Label()
         Label5 = New Label()
         lblTimeIn = New Label()
@@ -54,7 +55,6 @@ Partial Class frmAttendance
         PictureBox7 = New PictureBox()
         btnSubmit = New Button()
         lblStudent = New Label()
-        txtStudentID = New TextBox()
         tabView = New TabPage()
         panLogin = New Panel()
         Label4 = New Label()
@@ -153,7 +153,7 @@ Partial Class frmAttendance
         ' 
         ' panLogos
         ' 
-        panLogos.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        panLogos.Anchor = AnchorStyles.Top
         panLogos.BackColor = Color.WhiteSmoke
         panLogos.BorderStyle = BorderStyle.Fixed3D
         panLogos.Controls.Add(Label6)
@@ -168,7 +168,7 @@ Partial Class frmAttendance
         panLogos.Controls.Add(picCITHM)
         panLogos.Controls.Add(picCAS)
         panLogos.Controls.Add(picCBA)
-        panLogos.Location = New Point(646, 158)
+        panLogos.Location = New Point(756, 158)
         panLogos.Name = "panLogos"
         panLogos.Size = New Size(659, 588)
         panLogos.TabIndex = 3
@@ -311,8 +311,10 @@ Partial Class frmAttendance
         ' 
         ' panStudentID
         ' 
+        panStudentID.Anchor = AnchorStyles.Top
         panStudentID.BackColor = Color.WhiteSmoke
         panStudentID.BorderStyle = BorderStyle.Fixed3D
+        panStudentID.Controls.Add(txtStudentID)
         panStudentID.Controls.Add(lblDepartment)
         panStudentID.Controls.Add(Label5)
         panStudentID.Controls.Add(lblTimeIn)
@@ -324,12 +326,22 @@ Partial Class frmAttendance
         panStudentID.Controls.Add(PictureBox7)
         panStudentID.Controls.Add(btnSubmit)
         panStudentID.Controls.Add(lblStudent)
-        panStudentID.Controls.Add(txtStudentID)
         panStudentID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        panStudentID.Location = New Point(65, 158)
+        panStudentID.Location = New Point(-44, 158)
         panStudentID.Name = "panStudentID"
         panStudentID.Size = New Size(683, 588)
         panStudentID.TabIndex = 2
+        ' 
+        ' txtStudentID
+        ' 
+        txtStudentID.Enabled = False
+        txtStudentID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        txtStudentID.Location = New Point(77, 233)
+        txtStudentID.MaxLength = 10
+        txtStudentID.Name = "txtStudentID"
+        txtStudentID.PlaceholderText = "1234-12345"
+        txtStudentID.Size = New Size(298, 29)
+        txtStudentID.TabIndex = 0
         ' 
         ' lblDepartment
         ' 
@@ -434,22 +446,11 @@ Partial Class frmAttendance
         ' 
         lblStudent.AutoSize = True
         lblStudent.Font = New Font("Segoe UI", 13.875F, FontStyle.Regular, GraphicsUnit.Point)
-        lblStudent.Location = New Point(76, 206)
+        lblStudent.Location = New Point(76, 205)
         lblStudent.Name = "lblStudent"
         lblStudent.Size = New Size(154, 25)
         lblStudent.TabIndex = 1
         lblStudent.Text = "Student Number:"
-        ' 
-        ' txtStudentID
-        ' 
-        txtStudentID.Enabled = False
-        txtStudentID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        txtStudentID.Location = New Point(77, 233)
-        txtStudentID.MaxLength = 10
-        txtStudentID.Name = "txtStudentID"
-        txtStudentID.PlaceholderText = "1234-12345"
-        txtStudentID.Size = New Size(298, 29)
-        txtStudentID.TabIndex = 0
         ' 
         ' tabView
         ' 
@@ -467,13 +468,13 @@ Partial Class frmAttendance
         ' panLogin
         ' 
         panLogin.BackColor = Color.White
+        panLogin.Controls.Add(txtPassword)
+        panLogin.Controls.Add(txtUsername)
         panLogin.Controls.Add(Label4)
         panLogin.Controls.Add(Label3)
-        panLogin.Controls.Add(txtPassword)
         panLogin.Controls.Add(PictureBox10)
         panLogin.Controls.Add(btnLogin)
         panLogin.Controls.Add(Label1)
-        panLogin.Controls.Add(txtUsername)
         panLogin.Location = New Point(387, 155)
         panLogin.Name = "panLogin"
         panLogin.Size = New Size(451, 588)
