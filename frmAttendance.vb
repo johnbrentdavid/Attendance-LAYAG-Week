@@ -21,13 +21,13 @@ Public Class frmAttendance
         ' Center the Student ID Panel
         Dim xCenter As Double = (tabAttendance.Size.Width * 0.2) - (panStudentID.Size.Width / 2)
         Dim yCenter As Double = (tabAttendance.Size.Height / 2) - (panStudentID.Size.Height / 2)
-        panStudentID.Location = New Point(xCenter, yCenter)
+        'panStudentID.Location = New Point(xCenter, yCenter)
 
-        ' Center the Logo Panel
+        '' Center the Logo Panel
         Dim temp As Double = tabAttendance.Size.Width * 0.4
         xCenter = (temp + (tabAttendance.Size.Width - temp) / 2) - (panLogos.Size.Width / 2)
         yCenter = (tabAttendance.Size.Height / 2) - (panLogos.Size.Height / 2)
-        panLogos.Location = New Point(xCenter, yCenter)
+        'panLogos.Location = New Point(xCenter, yCenter)
 
         ' Center Login Panel
         xCenter = (tabView.Size.Width / 2) - (panLogin.Size.Width / 2)
@@ -124,9 +124,8 @@ Public Class frmAttendance
         Try
             conn.Open()
 
-            Dim command As New MySqlCommand("SELECT tblstudent.dstudentid,tblstudent.dfullname,tblstudent.dcourse,tblstudent.dyearlevel,tblprogram.ddepartment FROM tblstudent
-                                            join tblprogram on tblstudent.dcourse = tblprogram.dcourse
-                                            where dstudentid = @ID;", conn)
+            Dim command As New MySqlCommand("SELECT dstudentid,dfullname,dcourse,dyearlevel,ddepartment
+                                            FROM tblstudent WHERE dstudentid = @ID;", conn)
             command.Parameters.AddWithValue("@ID", txtStudentID.Text)
 
             Dim reader As MySqlDataReader = command.ExecuteReader()
@@ -248,41 +247,38 @@ Public Class frmAttendance
         Try
             conn.Open()
             Dim currentDate As String = DateTime.Now.Date.ToString("yyyy-MM-dd")
-            Dim command As New MySqlCommand($"SELECT dcourse FROM tblstudent WHERE dstudentid IN (SELECT DISTINCT dstudentid FROM tblattendance 
-            WHERE ttimein BETWEEN '{currentDate} 00:00:00' AND '{currentDate} 23:59:59' AND ttimeout IS NULL)
-            ;", conn)
+            Dim command As New MySqlCommand($"select tblstudent.ddepartment from tblattendance inner join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid
+                                            where ttimein between '{currentDate} 00:00:00' and '{currentDate} 23:59:59';", conn)
             Dim reader As MySqlDataReader
             reader = command.ExecuteReader()
 
-            Dim ce, cps, iecep, iiee, lpies, lyco As Integer
+            Dim cas, cba, cithm, coecs, lpusc As Integer
 
             While reader.Read()
                 ' Iterate through each course
                 Select Case reader(0)
-                    Case "BSCS"
-                        cps += 1
-                    Case "BSIT"
-                        cps += 1
-                    Case "BSIE"
-                        lpies += 1
-                    Case "BSEE"
-                        iiee += 1
-                    Case "BSCpE"
-                        lyco += 1
-                    Case "BSCE"
-                        ce += 1
-                    Case "BSECE"
-                        iecep += 1
+                    Case "College of International Tourism and Hospitality Management"
+                        cithm += 1
+                    Case "College of Engineering"
+                        coecs += 1
+                    Case "'College of Business and Accountancy'"
+                        cba += 1
+                    Case "College of Computer Studies"
+                        coecs += 1
+                    Case "'College of Arts and Sciences'"
+                        cas += 1
+                        'Case "BSECE"
+                        '    iecep += 1
                 End Select
             End While
 
             ' Update labels
-            lblCE.Text = ce
-            lblCPS.Text = cps
-            lblIECEP.Text = iecep
-            lblIIEE.Text = iiee
-            lblLPIES.Text = lpies
-            lblTotal.Text = $"Total Current Attendees: {ce + cps + iecep + iiee + lpies + lyco}"
+            lblCAS.Text = cas
+            lblCBA.Text = cba
+            lblCITHM.Text = cithm
+            lblCOECS.Text = coecs
+            lblLPUSC.Text = lpusc
+            lblTotal.Text = $"Total Current Attendees: {cas + cba + cithm + coecs + lpusc}"
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Organization Attendees", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -303,33 +299,33 @@ Public Class frmAttendance
         End If
     End Sub
 
-    Private Sub picCE_Click(sender As Object, e As EventArgs) Handles picCE.Click
-        openOrgForm("CE", "BSCE", "")
-    End Sub
+    'Private Sub picCE_Click(sender As Object, e As EventArgs) Handles picCAS.Click
+    '    openOrgForm("CE", "BSCE", "")
+    'End Sub
 
-    Private Sub picCPS_Click(sender As Object, e As EventArgs) Handles picCPS.Click
-        openOrgForm("CPS", "BSCS", "BSIT")
-    End Sub
+    'Private Sub picCPS_Click(sender As Object, e As EventArgs) Handles picCBA.Click
+    '    openOrgForm("CPS", "BSCS", "BSIT")
+    'End Sub
 
-    Private Sub picIECEP_Click(sender As Object, e As EventArgs) Handles picIECEP.Click
-        openOrgForm("IECEP", "BSECE", "")
-    End Sub
+    'Private Sub picIECEP_Click(sender As Object, e As EventArgs) Handles picCITHM.Click
+    '    openOrgForm("IECEP", "BSECE", "")
+    'End Sub
 
-    Private Sub picIIEE_Click(sender As Object, e As EventArgs) Handles picIIEE.Click
-        openOrgForm("IIEE", "BSEE", "")
-    End Sub
+    'Private Sub picIIEE_Click(sender As Object, e As EventArgs) Handles picCOECS.Click
+    '    openOrgForm("IIEE", "BSEE", "")
+    'End Sub
 
-    Private Sub picLPIES_Click(sender As Object, e As EventArgs) Handles picLPIES.Click
-        openOrgForm("LPIES", "BSIE", "")
-    End Sub
+    'Private Sub picLPIES_Click(sender As Object, e As EventArgs) Handles picLPUSC.Click
+    '    openOrgForm("LPIES", "BSIE", "")
+    'End Sub
 
-    Private Sub openOrgForm(org As String, course1 As String, course2 As String)
-        frmOrganization.stOrg = org
-        frmOrganization.stCourse1 = course1
-        frmOrganization.stCourse2 = course2
-        frmOrganization.Show(Me)
-        Me.Hide()
-    End Sub
+    'Private Sub openOrgForm(org As String, course1 As String, course2 As String)
+    '    frmOrganization.stOrg = org
+    '    frmOrganization.stCourse1 = course1
+    '    frmOrganization.stCourse2 = course2
+    '    frmOrganization.Show(Me)
+    '    Me.Hide()
+    'End Sub
 
     ' ADMIN LOGIN
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click

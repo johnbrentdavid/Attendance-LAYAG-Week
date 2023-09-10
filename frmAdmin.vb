@@ -1,10 +1,8 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
 Imports System.Text.RegularExpressions
-Imports System.Drawing
-Imports System.Runtime.CompilerServices
 
-Public Class frmAdmin
+Partial Public Class frmAdmin
 
     Private fromValue As DateTime
     Private ToValue As DateTime
@@ -118,9 +116,8 @@ Public Class frmAdmin
 
         ' Build the query string
         Dim query As String = $"Select idtblattendance as 'Attendance ID', ttimein as 'Time In', ttimeout as 'Time Out', tblstudent.dstudentid as 'Student ID', 
-                                    dfullname as 'Full Name', dcourse as 'Course',ddepartment as 'Department', dyearlevel as 'Year Level' from tblattendance 
-                                natural join tblstudent 
-                                natural join tblprogram 
+                                dfullname as 'Full Name', dcourse as 'Course',ddepartment as 'Department', dyearlevel as 'Year Level' 
+                                from tblattendance inner join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid
                                 where ttimein between '{dtpFrom.Value.Date:yyyy-MM-dd} 00:00:00' and '{dtpTo.Value.Date:yyyy-MM-dd} 23:59:59'"
 
         ' If not all student org
@@ -134,6 +131,8 @@ Public Class frmAdmin
         End If
 
         query += ";"
+
+        MsgBox(query)
 
         Dim conn As New MySqlConnection(stConnection)
 
@@ -516,5 +515,4 @@ Public Class frmAdmin
             insertUser()
         End If
     End Sub
-
 End Class
