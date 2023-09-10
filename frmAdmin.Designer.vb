@@ -81,6 +81,7 @@ Partial Class frmAdmin
         colTimeIn = New DataGridViewTextBoxColumn()
         cboViewDept = New ComboBox()
         btnClose = New Button()
+        Panel1 = New Panel()
         TabControl1.SuspendLayout()
         tabControl.SuspendLayout()
         panControl.SuspendLayout()
@@ -97,6 +98,7 @@ Partial Class frmAdmin
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         tabView.SuspendLayout()
         CType(grdCurrentAttendance, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' TabControl1
@@ -117,7 +119,6 @@ Partial Class frmAdmin
         ' tabControl
         ' 
         tabControl.BackColor = Color.CornflowerBlue
-        tabControl.BackgroundImage = My.Resources.Resources.campus
         tabControl.BackgroundImageLayout = ImageLayout.Stretch
         tabControl.Controls.Add(panControl)
         tabControl.Controls.Add(panSettings)
@@ -142,7 +143,7 @@ Partial Class frmAdmin
         Label3.Anchor = AnchorStyles.Top
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point)
-        Label3.Location = New Point(16, 8)
+        Label3.Location = New Point(14, 4)
         Label3.Name = "Label3"
         Label3.Size = New Size(223, 45)
         Label3.TabIndex = 5
@@ -253,7 +254,6 @@ Partial Class frmAdmin
         ' tabData
         ' 
         tabData.BackColor = Color.CornflowerBlue
-        tabData.BackgroundImage = My.Resources.Resources.campus
         tabData.BackgroundImageLayout = ImageLayout.Stretch
         tabData.Controls.Add(panTitle)
         tabData.Controls.Add(panGrid)
@@ -434,7 +434,7 @@ Partial Class frmAdmin
         ' 
         ' tabAddUser
         ' 
-        tabAddUser.BackgroundImage = My.Resources.Resources.campus
+        tabAddUser.BackColor = Color.CornflowerBlue
         tabAddUser.BackgroundImageLayout = ImageLayout.Stretch
         tabAddUser.Controls.Add(panAddUser)
         tabAddUser.Location = New Point(4, 34)
@@ -443,7 +443,6 @@ Partial Class frmAdmin
         tabAddUser.Size = New Size(1291, 818)
         tabAddUser.TabIndex = 2
         tabAddUser.Text = "Add Student"
-        tabAddUser.UseVisualStyleBackColor = True
         ' 
         ' panAddUser
         ' 
@@ -655,7 +654,8 @@ Partial Class frmAdmin
         ' 
         ' tabView
         ' 
-        tabView.Controls.Add(Label11)
+        tabView.BackColor = Color.CornflowerBlue
+        tabView.Controls.Add(Panel1)
         tabView.Controls.Add(lblViewDepartment)
         tabView.Controls.Add(grdCurrentAttendance)
         tabView.Controls.Add(cboViewDept)
@@ -664,14 +664,13 @@ Partial Class frmAdmin
         tabView.Size = New Size(1291, 818)
         tabView.TabIndex = 3
         tabView.Text = "View"
-        tabView.UseVisualStyleBackColor = True
         ' 
         ' Label11
         ' 
         Label11.Anchor = AnchorStyles.Top
         Label11.AutoSize = True
         Label11.Font = New Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point)
-        Label11.Location = New Point(541, 3)
+        Label11.Location = New Point(21, 10)
         Label11.Name = "Label11"
         Label11.Size = New Size(209, 32)
         Label11.TabIndex = 6
@@ -680,7 +679,7 @@ Partial Class frmAdmin
         ' lblViewDepartment
         ' 
         lblViewDepartment.AutoSize = True
-        lblViewDepartment.Location = New Point(8, 41)
+        lblViewDepartment.Location = New Point(8, 81)
         lblViewDepartment.Name = "lblViewDepartment"
         lblViewDepartment.Size = New Size(83, 19)
         lblViewDepartment.TabIndex = 2
@@ -693,12 +692,13 @@ Partial Class frmAdmin
         grdCurrentAttendance.AllowUserToResizeRows = False
         grdCurrentAttendance.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         grdCurrentAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        grdCurrentAttendance.BackgroundColor = Color.CornflowerBlue
         grdCurrentAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         grdCurrentAttendance.Columns.AddRange(New DataGridViewColumn() {colId, colName, colProgram, colYear, colTimeIn})
-        grdCurrentAttendance.Location = New Point(8, 69)
+        grdCurrentAttendance.Location = New Point(8, 109)
         grdCurrentAttendance.Name = "grdCurrentAttendance"
         grdCurrentAttendance.RowTemplate.Height = 25
-        grdCurrentAttendance.Size = New Size(1275, 741)
+        grdCurrentAttendance.Size = New Size(1275, 701)
         grdCurrentAttendance.TabIndex = 1
         ' 
         ' colId
@@ -729,7 +729,7 @@ Partial Class frmAdmin
         ' cboViewDept
         ' 
         cboViewDept.FormattingEnabled = True
-        cboViewDept.Location = New Point(97, 38)
+        cboViewDept.Location = New Point(97, 78)
         cboViewDept.Name = "cboViewDept"
         cboViewDept.Size = New Size(325, 25)
         cboViewDept.TabIndex = 0
@@ -746,6 +746,15 @@ Partial Class frmAdmin
         btnClose.TabStop = False
         btnClose.Text = "Close"
         btnClose.UseVisualStyleBackColor = False
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.White
+        Panel1.Controls.Add(Label11)
+        Panel1.Location = New Point(520, 8)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(250, 52)
+        Panel1.TabIndex = 7
         ' 
         ' frmAdmin
         ' 
@@ -782,6 +791,8 @@ Partial Class frmAdmin
         tabView.ResumeLayout(False)
         tabView.PerformLayout()
         CType(grdCurrentAttendance, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
         ResumeLayout(False)
     End Sub
 
@@ -846,4 +857,5 @@ Partial Class frmAdmin
     Friend WithEvents colYear As DataGridViewTextBoxColumn
     Friend WithEvents colTimeIn As DataGridViewTextBoxColumn
     Friend WithEvents Label11 As Label
+    Friend WithEvents Panel1 As Panel
 End Class
