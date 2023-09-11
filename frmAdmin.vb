@@ -300,7 +300,7 @@ Partial Public Class frmAdmin
             conn.Open()
 
             Dim command As New MySqlCommand($"update tblattendance set ttimeout = '{DateTime.Now:yyyy-MM-dd HH:mm:ss}' 
-            where ttimein between '{DateTime.Now:yyyy-MM-dd} 00:00:00' and '{DateTime.Now:yyyy-MM-dd} 23:59:59' and ttimeout is null;", conn)
+            where ttimeout is null;", conn)
             command.ExecuteNonQuery()
 
             ' Either reset the txtbox which is easier or reload the query which is better
