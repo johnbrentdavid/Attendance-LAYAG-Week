@@ -757,6 +757,7 @@ Partial Class frmAdmin
         cboViewDept.BackColor = Color.WhiteSmoke
         cboViewDept.DropDownStyle = ComboBoxStyle.DropDownList
         cboViewDept.FormattingEnabled = True
+        cboViewDept.Items.AddRange(New Object() {"All"})
         cboViewDept.Location = New Point(97, 187)
         cboViewDept.Name = "cboViewDept"
         cboViewDept.Size = New Size(462, 25)
