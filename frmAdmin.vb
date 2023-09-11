@@ -41,10 +41,22 @@ Partial Public Class frmAdmin
         yCenter = panControl.Location.Y
         panControl.Location = New Point(xCenter, yCenter)
 
+        xCenter = (tabControl.Size.Width / 2) - (pnlAdd.Size.Width / 2)
+        yCenter = pnlAdd.Location.Y
+        pnlAdd.Location = New Point(xCenter, yCenter)
+
+        xCenter = (tabControl.Size.Width / 2) - (panControl.Size.Width / 2)
+        yCenter = panControl.Location.Y
+        panControl.Location = New Point(xCenter, yCenter)
+
         ' Settings
         xCenter = (tabControl.Size.Width / 2) - (panSettings.Size.Width / 2)
         yCenter = (tabControl.Size.Height / 2) - (panSettings.Size.Height / 2)
         panSettings.Location = New Point(xCenter, yCenter)
+
+        xCenter = (tabControl.Size.Width / 2) - (pnlView.Size.Width / 2)
+        yCenter = pnlView.Location.Y
+        pnlView.Location = New Point(xCenter, yCenter)
 
         resetSettings()
 
@@ -343,11 +355,9 @@ Partial Public Class frmAdmin
     Private Sub getCourse()
         Dim conn As New MySqlConnection(stConnection)
         Dim query As String
-        If cboStudentDepartment.SelectedIndex = 0 Then
-            query = $"Select dcourse from tblprogram;"
-        Else
-            query = $"Select dcourse from tblprogram where ddepartment='{cboStudentDepartment.Text}';"
-        End If
+
+        query = $"Select distinct(dcourse) from tblstudent where ddepartment='{cboStudentDepartment.Text}';"
+
         Try
             conn.Open()
             Dim command As New MySqlCommand(query, conn)
@@ -366,7 +376,7 @@ Partial Public Class frmAdmin
         If Not isExisting() Then
             Try
                 conn.Open()
-                Dim command As New MySqlCommand($"insert into tblstudent (dstudentid,dfullname,dcourse,dyearlevel) values (@ID ,@FULLNAME ,'{cboStudentCourse.Text}','{cboStudentYear.Text}');", conn)
+                Dim command As New MySqlCommand($"insert into tblstudent (dstudentid,dfullname,dcourse,ddepartment,dyearlevel) values (@ID ,@FULLNAME ,'{cboStudentCourse.Text}','{cboStudentDepartment.Text}','{cboStudentYear.Text}');", conn)
                 command.Parameters.AddWithValue("@ID", txtStudentID.Text)
                 command.Parameters.AddWithValue("@FULLNAME", txtFullName.Text)
                 command.ExecuteNonQuery()
