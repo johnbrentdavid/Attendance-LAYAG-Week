@@ -6,11 +6,11 @@
     <StartupObject>AttendanceTest.frmAttendance</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
-    <ApplicationIcon>Img\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Img\School Logo\LAYAG.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Img\icon.ico" />
+    <Content Include="Img\School Logo\LAYAG.ico" />
   </ItemGroup>
 
   <ItemGroup>
