@@ -533,11 +533,19 @@ Partial Public Class frmAdmin
 
         Try
             conn.Open()
-            ' TODO - Update the sql query
+
             Dim stDate As String = Date.Now.ToString("yyyy-MM-dd")
-            Dim command As New MySqlCommand($"SELECT idtblattendance AS 'Attendance ID', ttimein AS 'Time In', tblstudent.dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
-                                            FROM tblattendance inner join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid
-                                            WHERE ddepartment = '{cboViewDept.SelectedItem}' and ttimein between '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null;", conn)
+            Dim query = $"SELECT idtblattendance AS 'Attendance ID', ttimein AS 'Time In', tblstudent.dstudentid AS 'Student ID', dfullname AS 'Full Name', dcourse AS 'Course', dyearlevel AS 'Year Level'
+                        FROM tblattendance inner join tblstudent on tblattendance.dstudentid = tblstudent.dstudentid
+                        WHERE ttimein between '{stDate} 00:00:00' and '{stDate} 23:59:59' and ttimeout is null"
+
+            If cboViewDept.SelectedItem IsNot "All" Then
+                query += $" and ddepartment = '{cboViewDept.SelectedItem}'"
+            End If
+
+            query += ";"
+
+            Dim command As New MySqlCommand(query, conn)
             Dim dataset As New DataSet
             Dim adapter As New MySqlDataAdapter With {
                 .SelectCommand = command
