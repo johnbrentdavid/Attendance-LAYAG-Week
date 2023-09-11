@@ -134,7 +134,7 @@ Partial Class frmAttendance
         lblTime.AutoSize = True
         lblTime.BackColor = Color.Transparent
         lblTime.Font = New Font("Segoe UI", 25.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblTime.Location = New Point(1177, 137)
+        lblTime.Location = New Point(1177, 50)
         lblTime.Margin = New Padding(6, 0, 6, 0)
         lblTime.Name = "lblTime"
         lblTime.Size = New Size(199, 92)
@@ -360,7 +360,7 @@ Partial Class frmAttendance
         txtStudentID.MaxLength = 10
         txtStudentID.Name = "txtStudentID"
         txtStudentID.PlaceholderText = "1234-12345"
-        txtStudentID.Size = New Size(550, 50)
+        txtStudentID.Size = New Size(803, 50)
         txtStudentID.TabIndex = 0
         ' 
         ' lblDepartment
@@ -461,10 +461,11 @@ Partial Class frmAttendance
         ' 
         ' btnSubmit
         ' 
+        btnSubmit.Anchor = AnchorStyles.Top
         btnSubmit.BackColor = Color.DarkGray
         btnSubmit.Enabled = False
         btnSubmit.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSubmit.Location = New Point(319, 1111)
+        btnSubmit.Location = New Point(408, 1111)
         btnSubmit.Margin = New Padding(6)
         btnSubmit.Name = "btnSubmit"
         btnSubmit.Size = New Size(279, 85)
