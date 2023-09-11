@@ -318,10 +318,7 @@ Partial Public Class frmAdmin
 
         ' Close if yes
         If result = DialogResult.Yes Then
-            frmAttendance.TabControl1.SelectedIndex = 0
-            frmAttendance.txtPassword.Text = ""
-            frmAttendance.txtUsername.Text = ""
-            frmAttendance.Show()
+
             Me.Close()
         End If
     End Sub
@@ -544,5 +541,12 @@ Partial Public Class frmAdmin
         Finally
             conn.Close()
         End Try
+    End Sub
+
+    Private Sub frmAdmin_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        frmAttendance.TabControl1.SelectedIndex = 0
+        frmAttendance.txtPassword.Text = ""
+        frmAttendance.txtUsername.Text = ""
+        frmAttendance.Show()
     End Sub
 End Class
