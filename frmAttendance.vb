@@ -261,9 +261,9 @@ Public Class frmAttendance
                         cithm += 1
                     Case "College of Engineering and Computer Studies"
                         coecs += 1
-                    Case "'College of Business and Accountancy'"
+                    Case "College of Business and Accountancy"
                         cba += 1
-                    Case "'College of Arts and Sciences'"
+                    Case "College of Arts and Sciences"
                         cas += 1
                     Case "LPU - ST. CABRINI"
                         lpusc += 1
