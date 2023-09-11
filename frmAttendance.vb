@@ -93,16 +93,16 @@ Public Class frmAttendance
     Private Sub tmeSlow_Tick(sender As Object, e As EventArgs) Handles tmrSlow.Tick
         updateTime()
 
-        If Not bUpdate Then
-            If Not counter Mod 20 = 0 Then
-                counter += 1
-                Exit Sub
-            End If
+        'If Not bUpdate Then
+        '    If Not counter Mod 20 = 0 Then
+        '        counter += 1
+        '        Exit Sub
+        '    End If
 
-            counter = 1
+        '    counter = 1
 
-            Reconnect()
-        End If
+        '    Reconnect()
+        'End If
     End Sub
 
     Private Sub updateTime()
