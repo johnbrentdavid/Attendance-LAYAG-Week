@@ -22,7 +22,7 @@ Partial Class frmAdmin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAdmin))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdmin))
         TabControl1 = New TabControl()
         tabControl = New TabPage()
         panControl = New Panel()
@@ -130,10 +130,11 @@ Partial Class frmAdmin
         ' 
         ' panControl
         ' 
+        panControl.Anchor = AnchorStyles.Top
         panControl.BackColor = Color.Transparent
         panControl.BorderStyle = BorderStyle.Fixed3D
         panControl.Controls.Add(Label3)
-        panControl.Location = New Point(488, 46)
+        panControl.Location = New Point(360, 46)
         panControl.Name = "panControl"
         panControl.Size = New Size(317, 91)
         panControl.TabIndex = 6
@@ -427,10 +428,10 @@ Partial Class frmAdmin
         ' PictureBox7
         ' 
         PictureBox7.Anchor = AnchorStyles.Top
-        PictureBox7.Image = My.Resources.Resources.LAYAG
-        PictureBox7.Location = New Point(126, 34)
+        PictureBox7.Image = My.Resources.Resources.CPS
+        PictureBox7.Location = New Point(145, 34)
         PictureBox7.Name = "PictureBox7"
-        PictureBox7.Size = New Size(192, 164)
+        PictureBox7.Size = New Size(160, 160)
         PictureBox7.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox7.TabIndex = 14
         PictureBox7.TabStop = False
@@ -636,10 +637,10 @@ Partial Class frmAdmin
         ' PictureBox2
         ' 
         PictureBox2.Anchor = AnchorStyles.Top
-        PictureBox2.Image = My.Resources.Resources.LAYAG
-        PictureBox2.Location = New Point(126, 23)
+        PictureBox2.Image = My.Resources.Resources.CPS
+        PictureBox2.Location = New Point(147, 23)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(203, 154)
+        PictureBox2.Size = New Size(160, 160)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 12
         PictureBox2.TabStop = False
@@ -693,6 +694,7 @@ Partial Class frmAdmin
         ' 
         ' pnlView
         ' 
+        pnlView.Anchor = AnchorStyles.Top
         pnlView.BackColor = Color.Transparent
         pnlView.BorderStyle = BorderStyle.Fixed3D
         pnlView.Controls.Add(Label11)
@@ -786,7 +788,7 @@ Partial Class frmAdmin
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmAdmin"
-        StartPosition = FormStartPosition.CenterParent
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmAdmin"
         WindowState = FormWindowState.Maximized
         TabControl1.ResumeLayout(False)

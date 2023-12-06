@@ -3,14 +3,14 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <StartupObject>AttendanceTest.frmAttendance</StartupObject>
+    <StartupObject>AttendanceTest.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
-    <ApplicationIcon>Img\School Logo\LAYAG.ico</ApplicationIcon>
+    <ApplicationIcon>Img\Org Logo\CPS.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Img\School Logo\LAYAG.ico" />
+    <Content Include="Img\Org Logo\CPS.ico" />
   </ItemGroup>
 
   <ItemGroup>

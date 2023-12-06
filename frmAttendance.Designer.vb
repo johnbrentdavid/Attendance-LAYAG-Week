@@ -23,7 +23,7 @@ Partial Class frmAttendance
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAttendance))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAttendance))
         TabControl1 = New TabControl()
         tabAttendance = New TabPage()
         lblCopyright = New Label()
@@ -93,7 +93,7 @@ Partial Class frmAttendance
         TabControl1.Location = New Point(0, 0)
         TabControl1.Name = "TabControl1"
         TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(1045, 516)
+        TabControl1.Size = New Size(1306, 864)
         TabControl1.TabIndex = 0
         ' 
         ' tabAttendance
@@ -109,7 +109,7 @@ Partial Class frmAttendance
         tabAttendance.Location = New Point(4, 34)
         tabAttendance.Name = "tabAttendance"
         tabAttendance.Padding = New Padding(3)
-        tabAttendance.Size = New Size(1037, 478)
+        tabAttendance.Size = New Size(1298, 826)
         tabAttendance.TabIndex = 0
         tabAttendance.Text = "Attendance"
         ' 
@@ -119,11 +119,12 @@ Partial Class frmAttendance
         lblCopyright.AutoSize = True
         lblCopyright.BackColor = Color.Transparent
         lblCopyright.Font = New Font("Times New Roman", 14.1428576F, FontStyle.Italic, GraphicsUnit.Point)
-        lblCopyright.Location = New Point(641, 457)
+        lblCopyright.Location = New Point(902, 805)
         lblCopyright.Name = "lblCopyright"
         lblCopyright.Size = New Size(393, 21)
         lblCopyright.TabIndex = 8
         lblCopyright.Text = "Copyright 2023 | Computer Programming Society"
+        lblCopyright.Visible = False
         ' 
         ' lblTime
         ' 
@@ -131,7 +132,7 @@ Partial Class frmAttendance
         lblTime.AutoSize = True
         lblTime.BackColor = Color.Transparent
         lblTime.Font = New Font("Segoe UI", 25.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblTime.Location = New Point(466, 23)
+        lblTime.Location = New Point(597, 23)
         lblTime.Name = "lblTime"
         lblTime.Size = New Size(102, 47)
         lblTime.TabIndex = 4
@@ -144,7 +145,7 @@ Partial Class frmAttendance
         lblMessage.BackColor = Color.WhiteSmoke
         lblMessage.FlatStyle = FlatStyle.Flat
         lblMessage.Font = New Font("Segoe UI", 25.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblMessage.Location = New Point(177, 330)
+        lblMessage.Location = New Point(308, 678)
         lblMessage.Name = "lblMessage"
         lblMessage.Size = New Size(683, 47)
         lblMessage.TabIndex = 7
@@ -168,7 +169,7 @@ Partial Class frmAttendance
         panLogos.Controls.Add(picCITHM)
         panLogos.Controls.Add(picCAS)
         panLogos.Controls.Add(picCBA)
-        panLogos.Location = New Point(508, 158)
+        panLogos.Location = New Point(639, 158)
         panLogos.Name = "panLogos"
         panLogos.Size = New Size(659, 588)
         panLogos.TabIndex = 3
@@ -177,11 +178,11 @@ Partial Class frmAttendance
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Britannic Bold", 26.1428585F, FontStyle.Regular, GraphicsUnit.Point)
-        Label6.Location = New Point(150, 253)
+        Label6.Location = New Point(147, 32)
         Label6.Name = "Label6"
-        Label6.Size = New Size(327, 38)
+        Label6.Size = New Size(361, 38)
         Label6.TabIndex = 21
-        Label6.Text = "LAYAG PIRATA 2023"
+        Label6.Text = "'imPRINT the Next Gen'"
         Label6.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' lblTotal
@@ -201,7 +202,7 @@ Partial Class frmAttendance
         lblLPUSC.Anchor = AnchorStyles.Bottom
         lblLPUSC.AutoSize = True
         lblLPUSC.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblLPUSC.Location = New Point(437, 478)
+        lblLPUSC.Location = New Point(437, 493)
         lblLPUSC.Name = "lblLPUSC"
         lblLPUSC.Size = New Size(23, 25)
         lblLPUSC.TabIndex = 10
@@ -213,7 +214,7 @@ Partial Class frmAttendance
         lblCOECS.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         lblCOECS.AutoSize = True
         lblCOECS.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCOECS.Location = New Point(209, 477)
+        lblCOECS.Location = New Point(209, 492)
         lblCOECS.Name = "lblCOECS"
         lblCOECS.Size = New Size(23, 25)
         lblCOECS.TabIndex = 9
@@ -225,7 +226,7 @@ Partial Class frmAttendance
         lblCITHM.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblCITHM.AutoSize = True
         lblCITHM.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCITHM.Location = New Point(540, 196)
+        lblCITHM.Location = New Point(540, 257)
         lblCITHM.Name = "lblCITHM"
         lblCITHM.Size = New Size(23, 25)
         lblCITHM.TabIndex = 8
@@ -237,7 +238,7 @@ Partial Class frmAttendance
         lblCBA.Anchor = AnchorStyles.Top
         lblCBA.AutoSize = True
         lblCBA.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCBA.Location = New Point(321, 197)
+        lblCBA.Location = New Point(321, 258)
         lblCBA.Name = "lblCBA"
         lblCBA.Size = New Size(23, 25)
         lblCBA.TabIndex = 7
@@ -248,7 +249,7 @@ Partial Class frmAttendance
         ' 
         lblCAS.AutoSize = True
         lblCAS.Font = New Font("Segoe UI Semibold", 13.875F, FontStyle.Bold, GraphicsUnit.Point)
-        lblCAS.Location = New Point(94, 196)
+        lblCAS.Location = New Point(94, 257)
         lblCAS.Name = "lblCAS"
         lblCAS.Size = New Size(23, 25)
         lblCAS.TabIndex = 6
@@ -259,7 +260,7 @@ Partial Class frmAttendance
         ' 
         picCOECS.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         picCOECS.Image = My.Resources.Resources.COECS
-        picCOECS.Location = New Point(139, 322)
+        picCOECS.Location = New Point(139, 337)
         picCOECS.Name = "picCOECS"
         picCOECS.Size = New Size(162, 150)
         picCOECS.SizeMode = PictureBoxSizeMode.StretchImage
@@ -270,7 +271,7 @@ Partial Class frmAttendance
         ' 
         picLPUSC.Anchor = AnchorStyles.Bottom
         picLPUSC.Image = My.Resources.Resources.LPUSC
-        picLPUSC.Location = New Point(369, 322)
+        picLPUSC.Location = New Point(369, 337)
         picLPUSC.Name = "picLPUSC"
         picLPUSC.Size = New Size(159, 150)
         picLPUSC.SizeMode = PictureBoxSizeMode.StretchImage
@@ -281,7 +282,7 @@ Partial Class frmAttendance
         ' 
         picCITHM.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         picCITHM.Image = My.Resources.Resources.CITHM
-        picCITHM.Location = New Point(473, 41)
+        picCITHM.Location = New Point(473, 102)
         picCITHM.Name = "picCITHM"
         picCITHM.Size = New Size(157, 150)
         picCITHM.SizeMode = PictureBoxSizeMode.StretchImage
@@ -291,7 +292,7 @@ Partial Class frmAttendance
         ' picCAS
         ' 
         picCAS.Image = My.Resources.Resources.CAS
-        picCAS.Location = New Point(24, 41)
+        picCAS.Location = New Point(24, 102)
         picCAS.Name = "picCAS"
         picCAS.Size = New Size(162, 150)
         picCAS.SizeMode = PictureBoxSizeMode.StretchImage
@@ -302,7 +303,7 @@ Partial Class frmAttendance
         ' 
         picCBA.Anchor = AnchorStyles.Top
         picCBA.Image = My.Resources.Resources.CBA
-        picCBA.Location = New Point(253, 41)
+        picCBA.Location = New Point(253, 102)
         picCBA.Name = "picCBA"
         picCBA.Size = New Size(159, 150)
         picCBA.SizeMode = PictureBoxSizeMode.StretchImage
@@ -327,7 +328,7 @@ Partial Class frmAttendance
         panStudentID.Controls.Add(btnSubmit)
         panStudentID.Controls.Add(lblStudent)
         panStudentID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        panStudentID.Location = New Point(-142, 158)
+        panStudentID.Location = New Point(-11, 158)
         panStudentID.Name = "panStudentID"
         panStudentID.Size = New Size(594, 588)
         panStudentID.TabIndex = 2
@@ -422,10 +423,10 @@ Partial Class frmAttendance
         ' PictureBox7
         ' 
         PictureBox7.Anchor = AnchorStyles.Top
-        PictureBox7.Image = My.Resources.Resources.LAYAG
-        PictureBox7.Location = New Point(197, 26)
+        PictureBox7.Image = My.Resources.Resources.CPS
+        PictureBox7.Location = New Point(215, 26)
         PictureBox7.Name = "PictureBox7"
-        PictureBox7.Size = New Size(189, 143)
+        PictureBox7.Size = New Size(160, 160)
         PictureBox7.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox7.TabIndex = 12
         PictureBox7.TabStop = False
@@ -462,7 +463,7 @@ Partial Class frmAttendance
         tabView.Location = New Point(4, 34)
         tabView.Name = "tabView"
         tabView.Padding = New Padding(3)
-        tabView.Size = New Size(1037, 478)
+        tabView.Size = New Size(1298, 826)
         tabView.TabIndex = 1
         tabView.Text = "View"
         ' 
@@ -523,10 +524,10 @@ Partial Class frmAttendance
         ' PictureBox10
         ' 
         PictureBox10.Anchor = AnchorStyles.Top
-        PictureBox10.Image = My.Resources.Resources.LAYAG
-        PictureBox10.Location = New Point(135, 35)
+        PictureBox10.Image = My.Resources.Resources.CPS
+        PictureBox10.Location = New Point(145, 35)
         PictureBox10.Name = "PictureBox10"
-        PictureBox10.Size = New Size(201, 158)
+        PictureBox10.Size = New Size(160, 160)
         PictureBox10.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox10.TabIndex = 17
         PictureBox10.TabStop = False
@@ -557,7 +558,7 @@ Partial Class frmAttendance
         btnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnClose.BackColor = Color.LightCoral
         btnClose.Font = New Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point)
-        btnClose.Location = New Point(963, 0)
+        btnClose.Location = New Point(1224, 0)
         btnClose.Name = "btnClose"
         btnClose.Size = New Size(82, 30)
         btnClose.TabIndex = 1
@@ -576,7 +577,7 @@ Partial Class frmAttendance
         btnReconnect.Enabled = False
         btnReconnect.FlatAppearance.BorderSize = 0
         btnReconnect.Font = New Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point)
-        btnReconnect.Location = New Point(885, 0)
+        btnReconnect.Location = New Point(1146, 0)
         btnReconnect.Name = "btnReconnect"
         btnReconnect.Size = New Size(78, 30)
         btnReconnect.TabIndex = 2
@@ -591,7 +592,7 @@ Partial Class frmAttendance
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1045, 516)
+        ClientSize = New Size(1306, 864)
         Controls.Add(btnReconnect)
         Controls.Add(btnClose)
         Controls.Add(TabControl1)
